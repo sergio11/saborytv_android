@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Coins4All" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <style name="Theme.Coins4All.Launcher">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+
+</resources>
