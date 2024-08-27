@@ -1,6 +1,6 @@
 # Add project specific ProGuard rules here.
 # You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.kts.
+# proguardFiles setting in build.gradle.
 #
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
@@ -19,34 +19,3 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
-#### OkHttp, Retrofit and Moshi
--dontwarn okhttp3.**
--dontwarn retrofit2.PlatformJava8
--dontwarn okio.**
--dontwarn javax.annotation.**
--keepclasseswithmembers class * {
-    @retrofit2.http.* <methods>;
-}
--keepclasseswithmembers class * {
-    @com.squareup.moshi.* <methods>;
-}
--keep @com.squareup.moshi.JsonQualifier interface *
--dontwarn org.jetbrains.annotations.**
--keep class kotlin.Metadata { *; }
--keepclassmembers class kotlin.Metadata {
-    public <methods>;
-}
-
--keepclassmembers class * {
-    @com.squareup.moshi.FromJson <methods>;
-    @com.squareup.moshi.ToJson <methods>;
-}
-
--keepnames @kotlin.Metadata class com.dreamsoftware.coins4all.data.remote.dto.**
--keep class com.dreamsoftware.coins4all.data.remote.dto.** { *; }
--keepclassmembers class com.dreamsoftware.coins4all.data.remote.dto.** { *; }
-
--keepnames @kotlin.Metadata class com.dreamsoftware.coins4all.data.remote.response.**
--keep class com.dreamsoftware.coins4all.data.remote.response.** { *; }
--keepclassmembers class com.dreamsoftware.coins4all.data.remote.response.** { *; }
