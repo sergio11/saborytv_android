@@ -7,10 +7,10 @@ import androidx.navigation.compose.composable
 import com.dreamsoftware.saborytv.ui.screens.category.CategoryDetailScreen
 import com.dreamsoftware.saborytv.ui.screens.favorites.FavoritesScreen
 import com.dreamsoftware.saborytv.ui.screens.home.HomeScreen
-import com.dreamsoftware.saborytv.ui.screens.instructordetail.InstructorDetailScreen
+import com.dreamsoftware.saborytv.ui.screens.chefprofiledetail.ChefProfileDetailScreen
 import com.dreamsoftware.saborytv.ui.screens.moreoptions.MoreOptionsScreen
 import com.dreamsoftware.saborytv.ui.screens.player.audio.AudioPlayerScreen
-import com.dreamsoftware.saborytv.ui.screens.player.video.VideoPlayerScreen
+import com.dreamsoftware.saborytv.ui.screens.player.VideoPlayerScreen
 import com.dreamsoftware.saborytv.ui.screens.settings.SettingsScreen
 import com.dreamsoftware.saborytv.ui.screens.subscription.SubscriptionScreen
 import com.dreamsoftware.saborytv.ui.screens.recipes.RecipesScreen
@@ -148,7 +148,7 @@ fun DashboardNavHost(
         composable(Screen.InstructorDetail.route) { navBackStackEntry ->
             navBackStackEntry.arguments?.let(Screen.InstructorDetail::parseArgs)?.let { args ->
                 with(navController) {
-                    InstructorDetailScreen(
+                    ChefProfileDetailScreen(
                         args = args,
                         onBackPressed = {
                             popBackStack()

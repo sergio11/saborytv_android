@@ -45,7 +45,6 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.ShapeDefaults
 import coil.compose.AsyncImage
 import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.ui.theme.shadowCarouselColor
 import com.dreamsoftware.fudge.component.FudgeTvButton
 import com.dreamsoftware.fudge.component.FudgeTvButtonStyleTypeEnum

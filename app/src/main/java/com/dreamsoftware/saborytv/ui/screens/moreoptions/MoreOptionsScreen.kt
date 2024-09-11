@@ -2,7 +2,6 @@ package com.dreamsoftware.saborytv.ui.screens.moreoptions
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvScreen
 
 data class MoreOptionsScreenArgs(

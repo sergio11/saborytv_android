@@ -41,7 +41,7 @@ import com.dreamsoftware.fudge.utils.conditional
 
 @Composable
 internal fun RecipesScreenContent(
-    state: TrainingUiState,
+    state: RecipesUiState,
     actionListener: RecipesScreenActionListener
 ) {
     with(actionListener) {
@@ -97,7 +97,7 @@ internal fun RecipesScreenContent(
 
 @Composable
 private fun TrainingProgramList(
-    state: TrainingUiState,
+    state: RecipesUiState,
     actionListener: RecipesScreenActionListener
 ) {
     FudgeTvFocusRequester(state) { focusRequester ->
@@ -145,7 +145,7 @@ private fun TrainingProgramList(
                             .fillMaxWidth()
                             .height(400.dp)
                     )
-                } else if(state.trainingPrograms.isEmpty()) {
+                } else if(state.recipes.isEmpty()) {
                     FudgeTvNoContentState(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -154,7 +154,7 @@ private fun TrainingProgramList(
                     )
                 }
                 AnimatedVisibility(
-                    visible = !state.isLoading && state.trainingPrograms.isNotEmpty(),
+                    visible = !state.isLoading && state.recipes.isNotEmpty(),
                     enter = fadeIn(
                         animationSpec = tween(800)
                     ),
@@ -171,7 +171,7 @@ private fun TrainingProgramList(
                         verticalArrangement = Arrangement.spacedBy(24.dp),
                         contentPadding = PaddingValues(32.dp)
                     ) {
-                        itemsIndexed(state.trainingPrograms) { idx, training ->
+                        itemsIndexed(state.recipes) { idx, training ->
                             FudgeTvCard(
                                 modifier = Modifier.conditional(condition = idx == 0, ifTrue = {
                                     focusRequester(focusRequester)

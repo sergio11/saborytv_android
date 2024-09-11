@@ -2,21 +2,17 @@ package com.dreamsoftware.saborytv.ui.screens.recipedetail
 
 import androidx.annotation.StringRes
 import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.domain.model.ChallengeBO
-import com.dreamsoftware.saborytv.domain.model.ChallengeWeaklyPlansBO
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.domain.model.SeriesBO
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.domain.usecase.AddFavoriteRecipeUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetRecipeByIdUseCase
 import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteRecipeUseCase
 import com.dreamsoftware.saborytv.domain.usecase.VerifyRecipeInFavoritesUseCase
-import com.dreamsoftware.saborytv.ui.screens.recipedetail.RecipeDetailUiState.ChallengeWorkoutItemUiState
-import com.dreamsoftware.saborytv.ui.screens.recipedetail.RecipeDetailUiState.TrainingInfoItem
+import com.dreamsoftware.saborytv.ui.screens.recipedetail.RecipeDetailUiState.RecipeInfoItem
 import com.dreamsoftware.saborytv.ui.utils.EMPTY
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
 import com.dreamsoftware.fudge.core.UiState
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -26,12 +22,11 @@ class RecipeDetailViewModel @Inject constructor(
     private val addFavoriteRecipeUseCase: AddFavoriteRecipeUseCase,
     private val removeFavoriteRecipeUseCase: RemoveFavoriteRecipeUseCase,
     private val verifyRecipeInFavoritesUseCase: VerifyRecipeInFavoritesUseCase
-) : FudgeTvViewModel<RecipeDetailUiState, TrainingDetailSideEffects>(), RecipeDetailScreenActionListener {
+) : FudgeTvViewModel<RecipeDetailUiState, RecipeDetailSideEffects>(), RecipeDetailScreenActionListener {
 
     override fun onGetDefaultState(): RecipeDetailUiState = RecipeDetailUiState()
 
-    fun fetchData(id: String, type: TrainingTypeEnum) {
-        updateState { it.copy(trainingType = type) }
+    fun fetchData(id: String) {
         executeUseCaseWithParams(
             useCase = verifyRecipeInFavoritesUseCase,
             params = VerifyRecipeInFavoritesUseCase.Params(trainingId = id),
@@ -39,26 +34,20 @@ class RecipeDetailViewModel @Inject constructor(
         )
         executeUseCaseWithParams(
             useCase = getRecipeByIdUseCase,
-            params = GetRecipeByIdUseCase.Params(id, type),
-            onSuccess = ::onGetTrainingProgramByIdSuccessfully
+            params = GetRecipeByIdUseCase.Params(id),
+            onSuccess = ::onGetRecipeProgramByIdSuccessfully
         )
     }
 
     override fun onRecipeStarted() {
         with(uiState.value) {
-            launchSideEffect(TrainingDetailSideEffects.PlayingTrainingProgram(
-                id = id,
-                type = trainingType
-            ))
+            launchSideEffect(RecipeDetailSideEffects.PlayingRecipeProgram(id = id))
         }
     }
 
     override fun onRecipeMoreInfoRequested() {
         with(uiState.value) {
-            launchSideEffect(TrainingDetailSideEffects.OpenMoreInfo(
-                id = id,
-                type = trainingType
-            ))
+            launchSideEffect(RecipeDetailSideEffects.OpenMoreInfo(id = id))
         }
     }
 
@@ -76,8 +65,7 @@ class RecipeDetailViewModel @Inject constructor(
                 executeUseCaseWithParams(
                     useCase = addFavoriteRecipeUseCase,
                     params = AddFavoriteRecipeUseCase.Params(
-                        trainingId = id,
-                        trainingType = trainingType
+                        id = id
                     ),
                     onSuccess = ::onChangeFavoriteTrainingCompleted
                 )
@@ -95,52 +83,26 @@ class RecipeDetailViewModel @Inject constructor(
         updateState { it.copy(isFavorite = isFavorite) }
     }
 
-    private fun onGetTrainingProgramByIdSuccessfully(trainingProgramBO: ITrainingProgramBO) {
+    private fun onGetRecipeProgramByIdSuccessfully(recipeBO: RecipeBO) {
         updateState {
-            with(trainingProgramBO) {
+            with(recipeBO) {
                 it.copy(
-                    subtitle = "$instructorName | ${workoutType.value}",
-                    title = name,
+                    subtitle = "$chefProfileName | ${type.value}",
+                    title = title,
                     description = description,
                     id = id,
-                    tabs = if(this is ChallengeBO) {
-                        weaklyPlans.map(ChallengeWeaklyPlansBO::name)
-                    } else {
-                        emptyList()
-                    },
-                    weaklyPlans = if(this is ChallengeBO) {
-                        weaklyPlans.map { weaklyPlan ->
-                            mapOf(
-                                Pair(
-                                    weaklyPlan.name,
-                                    weaklyPlan.workouts.map { workout ->
-                                        with(workout) {
-                                            ChallengeWorkoutItemUiState(
-                                                id = id,
-                                                imageUrl = imageUrl,
-                                                title = name,
-                                                time = duration,
-                                                typeText = intensity.level
-                                            )
-                                        }
-                                    })
-                            )
-                        }
-                    } else {
-                        emptyList()
-                    },
                     itemsInfo = buildList {
-                        add(TrainingInfoItem(info = "$duration min", labelRes = R.string.length))
-                        add(TrainingInfoItem(info = intensity.value, labelRes = R.string.intensity))
-                        when(this@with) {
+                        add(RecipeInfoItem(info = "$preparationTime min", labelRes = R.string.length))
+                        add(RecipeInfoItem(info = difficulty.value, labelRes = R.string.intensity))
+                        /*when(this@with) {
                             is SeriesBO -> {
-                                add(TrainingInfoItem(info = numberOfWeeks.toString(), labelRes = R.string.week))
-                                add(TrainingInfoItem(info = numberOfClasses.toString(), labelRes = R.string.classes))
+                                add(RecipeInfoItem(info = numberOfWeeks.toString(), labelRes = R.string.week))
+                                add(RecipeInfoItem(info = numberOfClasses.toString(), labelRes = R.string.classes))
                             }
                             is ChallengeBO -> {
-                                add(TrainingInfoItem(info = numberOfDays.toString(), labelRes = R.string.days))
+                                add(RecipeInfoItem(info = numberOfDays.toString(), labelRes = R.string.days))
                             }
-                        }
+                        }*/
                     },
                     imageUrl = imageUrl
                 )
@@ -152,15 +114,12 @@ class RecipeDetailViewModel @Inject constructor(
 data class RecipeDetailUiState(
     override val isLoading: Boolean = false,
     override val errorMessage: String? = null,
-    val trainingType: TrainingTypeEnum = TrainingTypeEnum.WORK_OUT,
     val subtitle: String = String.EMPTY,
     val title: String = String.EMPTY,
     val description: String = String.EMPTY,
     val imageUrl: String = String.EMPTY,
     val id: String = String.EMPTY,
-    val itemsInfo: List<TrainingInfoItem> = listOf(),
-    val tabs: List<String> = listOf(),
-    val weaklyPlans: List<Map<String, List<ChallengeWorkoutItemUiState>>> = listOf(),
+    val itemsInfo: List<RecipeInfoItem> = listOf(),
     val isFavorite: Boolean = false,
     val challengePages: List<TrainingDetailPages> = listOf(
         TrainingDetailPages.DetailDetails,
@@ -178,7 +137,7 @@ data class RecipeDetailUiState(
         val time: String,
         val typeText: String,
     )
-    data class TrainingInfoItem(
+    data class RecipeInfoItem(
         val info: String = String.EMPTY,
         @StringRes val labelRes: Int
     )
@@ -189,7 +148,7 @@ sealed class TrainingDetailPages {
     data object DetailTabs : TrainingDetailPages()
 }
 
-sealed interface TrainingDetailSideEffects: SideEffect {
-    data class PlayingTrainingProgram(val id: String, val type: TrainingTypeEnum): TrainingDetailSideEffects
-    data class OpenMoreInfo(val id: String, val type: TrainingTypeEnum): TrainingDetailSideEffects
+sealed interface RecipeDetailSideEffects: SideEffect {
+    data class PlayingRecipeProgram(val id: String): RecipeDetailSideEffects
+    data class OpenMoreInfo(val id: String): RecipeDetailSideEffects
 }

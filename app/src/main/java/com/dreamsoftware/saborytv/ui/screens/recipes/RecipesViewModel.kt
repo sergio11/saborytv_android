@@ -3,14 +3,10 @@ package com.dreamsoftware.saborytv.ui.screens.recipes
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.di.FavoritesScreenErrorMapper
 import com.dreamsoftware.saborytv.domain.model.ClassLanguageEnum
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.domain.model.ChefProfileBO
-import com.dreamsoftware.saborytv.domain.model.IntensityEnum
 import com.dreamsoftware.saborytv.domain.model.SortTypeEnum
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.domain.model.VideoLengthEnum
-import com.dreamsoftware.saborytv.domain.model.WorkoutTypeEnum
-import com.dreamsoftware.saborytv.domain.usecase.GetInstructorsUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetChefProfilesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetRecipesByTypeUseCase
 import com.dreamsoftware.saborytv.ui.utils.EMPTY
 import com.dreamsoftware.fudge.component.menu.FudgeTvFilterVO
@@ -19,26 +15,28 @@ import com.dreamsoftware.fudge.core.IFudgeTvErrorMapper
 import com.dreamsoftware.fudge.core.SideEffect
 import com.dreamsoftware.fudge.core.UiState
 import com.dreamsoftware.fudge.utils.IFudgeTvApplicationAware
+import com.dreamsoftware.saborytv.domain.model.DifficultyEnum
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
+import com.dreamsoftware.saborytv.domain.model.RecipeTypeEnum
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class RecipesViewModel @Inject constructor(
-    private val getInstructorsUseCase: GetInstructorsUseCase,
+    private val getChefProfilesUseCase: GetChefProfilesUseCase,
     private val getRecipesByTypeUseCase: GetRecipesByTypeUseCase,
     private val applicationAware: IFudgeTvApplicationAware,
     @FavoritesScreenErrorMapper private val errorMapper: IFudgeTvErrorMapper,
-) : FudgeTvViewModel<TrainingUiState, TrainingSideEffects>(), RecipesScreenActionListener {
+) : FudgeTvViewModel<RecipesUiState, RecipesSideEffects>(), RecipesScreenActionListener {
 
-    private var instructors: List<ChefProfileBO> = emptyList()
-    private var instructor: String = String.EMPTY
+    private var chefProfiles: List<ChefProfileBO> = emptyList()
+    private var chefProfile: String = String.EMPTY
     private var videoLength: VideoLengthEnum = VideoLengthEnum.NOT_SET
-    private var workoutType: WorkoutTypeEnum = WorkoutTypeEnum.NOT_SET
-    private var intensity: IntensityEnum = IntensityEnum.NOT_SET
+    private var difficulty: DifficultyEnum = DifficultyEnum.NOT_SET
     private var classLanguage: ClassLanguageEnum = ClassLanguageEnum.NOT_SET
     private var sortType: SortTypeEnum = SortTypeEnum.NOT_SET
 
-    override fun onGetDefaultState(): TrainingUiState = TrainingUiState(
+    override fun onGetDefaultState(): RecipesUiState = RecipesUiState(
         filterItems = listOf(
             FudgeTvFilterVO(
                 id = VIDEO_LENGTH_FILTER,
@@ -46,13 +44,6 @@ class RecipesViewModel @Inject constructor(
                 title = R.string.length,
                 description = VideoLengthEnum.NOT_SET.value,
                 options = VideoLengthEnum.entries.map { it.value }
-            ),
-            FudgeTvFilterVO(
-                id = CLASS_TYPE_FILTER,
-                icon = R.drawable.class_type_ic,
-                title = R.string.class_type,
-                description = WorkoutTypeEnum.NOT_SET.value,
-                options = WorkoutTypeEnum.entries.map { it.value }
             ),
             FudgeTvFilterVO(
                 id = CLASS_LANGUAGE_FILTER,
@@ -65,11 +56,11 @@ class RecipesViewModel @Inject constructor(
                 id = DIFFICULTY_FILTER,
                 icon = R.drawable.difficulty_ic,
                 title = R.string.difficulty,
-                description = IntensityEnum.NOT_SET.value,
-                options = IntensityEnum.entries.map { it.value }
+                description = DifficultyEnum.NOT_SET.value,
+                options = DifficultyEnum.entries.map { it.value }
             ),
             FudgeTvFilterVO(
-                id = INSTRUCTOR_FILTER,
+                id = CHEF_PROFILE_FILTER,
                 icon = R.drawable.person_ic,
                 title = R.string.instructor
             )
@@ -77,7 +68,7 @@ class RecipesViewModel @Inject constructor(
     )
 
     fun fetchData() {
-        fetchTrainings()
+        fetchRecipes()
     }
 
     override fun onFilterClicked() {
@@ -91,7 +82,7 @@ class RecipesViewModel @Inject constructor(
     override fun onSortCleared() {
         sortType = SortTypeEnum.NOT_SET
         updateState { it.copy(selectedSortItem = 0, isSortExpended = false) }
-        fetchTrainings()
+        fetchRecipes()
     }
 
     override fun onDismissSortSideMenu() {
@@ -104,7 +95,7 @@ class RecipesViewModel @Inject constructor(
 
     override fun onFilterCleared() {
         resetFilters()
-        fetchTrainings()
+        fetchRecipes()
     }
 
     override fun onDismissFieldFilterSideMenu() {
@@ -123,7 +114,7 @@ class RecipesViewModel @Inject constructor(
     override fun onSelectedSortedItem(currentIndex: Int) {
         sortType = SortTypeEnum.entries[currentIndex]
         updateState { it.copy(selectedSortItem = currentIndex, isSortExpended = false) }
-        fetchTrainings()
+        fetchRecipes()
     }
 
     override fun onSelectedFilterOption(currentIndex: Int) {
@@ -133,17 +124,14 @@ class RecipesViewModel @Inject constructor(
                 VIDEO_LENGTH_FILTER -> {
                     videoLength = VideoLengthEnum.entries[currentIndex]
                 }
-                CLASS_TYPE_FILTER -> {
-                    workoutType = WorkoutTypeEnum.entries[currentIndex]
-                }
                 DIFFICULTY_FILTER -> {
-                    intensity = IntensityEnum.entries[currentIndex]
+                    difficulty = DifficultyEnum.entries[currentIndex]
                 }
                 CLASS_LANGUAGE_FILTER -> {
                     classLanguage = ClassLanguageEnum.entries[currentIndex]
                 }
-                INSTRUCTOR_FILTER -> {
-                    instructor = instructors.getOrNull(currentIndex)?.id.orEmpty()
+                CHEF_PROFILE_FILTER -> {
+                    chefProfile = chefProfiles.getOrNull(currentIndex)?.id.orEmpty()
                 }
             }
             updateState {
@@ -154,10 +142,9 @@ class RecipesViewModel @Inject constructor(
                                 selectedOption = currentIndex,
                                 description = when(filter.id) {
                                     VIDEO_LENGTH_FILTER -> VideoLengthEnum.entries[currentIndex].value
-                                    CLASS_TYPE_FILTER -> WorkoutTypeEnum.entries[currentIndex].value
-                                    DIFFICULTY_FILTER -> IntensityEnum.entries[currentIndex].value
+                                    DIFFICULTY_FILTER -> DifficultyEnum.entries[currentIndex].value
                                     CLASS_LANGUAGE_FILTER -> ClassLanguageEnum.entries[currentIndex].value
-                                    else -> instructors.getOrNull(currentIndex)?.name.orEmpty()
+                                    else -> chefProfiles.getOrNull(currentIndex)?.name.orEmpty()
                                 }
                             )
                         } else {
@@ -167,7 +154,7 @@ class RecipesViewModel @Inject constructor(
                     selectedTrainingFilter = null
                 )
             }
-            fetchTrainings()
+            fetchRecipes()
         }
     }
 
@@ -175,11 +162,11 @@ class RecipesViewModel @Inject constructor(
         updateState {
             it.copy(
                 selectedTab = index,
-                trainingPrograms = emptyList(),
-                trainingTypeSelected = TrainingTypeEnum.entries[index]
+                recipes = emptyList(),
+                typeSelected = RecipeTypeEnum.entries[index]
             )
         }
-        fetchTrainings()
+        fetchRecipes()
     }
 
     override fun onChangeFocusTab(index: Int) {
@@ -188,51 +175,47 @@ class RecipesViewModel @Inject constructor(
 
     override fun onItemClicked(id: String) {
         launchSideEffect(
-            TrainingSideEffects.OpenTrainingProgramDetail(
-                id = id,
-                type = uiState.value.trainingTypeSelected
-            )
+            RecipesSideEffects.OpenRecipeProgramDetail(id = id)
         )
     }
 
-    private fun fetchInstructors() {
-        executeUseCase(useCase = getInstructorsUseCase, onSuccess = ::onGetInstructorsSuccessfully)
+    private fun fetchChefProfiles() {
+        executeUseCase(useCase = getChefProfilesUseCase, onSuccess = ::onGetChefProfilesSuccessfully)
     }
 
-    private fun fetchTrainings() {
+    private fun fetchRecipes() {
         executeUseCaseWithParams(
             useCase = getRecipesByTypeUseCase,
             params = GetRecipesByTypeUseCase.Params(
-                type = uiState.value.trainingTypeSelected,
+                type = uiState.value.typeSelected,
                 classLanguage = classLanguage,
-                workoutType = workoutType,
-                intensity = intensity,
+                difficulty = difficulty,
                 videoLength = videoLength,
                 sortType = sortType,
-                instructor = instructor
+                instructor = chefProfile
             ),
-            onSuccess = ::onGetTrainingProgramsSuccessfully,
+            onSuccess = ::onGetRecipesSuccessfully,
             onMapExceptionToState = ::onMapExceptionToState
         )
     }
 
-    private fun onGetTrainingProgramsSuccessfully(trainingPrograms: List<ITrainingProgramBO>) {
-        updateState { it.copy(trainingPrograms = trainingPrograms) }
-        if(instructors.isEmpty()) {
-            fetchInstructors()
+    private fun onGetRecipesSuccessfully(trainingPrograms: List<RecipeBO>) {
+        updateState { it.copy(recipes = trainingPrograms) }
+        if(chefProfiles.isEmpty()) {
+            fetchChefProfiles()
         }
     }
 
-    private fun onGetInstructorsSuccessfully(instructorList: List<ChefProfileBO>) {
-        instructors = instructorList
-        val noInstructorSet = applicationAware.getString(R.string.no_instructor_set)
+    private fun onGetChefProfilesSuccessfully(chefProfileList: List<ChefProfileBO>) {
+        chefProfiles = chefProfileList
+        val noChefProfileSet = applicationAware.getString(R.string.no_instructor_set)
         updateState {
             it.copy(
                 filterItems = it.filterItems.map { item ->
-                    if(item.id == INSTRUCTOR_FILTER) {
+                    if(item.id == CHEF_PROFILE_FILTER) {
                         item.copy(
-                            options = instructorList.map(ChefProfileBO::name) + noInstructorSet,
-                            description = noInstructorSet
+                            options = chefProfileList.map(ChefProfileBO::name) + noChefProfileSet,
+                            description = noChefProfileSet
                         )
                     } else {
                         item
@@ -242,19 +225,18 @@ class RecipesViewModel @Inject constructor(
         }
     }
 
-    private fun onMapExceptionToState(ex: Exception, uiState: TrainingUiState) =
+    private fun onMapExceptionToState(ex: Exception, uiState: RecipesUiState) =
         uiState.copy(
             isLoading = false,
-            trainingPrograms = emptyList(),
+            recipes = emptyList(),
             errorMessage = errorMapper.mapToMessage(ex)
         )
 
     private fun resetFilters() {
         videoLength = VideoLengthEnum.NOT_SET
-        workoutType = WorkoutTypeEnum.NOT_SET
-        intensity = IntensityEnum.NOT_SET
+        difficulty = DifficultyEnum.NOT_SET
         classLanguage = ClassLanguageEnum.NOT_SET
-        instructor = String.EMPTY
+        chefProfile = String.EMPTY
         updateState {
             it.copy(
                 isFilterExpended = false,
@@ -268,8 +250,7 @@ class RecipesViewModel @Inject constructor(
             selectedOption = 0,
             description = when(item.id) {
                 VIDEO_LENGTH_FILTER -> VideoLengthEnum.NOT_SET.value
-                CLASS_TYPE_FILTER -> WorkoutTypeEnum.NOT_SET.value
-                DIFFICULTY_FILTER -> IntensityEnum.NOT_SET.value
+                DIFFICULTY_FILTER -> DifficultyEnum.NOT_SET.value
                 CLASS_LANGUAGE_FILTER -> ClassLanguageEnum.NOT_SET.value
                 else -> String.EMPTY
             }
@@ -277,13 +258,13 @@ class RecipesViewModel @Inject constructor(
     }
 }
 
-data class TrainingUiState(
+data class RecipesUiState(
     override val isLoading: Boolean = false,
     override val errorMessage: String? = null,
     val isFilterExpended: Boolean = false,
     val isFieldFilterSelected: Boolean = false,
     val isSortExpended: Boolean = false,
-    val trainingPrograms: List<ITrainingProgramBO> = emptyList(),
+    val recipes: List<RecipeBO> = emptyList(),
     val filterItems: List<FudgeTvFilterVO> = emptyList(),
     val selectedSortItem: Int = 0,
     val selectedTrainingFilter: FudgeTvFilterVO? = null,
@@ -294,20 +275,18 @@ data class TrainingUiState(
         R.string.training_type_challenges_name,
         R.string.training_type_routines_name,
     ),
-    val trainingTypeSelected: TrainingTypeEnum = TrainingTypeEnum.WORK_OUT,
+    val typeSelected: RecipeTypeEnum = RecipeTypeEnum.VEGETARIAN,
     val focusTabIndex: Int = 0,
-) : UiState<TrainingUiState>(isLoading, errorMessage) {
-    override fun copyState(isLoading: Boolean, errorMessage: String?): TrainingUiState =
+) : UiState<RecipesUiState>(isLoading, errorMessage) {
+    override fun copyState(isLoading: Boolean, errorMessage: String?): RecipesUiState =
         copy(isLoading = isLoading, errorMessage = errorMessage)
 }
 
-sealed interface TrainingSideEffects : SideEffect {
-    data class OpenTrainingProgramDetail(val id: String, val type: TrainingTypeEnum) :
-        TrainingSideEffects
+sealed interface RecipesSideEffects : SideEffect {
+    data class OpenRecipeProgramDetail(val id: String) : RecipesSideEffects
 }
 
 const val VIDEO_LENGTH_FILTER = "VIDEO_LENGTH_FILTER"
-const val CLASS_TYPE_FILTER = "CLASS_TYPE_FILTER"
 const val DIFFICULTY_FILTER = "DIFFICULTY_FILTER"
 const val CLASS_LANGUAGE_FILTER = "CLASS_LANGUAGE_FILTER"
-const val INSTRUCTOR_FILTER = "INSTRUCTOR_FILTER"
+const val CHEF_PROFILE_FILTER = "CHEF_PROFILE_FILTER"

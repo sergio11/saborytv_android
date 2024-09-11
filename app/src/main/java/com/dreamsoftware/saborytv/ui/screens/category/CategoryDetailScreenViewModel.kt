@@ -1,14 +1,12 @@
 package com.dreamsoftware.saborytv.ui.screens.category
 
 import com.dreamsoftware.saborytv.domain.model.CategoryBO
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.domain.usecase.GetCategoryByIdUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetRecipesByCategoryUseCase
-import com.dreamsoftware.saborytv.ui.utils.toTrainingType
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
 import com.dreamsoftware.fudge.core.UiState
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -24,22 +22,19 @@ class CategoryDetailScreenViewModel @Inject constructor(
 
     override fun onGetDefaultState(): CategoryDetailUiState = CategoryDetailUiState()
 
-    override fun onTrainingProgramOpened(trainingProgram: ITrainingProgramBO) {
-        with(trainingProgram) {
+    override fun onRecipeProgramOpened(recipeBO: RecipeBO) {
+        with(recipeBO) {
             launchSideEffect(
-                CategoryDetailSideEffects.OpenTrainingProgramDetail(
-                    id = id,
-                    type = toTrainingType()
-                )
+                CategoryDetailSideEffects.OpenRecipeProgramDetail(id = id)
             )
         }
     }
 
-    private fun fetchTrainingsByCategory(id: String) {
+    private fun fetchRecipesByCategory(id: String) {
         executeUseCaseWithParams(
             useCase = getRecipesByCategoryUseCase,
             params = GetRecipesByCategoryUseCase.Params(id),
-            onSuccess = ::onGetTrainingsByCategorySuccessfully
+            onSuccess = ::onGetRecipesByCategorySuccessfully
         )
     }
 
@@ -51,20 +46,20 @@ class CategoryDetailScreenViewModel @Inject constructor(
         )
     }
 
-    private fun onGetTrainingsByCategorySuccessfully(trainings: List<ITrainingProgramBO>) {
-        updateState { it.copy(trainings = trainings) }
+    private fun onGetRecipesByCategorySuccessfully(recipes: List<RecipeBO>) {
+        updateState { it.copy(recipes = recipes) }
     }
 
     private fun onGetCategoryDetailSuccessfully(category: CategoryBO) {
         updateState { it.copy(category = category) }
-        fetchTrainingsByCategory(category.id)
+        fetchRecipesByCategory(category.id)
     }
 }
 
 data class CategoryDetailUiState(
     override val isLoading: Boolean = false,
     override val errorMessage: String? = null,
-    val trainings: List<ITrainingProgramBO> = emptyList(),
+    val recipes: List<RecipeBO> = emptyList(),
     val category: CategoryBO? = null
 ): UiState<CategoryDetailUiState>(isLoading, errorMessage) {
     override fun copyState(isLoading: Boolean, errorMessage: String?): CategoryDetailUiState =
@@ -72,5 +67,5 @@ data class CategoryDetailUiState(
 }
 
 sealed interface CategoryDetailSideEffects : SideEffect {
-    data class OpenTrainingProgramDetail(val id: String, val type: TrainingTypeEnum): CategoryDetailSideEffects
+    data class OpenRecipeProgramDetail(val id: String): CategoryDetailSideEffects
 }

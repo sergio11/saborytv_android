@@ -2,7 +2,6 @@ package com.dreamsoftware.saborytv.ui.screens.favorites
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvScreen
 
 @Composable
@@ -17,7 +16,7 @@ fun FavoritesScreen(
         onInitialUiState = { FavoritesUiState() },
         onSideEffect = {
             when(it) {
-                is FavoritesSideEffects.OpenTrainingProgramDetail -> onOpenTrainingProgramDetail(it.id, it.type)
+                is FavoritesSideEffects.OpenRecipeProgramDetail -> onOpenTrainingProgramDetail(it.id, it.type)
             }
         },
         onInit = {

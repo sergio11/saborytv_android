@@ -4,12 +4,11 @@ import android.os.Bundle
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.ui.screens.category.CategoryDetailScreenArgs
-import com.dreamsoftware.saborytv.ui.screens.instructordetail.InstructorDetailScreenArgs
+import com.dreamsoftware.saborytv.ui.screens.chefprofiledetail.ChefProfileDetailScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.moreoptions.MoreOptionsScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.player.audio.AudioPlayerScreenArgs
-import com.dreamsoftware.saborytv.ui.screens.player.video.VideoPlayerScreenArgs
+import com.dreamsoftware.saborytv.ui.screens.player.VideoPlayerScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.profiles.changesecurepin.ChangeSecurePinScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.profiles.delete.DeleteProfileScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.profiles.save.SaveProfileScreenArgs
@@ -216,9 +215,9 @@ sealed class Screen(
                 newValue = id
             )
 
-        fun parseArgs(args: Bundle): InstructorDetailScreenArgs? = with(args) {
+        fun parseArgs(args: Bundle): ChefProfileDetailScreenArgs? = with(args) {
             getString("id")?.let { id ->
-                InstructorDetailScreenArgs(id = id)
+                ChefProfileDetailScreenArgs(id = id)
             }
         }
     }
