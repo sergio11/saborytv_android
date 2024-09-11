@@ -1,26 +1,26 @@
 package com.dreamsoftware.saborytv.data.remote.datasource
 
-import com.dreamsoftware.saborytv.data.remote.dto.request.AddFavoriteTrainingDTO
-import com.dreamsoftware.saborytv.data.remote.dto.response.FavoriteTrainingDTO
-import com.dreamsoftware.saborytv.data.remote.exception.AddToFavoritesRemoteException
+import com.dreamsoftware.saborytv.data.remote.dto.request.AddFavoriteRecipeDTO
+import com.dreamsoftware.saborytv.data.remote.dto.response.FavoriteRecipeDTO
+import com.dreamsoftware.saborytv.data.remote.exception.AddToRecipesRemoteException
 import com.dreamsoftware.saborytv.data.remote.exception.GetFavoritesByUserRemoteException
-import com.dreamsoftware.saborytv.data.remote.exception.HasTrainingInFavoritesRemoteException
+import com.dreamsoftware.saborytv.data.remote.exception.HasRecipeInFavoritesRemoteException
 import com.dreamsoftware.saborytv.data.remote.exception.RemoveAllFavoritesRemoteException
 import com.dreamsoftware.saborytv.data.remote.exception.RemoveFromFavoritesRemoteException
 
 interface IFavoritesRemoteDataSource {
 
-    @Throws(AddToFavoritesRemoteException::class)
-    suspend fun addFavorite(data: AddFavoriteTrainingDTO): Boolean
+    @Throws(AddToRecipesRemoteException::class)
+    suspend fun addFavorite(data: AddFavoriteRecipeDTO): Boolean
 
     @Throws(GetFavoritesByUserRemoteException::class)
-    suspend fun getFavoritesByUser(profileId: String): List<FavoriteTrainingDTO>
+    suspend fun getFavoritesByUser(profileId: String): List<FavoriteRecipeDTO>
 
-    @Throws(HasTrainingInFavoritesRemoteException::class)
-    suspend fun hasTrainingInFavorites(profileId: String, trainingId: String): Boolean
+    @Throws(HasRecipeInFavoritesRemoteException::class)
+    suspend fun hasRecipeInFavorites(profileId: String, recipeId: String): Boolean
 
     @Throws(RemoveFromFavoritesRemoteException::class)
-    suspend fun removeFavorite(profileId: String, trainingId: String): Boolean
+    suspend fun removeFavorite(profileId: String, recipeId: String): Boolean
 
     @Throws(RemoveAllFavoritesRemoteException::class)
     suspend fun removeFavorites(profileId: String): Boolean

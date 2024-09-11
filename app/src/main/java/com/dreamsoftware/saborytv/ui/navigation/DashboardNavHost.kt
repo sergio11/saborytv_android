@@ -13,8 +13,8 @@ import com.dreamsoftware.saborytv.ui.screens.player.audio.AudioPlayerScreen
 import com.dreamsoftware.saborytv.ui.screens.player.video.VideoPlayerScreen
 import com.dreamsoftware.saborytv.ui.screens.settings.SettingsScreen
 import com.dreamsoftware.saborytv.ui.screens.subscription.SubscriptionScreen
-import com.dreamsoftware.saborytv.ui.screens.training.TrainingScreen
-import com.dreamsoftware.saborytv.ui.screens.trainingdetail.TrainingDetailScreen
+import com.dreamsoftware.saborytv.ui.screens.recipes.RecipesScreen
+import com.dreamsoftware.saborytv.ui.screens.recipedetail.RecipeDetailScreen
 
 @Composable
 fun DashboardNavHost(
@@ -40,8 +40,8 @@ fun DashboardNavHost(
             }
         }
         composable(Screen.Training.route) {
-            TrainingScreen(
-                onGoToTrainingProgramDetail = { id, type ->
+            RecipesScreen(
+                onGoToRecipeDetail = { id, type ->
                     navController.navigate(Screen.TrainingDetail.buildRoute(id, type))
                 }
             )
@@ -108,7 +108,7 @@ fun DashboardNavHost(
         composable(Screen.TrainingDetail.route) { navBackStackEntry ->
             navBackStackEntry.arguments?.let(Screen.TrainingDetail::parseArgs)?.let { args ->
                 with(navController) {
-                    TrainingDetailScreen(
+                    RecipeDetailScreen(
                         args = args,
                         onPlayingTrainingProgram = { id, type ->
                             navigate(Screen.VideoPlayer.buildRoute(id, type))

@@ -2,10 +2,10 @@ package com.dreamsoftware.saborytv.ui.screens.moreoptions
 
 import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
-import com.dreamsoftware.saborytv.domain.usecase.AddFavoriteTrainingUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetTrainingByIdUseCase
-import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteTrainingUseCase
-import com.dreamsoftware.saborytv.domain.usecase.VerifyTrainingInFavoritesUseCase
+import com.dreamsoftware.saborytv.domain.usecase.AddFavoriteRecipeUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetRecipeByIdUseCase
+import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteRecipeUseCase
+import com.dreamsoftware.saborytv.domain.usecase.VerifyRecipeInFavoritesUseCase
 import com.dreamsoftware.saborytv.ui.utils.toTrainingType
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
@@ -15,23 +15,23 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoreOptionsViewModel @Inject constructor(
-    private val getTrainingByIdUseCase: GetTrainingByIdUseCase,
-    private val addFavoriteTrainingUseCase: AddFavoriteTrainingUseCase,
-    private val removeFavoriteTrainingUseCase: RemoveFavoriteTrainingUseCase,
-    private val verifyTrainingInFavoritesUseCase: VerifyTrainingInFavoritesUseCase
+    private val getRecipeByIdUseCase: GetRecipeByIdUseCase,
+    private val addFavoriteRecipeUseCase: AddFavoriteRecipeUseCase,
+    private val removeFavoriteRecipeUseCase: RemoveFavoriteRecipeUseCase,
+    private val verifyRecipeInFavoritesUseCase: VerifyRecipeInFavoritesUseCase
 ) : FudgeTvViewModel<MoreOptionsUiState, MoreOptionsSideEffects>(), MoreOptionsScreenActionListener {
 
     override fun onGetDefaultState(): MoreOptionsUiState = MoreOptionsUiState()
 
     fun fetchData(id: String, type: TrainingTypeEnum) {
         executeUseCaseWithParams(
-            useCase = verifyTrainingInFavoritesUseCase,
-            params = VerifyTrainingInFavoritesUseCase.Params(trainingId = id),
+            useCase = verifyRecipeInFavoritesUseCase,
+            params = VerifyRecipeInFavoritesUseCase.Params(trainingId = id),
             onSuccess = ::onVerifyTrainingInFavoritesCompleted
         )
         executeUseCaseWithParams(
-            useCase = getTrainingByIdUseCase,
-            params = GetTrainingByIdUseCase.Params(id, type),
+            useCase = getRecipeByIdUseCase,
+            params = GetRecipeByIdUseCase.Params(id, type),
             onSuccess = ::onGetTrainingProgramByIdSuccessfully
         )
     }
@@ -85,8 +85,8 @@ class MoreOptionsViewModel @Inject constructor(
 
     private fun removeTrainingProgramFromFavorites(id: String) {
         executeUseCaseWithParams(
-            useCase = removeFavoriteTrainingUseCase,
-            params = RemoveFavoriteTrainingUseCase.Params(
+            useCase = removeFavoriteRecipeUseCase,
+            params = RemoveFavoriteRecipeUseCase.Params(
                 trainingId = id
             ),
             onSuccess = ::onChangeFavoriteTrainingCompleted
@@ -95,8 +95,8 @@ class MoreOptionsViewModel @Inject constructor(
 
     private fun addTrainingProgramToFavorites(id: String, type: TrainingTypeEnum) {
         executeUseCaseWithParams(
-            useCase = addFavoriteTrainingUseCase,
-            params = AddFavoriteTrainingUseCase.Params(
+            useCase = addFavoriteRecipeUseCase,
+            params = AddFavoriteRecipeUseCase.Params(
                 trainingId = id,
                 trainingType = type
             ),

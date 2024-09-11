@@ -1,7 +1,6 @@
 package com.dreamsoftware.saborytv.ui.screens.player.audio
 
 import com.dreamsoftware.saborytv.domain.model.TrainingSongBO
-import com.dreamsoftware.saborytv.domain.usecase.GetSongByIdUseCase
 import com.dreamsoftware.saborytv.ui.utils.EMPTY
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect

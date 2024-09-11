@@ -3,8 +3,8 @@ package com.dreamsoftware.saborytv.ui.screens.favorites
 import com.dreamsoftware.saborytv.di.FavoritesScreenErrorMapper
 import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
-import com.dreamsoftware.saborytv.domain.usecase.GetFavoritesTrainingsByUserUseCase
-import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteTrainingUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetFavoritesRecipesByUserUseCase
+import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteRecipeUseCase
 import com.dreamsoftware.saborytv.ui.utils.toTrainingType
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.IFudgeTvErrorMapper
@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
-    private val getFavoritesTrainingsByUserUseCase: GetFavoritesTrainingsByUserUseCase,
-    private val removeFavoriteTrainingUseCase: RemoveFavoriteTrainingUseCase,
+    private val getFavoritesRecipesByUserUseCase: GetFavoritesRecipesByUserUseCase,
+    private val removeFavoriteRecipeUseCase: RemoveFavoriteRecipeUseCase,
     @FavoritesScreenErrorMapper private val errorMapper: IFudgeTvErrorMapper,
 ) : FudgeTvViewModel<FavoritesUiState, FavoritesSideEffects>(), FavoritesScreenActionListener {
 
@@ -24,7 +24,7 @@ class FavoritesViewModel @Inject constructor(
 
     fun fetchData() {
         executeUseCase(
-            useCase = getFavoritesTrainingsByUserUseCase,
+            useCase = getFavoritesRecipesByUserUseCase,
             onSuccess = ::onGetFavoritesWorkoutsSuccessfully,
             onMapExceptionToState = ::onMapExceptionToState
         )
@@ -46,8 +46,8 @@ class FavoritesViewModel @Inject constructor(
 
     override fun onTrainingProgramRemovedFromFavorites(id: String) {
         executeUseCaseWithParams(
-            useCase = removeFavoriteTrainingUseCase,
-            params = RemoveFavoriteTrainingUseCase.Params(trainingId = id),
+            useCase = removeFavoriteRecipeUseCase,
+            params = RemoveFavoriteRecipeUseCase.Params(trainingId = id),
             onSuccess = ::onTrainingProgramRemovedFromFavoritesCompletedSuccessfully
         )
     }

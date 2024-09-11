@@ -14,7 +14,7 @@ import com.dreamsoftware.saborytv.ui.screens.profiles.changesecurepin.ChangeSecu
 import com.dreamsoftware.saborytv.ui.screens.profiles.delete.DeleteProfileScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.profiles.save.SaveProfileScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.profiles.secure.SecurePinScreenArgs
-import com.dreamsoftware.saborytv.ui.screens.trainingdetail.TrainingDetailScreenArgs
+import com.dreamsoftware.saborytv.ui.screens.recipedetail.RecipeDetailScreenArgs
 
 sealed class Screen(
     val route: String,
@@ -175,10 +175,10 @@ sealed class Screen(
                 newValue = type.name
             )
 
-        fun parseArgs(args: Bundle): TrainingDetailScreenArgs? = with(args) {
+        fun parseArgs(args: Bundle): RecipeDetailScreenArgs? = with(args) {
             getString("id")?.let { id ->
                 getString("type")?.let(TrainingTypeEnum::valueOf)?.let { type ->
-                    TrainingDetailScreenArgs(
+                    RecipeDetailScreenArgs(
                         id = id,
                         type = type
                     )

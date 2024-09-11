@@ -1,15 +1,15 @@
 package com.dreamsoftware.saborytv.domain.usecase
 
-import com.dreamsoftware.saborytv.domain.model.InstructorBO
-import com.dreamsoftware.saborytv.domain.repository.IInstructorRepository
+import com.dreamsoftware.saborytv.domain.model.ChefProfileBO
+import com.dreamsoftware.saborytv.domain.repository.IChefProfilesRepository
 import com.dreamsoftware.fudge.core.FudgeTvUseCaseWithParams
 
 class GetInstructorDetailUseCase(
-    private val instructorRepository: IInstructorRepository
-): FudgeTvUseCaseWithParams<GetInstructorDetailUseCase.Params, InstructorBO>() {
+    private val instructorRepository: IChefProfilesRepository
+): FudgeTvUseCaseWithParams<GetInstructorDetailUseCase.Params, ChefProfileBO>() {
 
-    override suspend fun onExecuted(params: Params): InstructorBO =
-        instructorRepository.getInstructorById(params.id)
+    override suspend fun onExecuted(params: Params): ChefProfileBO =
+        instructorRepository.getChefProfileById(params.id)
 
     data class Params(
         val id: String

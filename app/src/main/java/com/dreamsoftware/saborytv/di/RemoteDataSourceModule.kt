@@ -2,31 +2,23 @@ package com.dreamsoftware.saborytv.di
 
 import com.dreamsoftware.saborytv.data.remote.datasource.IAuthRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.ICategoryRemoteDataSource
-import com.dreamsoftware.saborytv.data.remote.datasource.IChallengesRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.IFavoritesRemoteDataSource
-import com.dreamsoftware.saborytv.data.remote.datasource.IInstructorsRemoteDataSource
+import com.dreamsoftware.saborytv.data.remote.datasource.IChefProfilesRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.IProfilesRemoteDataSource
-import com.dreamsoftware.saborytv.data.remote.datasource.IRoutineRemoteDataSource
-import com.dreamsoftware.saborytv.data.remote.datasource.ISeriesRemoteDataSource
+import com.dreamsoftware.saborytv.data.remote.datasource.IRecipesRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.ISubscriptionsRemoteDataSource
-import com.dreamsoftware.saborytv.data.remote.datasource.ITrainingSongsRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.IUserRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.IUserSubscriptionsRemoteDataSource
-import com.dreamsoftware.saborytv.data.remote.datasource.IWorkoutRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.impl.AuthRemoteDataSourceImpl
 import com.dreamsoftware.saborytv.data.remote.datasource.impl.CategoryRemoteDataSourceImpl
-import com.dreamsoftware.saborytv.data.remote.datasource.impl.ChallengesRemoteDataSourceImpl
 import com.dreamsoftware.saborytv.data.remote.datasource.impl.FavoritesRemoteDataSourceImpl
-import com.dreamsoftware.saborytv.data.remote.datasource.impl.InstructorsRemoteDataSourceImpl
+import com.dreamsoftware.saborytv.data.remote.datasource.impl.ChefProfilesRemoteDataSourceImpl
 import com.dreamsoftware.saborytv.data.remote.datasource.impl.ProfilesRemoteDataSourceImpl
-import com.dreamsoftware.saborytv.data.remote.datasource.impl.RoutineRemoteDataSourceImpl
-import com.dreamsoftware.saborytv.data.remote.datasource.impl.SeriesRemoteDataSourceImpl
+import com.dreamsoftware.saborytv.data.remote.datasource.impl.RecipesRemoteDataSourceImpl
 import com.dreamsoftware.saborytv.data.remote.datasource.impl.SubscriptionsRemoteDataSourceImpl
-import com.dreamsoftware.saborytv.data.remote.datasource.impl.TrainingSongsRemoteDataSourceImpl
 import com.dreamsoftware.saborytv.data.remote.datasource.impl.UserRemoteDataSourceImpl
 import com.dreamsoftware.saborytv.data.remote.datasource.impl.UserSubscriptionsRemoteDataSourceImpl
-import com.dreamsoftware.saborytv.data.remote.datasource.impl.WorkoutRemoteDataSourceImpl
-import com.dreamsoftware.saborytv.data.remote.dto.request.AddFavoriteTrainingDTO
+import com.dreamsoftware.saborytv.data.remote.dto.request.AddFavoriteRecipeDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.AddUserSubscriptionDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.CreateProfileRequestDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.CreateUserDTO
@@ -34,36 +26,28 @@ import com.dreamsoftware.saborytv.data.remote.dto.request.UpdatedProfileRequestD
 import com.dreamsoftware.saborytv.data.remote.dto.request.UpdatedUserRequestDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.AuthUserDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.CategoryDTO
-import com.dreamsoftware.saborytv.data.remote.dto.response.ChallengeDTO
-import com.dreamsoftware.saborytv.data.remote.dto.response.FavoriteTrainingDTO
-import com.dreamsoftware.saborytv.data.remote.dto.response.InstructorDTO
+import com.dreamsoftware.saborytv.data.remote.dto.response.ChefProfileDTO
+import com.dreamsoftware.saborytv.data.remote.dto.response.FavoriteRecipeDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.ProfileDTO
-import com.dreamsoftware.saborytv.data.remote.dto.response.RoutineDTO
-import com.dreamsoftware.saborytv.data.remote.dto.response.SeriesDTO
+import com.dreamsoftware.saborytv.data.remote.dto.response.RecipeDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.SubscriptionDTO
-import com.dreamsoftware.saborytv.data.remote.dto.response.TrainingSongDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.UserResponseDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.UserSubscriptionDTO
-import com.dreamsoftware.saborytv.data.remote.dto.response.WorkoutDTO
-import com.dreamsoftware.saborytv.data.remote.mapper.AddFavoriteTrainingRemoteMapper
+import com.dreamsoftware.saborytv.data.remote.mapper.AddFavoriteRecipeRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.AddUserSubscriptionRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.CategoryRemoteMapper
-import com.dreamsoftware.saborytv.data.remote.mapper.ChallengeRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.CreateProfileRequestRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.CreateUserRequestRemoteMapper
-import com.dreamsoftware.saborytv.data.remote.mapper.FavoriteTrainingRemoteMapper
-import com.dreamsoftware.saborytv.data.remote.mapper.InstructorRemoteMapper
+import com.dreamsoftware.saborytv.data.remote.mapper.FavoriteRecipeRemoteMapper
+import com.dreamsoftware.saborytv.data.remote.mapper.ChefProfileRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.ProfileRemoteMapper
-import com.dreamsoftware.saborytv.data.remote.mapper.RoutineRemoteMapper
-import com.dreamsoftware.saborytv.data.remote.mapper.SeriesRemoteMapper
+import com.dreamsoftware.saborytv.data.remote.mapper.RecipeRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.SubscriptionRemoteMapper
-import com.dreamsoftware.saborytv.data.remote.mapper.TrainingSongRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.UpdateProfileRequestRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.UpdatedUserRequestRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.UserAuthenticatedRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.UserRemoteMapper
 import com.dreamsoftware.saborytv.data.remote.mapper.UserSubscriptionsRemoteMapper
-import com.dreamsoftware.saborytv.data.remote.mapper.WorkoutRemoteMapper
 import com.dreamsoftware.saborytv.utils.IOneSideMapper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -91,45 +75,12 @@ class RemoteDataSourceModule {
     fun provideUserAuthenticatedRemoteMapper(): IOneSideMapper<FirebaseUser, AuthUserDTO> = UserAuthenticatedRemoteMapper()
 
     /**
-     * Provides a singleton instance of RoutineMapper.
-     * @return a new instance of RoutineMapper.
-     */
-    @Provides
-    @Singleton
-    fun provideRoutineRemoteMapper(): IOneSideMapper<Map<String, Any?>, RoutineDTO> = RoutineRemoteMapper()
-
-    /**
-     * Provides a singleton instance of SeriesMapper.
-     * @return a new instance of SeriesMapper.
-     */
-    @Provides
-    @Singleton
-    fun provideSeriesRemoteMapper(): IOneSideMapper<Map<String, Any?>, SeriesDTO> = SeriesRemoteMapper()
-
-
-    /**
-     * Provides a singleton instance of CategoryMapper.
-     * @return a new instance of CategoryMapper.
+     * Provides a singleton instance of CategoryRemoteMapper.
+     * @return a new instance of CategoryRemoteMapper.
      */
     @Provides
     @Singleton
     fun provideCategoryRemoteMapper(): IOneSideMapper<Map<String, Any?>, CategoryDTO> = CategoryRemoteMapper()
-
-    /**
-     * Provides a singleton instance of WorkoutRemoteMapper.
-     * @return a new instance of WorkoutRemoteMapper.
-     */
-    @Provides
-    @Singleton
-    fun provideWorkoutRemoteMapper(): IOneSideMapper<Map<String, Any?>, WorkoutDTO> = WorkoutRemoteMapper()
-
-    /**
-     * Provides a singleton instance of ChallengeRemoteMapper.
-     * @return a new instance of ChallengeRemoteMapper.
-     */
-    @Provides
-    @Singleton
-    fun provideChallengeRemoteMapper(): IOneSideMapper<Map<String, Any?>, ChallengeDTO> = ChallengeRemoteMapper()
 
     /**
      * Provides a singleton instance of CreateProfileRequestRemoteMapper.
@@ -180,20 +131,20 @@ class RemoteDataSourceModule {
     fun provideProfileRemoteMapper(): IOneSideMapper<Map<String, Any?>, ProfileDTO> = ProfileRemoteMapper()
 
     /**
-     * Provides a singleton instance of AddFavoriteTrainingRemoteMapper.
-     * @return a new instance of AddFavoriteTrainingRemoteMapper.
+     * Provides a singleton instance of AddFavoriteRecipeRemoteMapper.
+     * @return a new instance of AddFavoriteRecipeRemoteMapper.
      */
     @Provides
     @Singleton
-    fun provideAddFavoriteTrainingRemoteMapper(): IOneSideMapper<AddFavoriteTrainingDTO, Map<String, Any?>> = AddFavoriteTrainingRemoteMapper()
+    fun provideAddFavoriteRecipeRemoteMapper(): IOneSideMapper<AddFavoriteRecipeDTO, Map<String, Any?>> = AddFavoriteRecipeRemoteMapper()
 
     /**
-     * Provides a singleton instance of FavoriteTrainingRemoteMapper.
-     * @return a new instance of FavoriteTrainingRemoteMapper.
+     * Provides a singleton instance of provideFavoriteRecipeRemoteMapper.
+     * @return a new instance of provideFavoriteRecipeRemoteMapper.
      */
     @Provides
     @Singleton
-    fun provideFavoriteTrainingRemoteMapper(): IOneSideMapper<Map<String, Any?>, FavoriteTrainingDTO> = FavoriteTrainingRemoteMapper()
+    fun provideFavoriteRecipeRemoteMapper(): IOneSideMapper<Map<String, Any?>, FavoriteRecipeDTO> = FavoriteRecipeRemoteMapper()
 
     /**
      * Provides a singleton instance of SubscriptionRemoteMapper.
@@ -220,20 +171,20 @@ class RemoteDataSourceModule {
     fun provideUserSubscriptionsRemoteMapper(): IOneSideMapper<Map<String, Any?>, UserSubscriptionDTO> = UserSubscriptionsRemoteMapper()
 
     /**
-     * Provides a singleton instance of TrainingSongRemoteMapper.
-     * @return a new instance of TrainingSongRemoteMapper.
+     * Provides a singleton instance of ChefProfileRemoteMapper.
+     * @return a new instance of ChefProfileRemoteMapper.
      */
     @Provides
     @Singleton
-    fun provideTrainingSongRemoteMapper(): IOneSideMapper<Map<String, Any?>, TrainingSongDTO> = TrainingSongRemoteMapper()
+    fun provideChefProfileRemoteMapper(): IOneSideMapper<Map<String, Any?>, ChefProfileDTO> = ChefProfileRemoteMapper()
 
     /**
-     * Provides a singleton instance of InstructorRemoteMapper.
-     * @return a new instance of InstructorRemoteMapper.
+     * Provides a singleton instance of RecipeRemoteMapper.
+     * @return a new instance of RecipeRemoteMapper.
      */
     @Provides
     @Singleton
-    fun provideInstructorRemoteMapper(): IOneSideMapper<Map<String, Any?>, InstructorDTO> = InstructorRemoteMapper()
+    fun provideRecipeRemoteMapper(): IOneSideMapper<Map<String, Any?>, RecipeDTO> = RecipeRemoteMapper()
 
     /**
      * Provides a singleton instance of FirebaseAuth.
@@ -266,31 +217,6 @@ class RemoteDataSourceModule {
         firebaseAuth
     )
 
-
-    @Provides
-    @Singleton
-    fun provideRoutineRemoteDataSource(
-        routineMapper: IOneSideMapper<Map<String, Any?>, RoutineDTO>,
-        firestore: FirebaseFirestore,
-        @IoDispatcher dispatcher: CoroutineDispatcher
-    ): IRoutineRemoteDataSource = RoutineRemoteDataSourceImpl(
-        firestore,
-        routineMapper,
-        dispatcher
-    )
-
-    @Provides
-    @Singleton
-    fun provideSeriesRemoteDataSource(
-        seriesMapper: IOneSideMapper<Map<String, Any?>, SeriesDTO>,
-        firestore: FirebaseFirestore,
-        @IoDispatcher dispatcher: CoroutineDispatcher
-    ): ISeriesRemoteDataSource = SeriesRemoteDataSourceImpl(
-        firestore,
-        seriesMapper,
-        dispatcher
-    )
-
     @Provides
     @Singleton
     fun provideCategoryRemoteDataSource(
@@ -300,30 +226,6 @@ class RemoteDataSourceModule {
     ): ICategoryRemoteDataSource = CategoryRemoteDataSourceImpl(
         firestore,
         categoryMapper,
-        dispatcher
-    )
-
-    @Provides
-    @Singleton
-    fun provideWorkoutRemoteDataSource(
-        workoutMapper: IOneSideMapper<Map<String, Any?>, WorkoutDTO>,
-        firestore: FirebaseFirestore,
-        @IoDispatcher dispatcher: CoroutineDispatcher
-    ): IWorkoutRemoteDataSource = WorkoutRemoteDataSourceImpl(
-        firestore,
-        workoutMapper,
-        dispatcher
-    )
-
-    @Provides
-    @Singleton
-    fun provideChallengesRemoteDataSource(
-        challengeMapper: IOneSideMapper<Map<String, Any?>, ChallengeDTO>,
-        firestore: FirebaseFirestore,
-        @IoDispatcher dispatcher: CoroutineDispatcher
-    ): IChallengesRemoteDataSource = ChallengesRemoteDataSourceImpl(
-        firestore,
-        challengeMapper,
         dispatcher
     )
 
@@ -363,8 +265,8 @@ class RemoteDataSourceModule {
     @Singleton
     fun provideFavoritesRemoteDataSource(
         firebaseStore: FirebaseFirestore,
-        addFavoriteMapper: IOneSideMapper<AddFavoriteTrainingDTO, Map<String, Any?>>,
-        favoriteMapper: IOneSideMapper<Map<String, Any?>, FavoriteTrainingDTO>,
+        addFavoriteMapper: IOneSideMapper<AddFavoriteRecipeDTO, Map<String, Any?>>,
+        favoriteMapper: IOneSideMapper<Map<String, Any?>, FavoriteRecipeDTO>,
         @IoDispatcher dispatcher: CoroutineDispatcher
     ): IFavoritesRemoteDataSource = FavoritesRemoteDataSourceImpl(
         firebaseStore,
@@ -401,25 +303,25 @@ class RemoteDataSourceModule {
 
     @Provides
     @Singleton
-    fun provideTrainingSongsRemoteDataSource(
+    fun provideInstructorsRemoteDataSource(
         firebaseStore: FirebaseFirestore,
-        trainingSongsMapper: IOneSideMapper<Map<String, Any?>, TrainingSongDTO>,
+        instructorMapper: IOneSideMapper<Map<String, Any?>, ChefProfileDTO>,
         @IoDispatcher dispatcher: CoroutineDispatcher
-    ): ITrainingSongsRemoteDataSource = TrainingSongsRemoteDataSourceImpl(
+    ): IChefProfilesRemoteDataSource = ChefProfilesRemoteDataSourceImpl(
         firebaseStore,
-        trainingSongsMapper,
+        instructorMapper,
         dispatcher
     )
 
     @Provides
     @Singleton
-    fun provideInstructorsRemoteDataSource(
+    fun provideRecipesRemoteDataSource(
         firebaseStore: FirebaseFirestore,
-        instructorMapper: IOneSideMapper<Map<String, Any?>, InstructorDTO>,
+        recipesMapper: IOneSideMapper<Map<String, Any?>, RecipeDTO>,
         @IoDispatcher dispatcher: CoroutineDispatcher
-    ): IInstructorsRemoteDataSource = InstructorsRemoteDataSourceImpl(
+    ): IRecipesRemoteDataSource = RecipesRemoteDataSourceImpl(
         firebaseStore,
-        instructorMapper,
+        recipesMapper,
         dispatcher
     )
 }
