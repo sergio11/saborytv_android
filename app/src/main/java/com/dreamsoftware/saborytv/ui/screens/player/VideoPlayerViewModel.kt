@@ -1,12 +1,11 @@
-package com.dreamsoftware.saborytv.ui.screens.player.video
+package com.dreamsoftware.saborytv.ui.screens.player
 
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.domain.usecase.GetRecipeByIdUseCase
 import com.dreamsoftware.saborytv.ui.utils.EMPTY
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
 import com.dreamsoftware.fudge.core.UiState
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -17,20 +16,20 @@ class VideoPlayerViewModel @Inject constructor(
 
     override fun onGetDefaultState(): VideoPlayerUiState = VideoPlayerUiState()
 
-    fun fetchData(id: String, type: TrainingTypeEnum) {
+    fun fetchData(id: String) {
         executeUseCaseWithParams(
             useCase = getRecipeByIdUseCase,
-            params = GetRecipeByIdUseCase.Params(id, type),
-            onSuccess = ::onGetTrainingProgramByIdSuccessfully
+            params = GetRecipeByIdUseCase.Params(id),
+            onSuccess = ::onGetRecipeProgramByIdSuccessfully
         )
     }
 
-    private fun onGetTrainingProgramByIdSuccessfully(trainingProgram: ITrainingProgramBO) {
+    private fun onGetRecipeProgramByIdSuccessfully(recipeBO: RecipeBO) {
         updateState {
-            with(trainingProgram) {
+            with(recipeBO) {
                 it.copy(
-                    title = name,
-                    instructor = instructorName,
+                    title = title,
+                    chefProfileName = chefProfileName,
                     videoUrl = videoUrl,
                     id = id
                 )
@@ -45,7 +44,7 @@ data class VideoPlayerUiState(
     val id: String = String.EMPTY,
     val videoUrl: String = String.EMPTY,
     val title: String = String.EMPTY,
-    val instructor: String = String.EMPTY
+    val chefProfileName: String = String.EMPTY
 ): UiState<VideoPlayerUiState>(isLoading, errorMessage) {
     override fun copyState(isLoading: Boolean, errorMessage: String?): VideoPlayerUiState =
         copy(isLoading = isLoading, errorMessage = errorMessage)

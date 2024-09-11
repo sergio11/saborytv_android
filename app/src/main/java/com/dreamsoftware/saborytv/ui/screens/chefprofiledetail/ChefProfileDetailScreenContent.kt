@@ -1,4 +1,4 @@
-package com.dreamsoftware.saborytv.ui.screens.instructordetail
+package com.dreamsoftware.saborytv.ui.screens.chefprofiledetail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,15 +18,15 @@ import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
 
 @Composable
-internal fun InstructorDetailScreenContent(
-    uiState: InstructorDetailUiState,
-    actionListener: InstructorDetailActionListener
+internal fun ChefProfileDetailScreenContent(
+    uiState: ChefProfileDetailUiState,
+    actionListener: IChefProfileDetailActionListener
 ) {
     with(uiState) {
         FudgeTvScreenContent(onErrorAccepted = actionListener::onErrorMessageCleared) {
             if (isLoading) {
                 FudgeTvLoadingState(modifier = Modifier.fillMaxSize())
-            } else if (instructorDetail == null) {
+            } else if (chefProfileDetail == null) {
                 FudgeTvNoContentState(
                     modifier = Modifier.fillMaxSize(),
                     messageRes = R.string.instructor_detail_not_available
@@ -43,9 +43,9 @@ internal fun InstructorDetailScreenContent(
                     )
                     FudgeTvCardDetails(
                         modifier = Modifier.width(400.dp),
-                        title = instructorDetail.name,
-                        description = instructorDetail.description,
-                        imageUrl = instructorDetail.imageUrl
+                        title = chefProfileDetail.name,
+                        description = chefProfileDetail.description,
+                        imageUrl = chefProfileDetail.imageUrl
                     )
                     FudgeTvBackRowSchema(
                         onClickBack = actionListener::onBackPressed

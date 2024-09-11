@@ -2,7 +2,6 @@ package com.dreamsoftware.saborytv.ui.screens.category
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvScreen
 
 data class CategoryDetailScreenArgs(
@@ -22,7 +21,7 @@ fun CategoryDetailScreen(
         onInitialUiState = { CategoryDetailUiState() },
         onSideEffect = {
             when(it) {
-                is CategoryDetailSideEffects.OpenTrainingProgramDetail -> onOpenTrainingProgramDetail(it.id, it.type)
+                is CategoryDetailSideEffects.OpenRecipeProgramDetail -> onOpenTrainingProgramDetail(it.id, it.type)
             }
         },
         onInit = {

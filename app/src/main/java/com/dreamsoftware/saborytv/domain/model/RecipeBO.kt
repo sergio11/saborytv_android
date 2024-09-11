@@ -8,6 +8,8 @@ data class RecipeBO(
     val description: String,
     val ingredients: List<String>,
     val instructions: List<String>,
+    val chefProfileName: String,
+    val chefProfileId: String,
     val preparationTime: Int,
     val servings: Int,
     val type: RecipeTypeEnum,

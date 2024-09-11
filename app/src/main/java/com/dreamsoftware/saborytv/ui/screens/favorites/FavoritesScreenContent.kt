@@ -34,7 +34,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
 import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.ui.theme.onSurface
 import com.dreamsoftware.saborytv.ui.theme.popupShadow
 import com.dreamsoftware.saborytv.ui.theme.surfaceContainerHigh
@@ -63,7 +62,7 @@ internal fun FavoritesScreenContent(
         FudgeTvScreenContent(onErrorAccepted = actionListener::onErrorMessageCleared) {
             if (isLoading) {
                 FudgeTvLoadingState(modifier = Modifier.fillMaxSize())
-            } else if(favoritesTrainings.isEmpty()) {
+            } else if(recipes.isEmpty()) {
                 FudgeTvNoContentState(
                     modifier = Modifier.fillMaxSize(),
                     messageRes = R.string.favorites_not_workout_available
@@ -88,7 +87,7 @@ internal fun FavoritesScreenContent(
                             horizontalArrangement = Arrangement.spacedBy(24.dp),
                             verticalArrangement = Arrangement.spacedBy(24.dp)
                         ) {
-                            itemsIndexed(items = favoritesTrainings, key = { _, item -> item.id }) { idx, item ->
+                            itemsIndexed(items = recipes, key = { _, item -> item.id }) { idx, item ->
                                 FudgeTvCard(modifier = Modifier
                                     .conditional(condition = idx == 0, ifTrue = {
                                         focusRequester(focusRequester)
@@ -98,13 +97,13 @@ internal fun FavoritesScreenContent(
                                     timeText = item.duration,
                                     typeText = item.intensity.level,
                                     onClick = {
-                                        actionListener.onTrainingProgramSelected(item)
+                                        actionListener.onRecipeProgramSelected(item)
                                     })
                             }
                         }
                     }
                     AnimatedVisibility(
-                        visible = trainingProgramSelected != null,
+                        visible = recipeProgramSelected != null,
                         enter = fadeIn(
                             animationSpec = tween(300)
                         ),
@@ -112,11 +111,11 @@ internal fun FavoritesScreenContent(
                             animationSpec = tween(300)
                         ),
                     ) {
-                        trainingProgramSelected?.let {
+                        recipeProgramSelected?.let {
                             TrainingProgramDetailsPopup(
                                 trainingProgram = it,
-                                onStartTrainingProgram = actionListener::onTrainingProgramStarted,
-                                onRemoveFromFavorites = actionListener::onTrainingProgramRemovedFromFavorites,
+                                onStartTrainingProgram = actionListener::onRecipeProgramStarted,
+                                onRemoveFromFavorites = actionListener::onRecipeProgramRemovedFromFavorites,
                                 onBackPressed = actionListener::onDismissRequest
                             )
                         }

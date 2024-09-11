@@ -27,7 +27,6 @@ import androidx.tv.material3.Icon
 import androidx.tv.material3.IconButton
 import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.ui.screens.recipedetail.RecipeDetailUiState
 import com.dreamsoftware.saborytv.ui.utils.getStartButtonID
 import com.dreamsoftware.fudge.component.FudgeTvButton

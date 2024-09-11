@@ -1,8 +1,6 @@
 package com.dreamsoftware.saborytv.ui.screens.home
 
 import com.dreamsoftware.saborytv.domain.model.CategoryBO
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.domain.usecase.GetCategoriesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetFeaturedRecipesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetRecipesRecommendedUseCase

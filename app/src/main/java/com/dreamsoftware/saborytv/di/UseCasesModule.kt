@@ -19,8 +19,8 @@ import com.dreamsoftware.saborytv.domain.usecase.GetCategoriesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetCategoryByIdUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetFavoritesRecipesByUserUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetFeaturedRecipesUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetInstructorDetailUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetInstructorsUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetChefProfileDetailUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetChefProfilesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetProfileByIdUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetProfileSelectedUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetProfilesUseCase
@@ -79,7 +79,7 @@ class UseCasesModule {
 
     @Provides
     @ViewModelScoped
-    fun provideGetTrainingsRecommendedUseCase(
+    fun provideGetRecipesRecommendedUseCase(
         userRepository: IUserRepository,
         subscriptionsRepository: ISubscriptionsRepository,
         trainingRepository: IRecipesRepository
@@ -92,16 +92,16 @@ class UseCasesModule {
 
     @Provides
     @ViewModelScoped
-    fun provideGetTrainingByIdUseCase(
+    fun provideGetRecipeByIdUseCase(
         trainingRepository: IRecipesRepository
     ): GetRecipeByIdUseCase =
         GetRecipeByIdUseCase(
-            trainingRepository = trainingRepository
+            recipesRepository = trainingRepository
         )
 
     @Provides
     @ViewModelScoped
-    fun provideGetTrainingsByTypeUseCase(
+    fun provideGetRecipesByTypeUseCase(
         userRepository: IUserRepository,
         subscriptionsRepository: ISubscriptionsRepository,
         trainingRepository: IRecipesRepository
@@ -109,26 +109,18 @@ class UseCasesModule {
         GetRecipesByTypeUseCase(
             userRepository = userRepository,
             subscriptionsRepository = subscriptionsRepository,
-            trainingRepository = trainingRepository
+            recipesRepository = trainingRepository
         )
 
     @Provides
     @ViewModelScoped
-    fun provideGetInstructorsUseCase(
+    fun provideGetChefProfilesUseCase(
         instructorRepository: IChefProfilesRepository
-    ): GetInstructorsUseCase =
-        GetInstructorsUseCase(
-            instructorRepository = instructorRepository
+    ): GetChefProfilesUseCase =
+        GetChefProfilesUseCase(
+            chefProfilesRepository = instructorRepository
         )
 
-    @Provides
-    @ViewModelScoped
-    fun provideGetSongByIdUseCase(
-        trainingSongRepository: ITrainingSongsRepository
-    ): GetSongByIdUseCase =
-        GetSongByIdUseCase(
-            trainingSongRepository = trainingSongRepository
-        )
 
     @Provides
     @ViewModelScoped
@@ -157,7 +149,7 @@ class UseCasesModule {
 
     @Provides
     @ViewModelScoped
-    fun provideGetFeaturedTrainingsUseCase(
+    fun provideGetFeaturedRecipesUseCase(
         userRepository: IUserRepository,
         subscriptionsRepository: ISubscriptionsRepository,
         trainingRepository: IRecipesRepository
@@ -170,7 +162,7 @@ class UseCasesModule {
 
     @Provides
     @ViewModelScoped
-    fun provideGetTrainingsByCategoryUseCase(
+    fun provideGetRecipesByCategoryUseCase(
         userRepository: IUserRepository,
         subscriptionsRepository: ISubscriptionsRepository,
         trainingRepository: IRecipesRepository
@@ -178,7 +170,7 @@ class UseCasesModule {
         GetRecipesByCategoryUseCase(
             userRepository = userRepository,
             subscriptionsRepository = subscriptionsRepository,
-            trainingRepository = trainingRepository
+            recipesRepository = trainingRepository
         )
 
     @Provides
@@ -295,7 +287,7 @@ class UseCasesModule {
 
     @Provides
     @ViewModelScoped
-    fun provideAddFavoriteTrainingUseCase(
+    fun provideAddFavoriteRecipeUseCase(
         userRepository: IUserRepository,
         profileRepository: IProfilesRepository,
         trainingRepository: IRecipesRepository
@@ -303,13 +295,13 @@ class UseCasesModule {
         AddFavoriteRecipeUseCase(
             userRepository = userRepository,
             profileRepository = profileRepository,
-            trainingRepository = trainingRepository
+            recipesRepository = trainingRepository
         )
 
 
     @Provides
     @ViewModelScoped
-    fun provideGetFavoritesTrainingsByUserUseCase(
+    fun provideGetFavoritesRecipesByUserUseCase(
         userRepository: IUserRepository,
         profileRepository: IProfilesRepository,
         trainingRepository: IRecipesRepository
@@ -322,7 +314,7 @@ class UseCasesModule {
 
     @Provides
     @ViewModelScoped
-    fun provideRemoveFavoriteTrainingUseCase(
+    fun provideRemoveFavoriteRecipeUseCase(
         userRepository: IUserRepository,
         trainingRepository: IRecipesRepository
     ): RemoveFavoriteRecipeUseCase =
@@ -334,7 +326,7 @@ class UseCasesModule {
 
     @Provides
     @ViewModelScoped
-    fun provideVerifyTrainingInFavoritesUseCase(
+    fun provideVerifyRecipeInFavoritesUseCase(
         userRepository: IUserRepository,
         profileRepository: IProfilesRepository,
         trainingRepository: IRecipesRepository
@@ -438,11 +430,11 @@ class UseCasesModule {
 
     @Provides
     @ViewModelScoped
-    fun provideGetInstructorDetailUseCase(
+    fun provideGetChefProfileDetailUseCase(
         instructorRepository: IChefProfilesRepository
-    ): GetInstructorDetailUseCase =
-        GetInstructorDetailUseCase(
-            instructorRepository = instructorRepository
+    ): GetChefProfileDetailUseCase =
+        GetChefProfileDetailUseCase(
+            chefProfilesRepository = instructorRepository
         )
 
     @Provides

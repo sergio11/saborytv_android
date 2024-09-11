@@ -1,4 +1,4 @@
-package com.dreamsoftware.saborytv.ui.screens.player.video
+package com.dreamsoftware.saborytv.ui.screens.player
 
 import androidx.annotation.OptIn
 import androidx.compose.foundation.focusable
@@ -135,7 +135,7 @@ internal fun VideoPlayerScreenContent(
                         exoPlayer = exoPlayer,
                         state = videoPlayerState,
                         title = state.title,
-                        instructor = state.instructor,
+                        instructor = state.chefProfileName,
                     )
                 }
             )

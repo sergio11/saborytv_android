@@ -1,33 +1,33 @@
-package com.dreamsoftware.saborytv.ui.screens.instructordetail
+package com.dreamsoftware.saborytv.ui.screens.chefprofiledetail
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.dreamsoftware.fudge.component.FudgeTvScreen
 
-data class InstructorDetailScreenArgs(
+data class ChefProfileDetailScreenArgs(
     val id: String
 )
 
 @Composable
-fun InstructorDetailScreen(
-    viewModel: InstructorDetailScreenViewModel = hiltViewModel(),
-    args: InstructorDetailScreenArgs,
+fun ChefProfileDetailScreen(
+    viewModel: ChefProfileDetailScreenViewModel = hiltViewModel(),
+    args: ChefProfileDetailScreenArgs,
     onBackPressed: () -> Unit
 ) {
     FudgeTvScreen(
         viewModel = viewModel,
         onBackPressed = onBackPressed,
-        onInitialUiState = { InstructorDetailUiState() },
+        onInitialUiState = { ChefProfileDetailUiState() },
         onSideEffect = {
             when(it) {
-                InstructorDetailSideEffects.ExitFromInstructorDetail -> onBackPressed()
+                ChefProfileDetailSideEffects.CloseDetail -> onBackPressed()
             }
         },
         onInit = {
             fetchData(args.id)
         }
     ) { uiState ->
-        InstructorDetailScreenContent(
+        ChefProfileDetailScreenContent(
             uiState = uiState,
             actionListener = viewModel
         )

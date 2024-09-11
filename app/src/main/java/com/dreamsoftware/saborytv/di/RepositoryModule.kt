@@ -53,7 +53,7 @@ import com.dreamsoftware.saborytv.domain.model.CreateProfileRequestBO
 import com.dreamsoftware.saborytv.domain.model.ProfileBO
 import com.dreamsoftware.saborytv.domain.model.SignUpBO
 import com.dreamsoftware.saborytv.domain.model.SubscriptionBO
-import com.dreamsoftware.saborytv.domain.model.TrainingFilterDataBO
+import com.dreamsoftware.saborytv.domain.model.RecipeFilterDataBO
 import com.dreamsoftware.saborytv.domain.model.UpdatedProfileRequestBO
 import com.dreamsoftware.saborytv.domain.model.UpdatedUserRequestBO
 import com.dreamsoftware.saborytv.domain.model.UserDetailBO
@@ -115,7 +115,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideTrainingFilterDataMapper(): IOneSideMapper<TrainingFilterDataBO, TrainingFilterDTO> = TrainingFilterDataMapper()
+    fun provideTrainingFilterDataMapper(): IOneSideMapper<RecipeFilterDataBO, TrainingFilterDTO> = TrainingFilterDataMapper()
 
     @Provides
     @Singleton

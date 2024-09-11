@@ -1,6 +1,5 @@
 package com.dreamsoftware.saborytv.domain.usecase
 
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.domain.repository.IProfilesRepository
 import com.dreamsoftware.saborytv.domain.repository.IRecipesRepository
 import com.dreamsoftware.saborytv.domain.repository.IUserRepository
