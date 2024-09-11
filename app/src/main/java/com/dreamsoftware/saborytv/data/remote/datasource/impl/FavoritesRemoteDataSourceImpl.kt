@@ -2,12 +2,12 @@ package com.dreamsoftware.saborytv.data.remote.datasource.impl
 
 import com.dreamsoftware.saborytv.data.remote.datasource.IFavoritesRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.impl.core.SupportFireStoreDataSourceImpl
-import com.dreamsoftware.saborytv.data.remote.dto.request.AddFavoriteTrainingDTO
-import com.dreamsoftware.saborytv.data.remote.dto.response.FavoriteTrainingDTO
-import com.dreamsoftware.saborytv.data.remote.exception.AddToFavoritesRemoteException
+import com.dreamsoftware.saborytv.data.remote.dto.request.AddFavoriteRecipeDTO
+import com.dreamsoftware.saborytv.data.remote.dto.response.FavoriteRecipeDTO
+import com.dreamsoftware.saborytv.data.remote.exception.AddToRecipesRemoteException
 import com.dreamsoftware.saborytv.data.remote.exception.DeleteProfileRemoteException
 import com.dreamsoftware.saborytv.data.remote.exception.GetFavoritesByUserRemoteException
-import com.dreamsoftware.saborytv.data.remote.exception.HasTrainingInFavoritesRemoteException
+import com.dreamsoftware.saborytv.data.remote.exception.HasRecipeInFavoritesRemoteException
 import com.dreamsoftware.saborytv.data.remote.exception.RemoveAllFavoritesRemoteException
 import com.dreamsoftware.saborytv.data.remote.exception.RemoveFromFavoritesRemoteException
 import com.dreamsoftware.saborytv.utils.IOneSideMapper
@@ -19,36 +19,36 @@ import kotlinx.coroutines.withContext
 
 internal class FavoritesRemoteDataSourceImpl(
     private val firebaseStore: FirebaseFirestore,
-    private val addFavoriteMapper: IOneSideMapper<AddFavoriteTrainingDTO, Map<String, Any?>>,
-    private val favoriteMapper: IOneSideMapper<Map<String, Any?>, FavoriteTrainingDTO>,
+    private val addFavoriteMapper: IOneSideMapper<AddFavoriteRecipeDTO, Map<String, Any?>>,
+    private val favoriteMapper: IOneSideMapper<Map<String, Any?>, FavoriteRecipeDTO>,
     private val dispatcher: CoroutineDispatcher
 ): SupportFireStoreDataSourceImpl(dispatcher), IFavoritesRemoteDataSource {
 
     private companion object {
-        const val COLLECTION_NAME = "favorite_trainings"
-        const val SUB_COLLECTION_NAME = "trainings"
+        const val COLLECTION_NAME = "saborytv_favorite_recipes"
+        const val SUB_COLLECTION_NAME = "recipes"
     }
 
-    @Throws(AddToFavoritesRemoteException::class)
-    override suspend fun addFavorite(data: AddFavoriteTrainingDTO): Boolean = try {
+    @Throws(AddToRecipesRemoteException::class)
+    override suspend fun addFavorite(data: AddFavoriteRecipeDTO): Boolean = try {
             withContext(dispatcher) {
                 firebaseStore.collection(COLLECTION_NAME)
                     .document(data.profileId)
                     .collection(SUB_COLLECTION_NAME)
-                    .document(data.trainingId)
+                    .document(data.id)
                     .set(addFavoriteMapper.mapInToOut(data), SetOptions.merge())
                     .await()
                 true
             }
         } catch (ex: Exception) {
-            throw AddToFavoritesRemoteException(
-                "An error occurred when trying to add training to favorites",
+            throw AddToRecipesRemoteException(
+                "An error occurred when trying to add recipe to favorites",
                 ex
             )
         }
 
     @Throws(GetFavoritesByUserRemoteException::class)
-    override suspend fun getFavoritesByUser(profileId: String): List<FavoriteTrainingDTO> = try {
+    override suspend fun getFavoritesByUser(profileId: String): List<FavoriteRecipeDTO> = try {
         fetchListFromFireStore(
             query = { firebaseStore
                 .collection(COLLECTION_NAME)
@@ -61,37 +61,37 @@ internal class FavoritesRemoteDataSourceImpl(
         throw GetFavoritesByUserRemoteException("An error occurred when trying to fetch favorite trainings", ex)
     }
 
-    @Throws(HasTrainingInFavoritesRemoteException::class)
-    override suspend fun hasTrainingInFavorites(profileId: String, trainingId: String): Boolean = try {
+    @Throws(HasRecipeInFavoritesRemoteException::class)
+    override suspend fun hasRecipeInFavorites(profileId: String, recipeId: String): Boolean = try {
         withContext(dispatcher) {
             val document = firebaseStore
                 .collection(COLLECTION_NAME)
                 .document(profileId)
                 .collection(SUB_COLLECTION_NAME)
-                .document(trainingId)
+                .document(recipeId)
                 .get()
                 .await()
             document.exists()
         }
     } catch (ex: Exception) {
-        throw HasTrainingInFavoritesRemoteException("An error occurred when trying to check favorites", ex)
+        throw HasRecipeInFavoritesRemoteException("An error occurred when trying to check favorites", ex)
     }
 
     @Throws(RemoveFromFavoritesRemoteException::class)
-    override suspend fun removeFavorite(profileId: String, trainingId: String): Boolean = try {
+    override suspend fun removeFavorite(profileId: String, recipeId: String): Boolean = try {
         withContext(dispatcher) {
             firebaseStore
                 .collection(COLLECTION_NAME)
                 .document(profileId)
                 .collection(SUB_COLLECTION_NAME)
-                .document(trainingId)
+                .document(recipeId)
                 .delete()
                 .await()
             true
         }
     } catch (ex: Exception) {
         throw DeleteProfileRemoteException(
-            "An error occurred when trying to remove training $trainingId from favorites",
+            "An error occurred when trying to remove training $recipeId from favorites",
             ex
         )
     }

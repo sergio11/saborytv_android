@@ -2,7 +2,7 @@ package com.dreamsoftware.saborytv.ui.screens.player.video
 
 import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
-import com.dreamsoftware.saborytv.domain.usecase.GetTrainingByIdUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetRecipeByIdUseCase
 import com.dreamsoftware.saborytv.ui.utils.EMPTY
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
@@ -12,15 +12,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VideoPlayerViewModel @Inject constructor(
-    private val getTrainingByIdUseCase: GetTrainingByIdUseCase
+    private val getRecipeByIdUseCase: GetRecipeByIdUseCase
 ) : FudgeTvViewModel<VideoPlayerUiState, VideoPlayerSideEffects>() {
 
     override fun onGetDefaultState(): VideoPlayerUiState = VideoPlayerUiState()
 
     fun fetchData(id: String, type: TrainingTypeEnum) {
         executeUseCaseWithParams(
-            useCase = getTrainingByIdUseCase,
-            params = GetTrainingByIdUseCase.Params(id, type),
+            useCase = getRecipeByIdUseCase,
+            params = GetRecipeByIdUseCase.Params(id, type),
             onSuccess = ::onGetTrainingProgramByIdSuccessfully
         )
     }

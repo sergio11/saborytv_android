@@ -5,39 +5,37 @@ import com.dreamsoftware.saborytv.domain.model.SignInBO
 import com.dreamsoftware.saborytv.domain.model.SignUpBO
 import com.dreamsoftware.saborytv.domain.model.UpdatedProfileRequestBO
 import com.dreamsoftware.saborytv.domain.repository.ICategoryRepository
-import com.dreamsoftware.saborytv.domain.repository.IInstructorRepository
+import com.dreamsoftware.saborytv.domain.repository.IChefProfilesRepository
 import com.dreamsoftware.saborytv.domain.repository.IProfilesRepository
 import com.dreamsoftware.saborytv.domain.repository.ISubscriptionsRepository
-import com.dreamsoftware.saborytv.domain.repository.ITrainingRepository
-import com.dreamsoftware.saborytv.domain.repository.ITrainingSongsRepository
+import com.dreamsoftware.saborytv.domain.repository.IRecipesRepository
 import com.dreamsoftware.saborytv.domain.repository.IUserRepository
-import com.dreamsoftware.saborytv.domain.usecase.AddFavoriteTrainingUseCase
+import com.dreamsoftware.saborytv.domain.usecase.AddFavoriteRecipeUseCase
 import com.dreamsoftware.saborytv.domain.usecase.AddUserSubscriptionUseCase
 import com.dreamsoftware.saborytv.domain.usecase.ChangeSecurePinUseCase
 import com.dreamsoftware.saborytv.domain.usecase.CreateProfileUseCase
 import com.dreamsoftware.saborytv.domain.usecase.DeleteProfileUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetCategoriesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetCategoryByIdUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetFavoritesTrainingsByUserUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetFeaturedTrainingsUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetFavoritesRecipesByUserUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetFeaturedRecipesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetInstructorDetailUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetInstructorsUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetProfileByIdUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetProfileSelectedUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetProfilesUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetSongByIdUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetSubscriptionsUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetTrainingByIdUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetTrainingsByCategoryUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetTrainingsByTypeUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetTrainingsRecommendedUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetRecipeByIdUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetRecipesByCategoryUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetRecipesByTypeUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetRecipesRecommendedUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetUserDetailUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetUserPreferencesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetUserProfilesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetUserSubscriptionUseCase
 import com.dreamsoftware.saborytv.domain.usecase.HasActiveSubscriptionUseCase
 import com.dreamsoftware.saborytv.domain.usecase.HasMultiplesProfilesUseCase
-import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteTrainingUseCase
+import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteRecipeUseCase
 import com.dreamsoftware.saborytv.domain.usecase.RemoveUserSubscriptionUseCase
 import com.dreamsoftware.saborytv.domain.usecase.SaveUserPreferencesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.SelectProfileUseCase
@@ -46,7 +44,7 @@ import com.dreamsoftware.saborytv.domain.usecase.SignOffUseCase
 import com.dreamsoftware.saborytv.domain.usecase.SignUpUseCase
 import com.dreamsoftware.saborytv.domain.usecase.UpdateProfileUseCase
 import com.dreamsoftware.saborytv.domain.usecase.VerifyPinUseCase
-import com.dreamsoftware.saborytv.domain.usecase.VerifyTrainingInFavoritesUseCase
+import com.dreamsoftware.saborytv.domain.usecase.VerifyRecipeInFavoritesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.VerifyUserSessionUseCase
 import com.dreamsoftware.saborytv.domain.validation.IBusinessEntityValidator
 import dagger.Module
@@ -84,9 +82,9 @@ class UseCasesModule {
     fun provideGetTrainingsRecommendedUseCase(
         userRepository: IUserRepository,
         subscriptionsRepository: ISubscriptionsRepository,
-        trainingRepository: ITrainingRepository
-    ): GetTrainingsRecommendedUseCase =
-        GetTrainingsRecommendedUseCase(
+        trainingRepository: IRecipesRepository
+    ): GetRecipesRecommendedUseCase =
+        GetRecipesRecommendedUseCase(
             userRepository = userRepository,
             subscriptionsRepository = subscriptionsRepository,
             trainingRepository = trainingRepository
@@ -95,9 +93,9 @@ class UseCasesModule {
     @Provides
     @ViewModelScoped
     fun provideGetTrainingByIdUseCase(
-        trainingRepository: ITrainingRepository
-    ): GetTrainingByIdUseCase =
-        GetTrainingByIdUseCase(
+        trainingRepository: IRecipesRepository
+    ): GetRecipeByIdUseCase =
+        GetRecipeByIdUseCase(
             trainingRepository = trainingRepository
         )
 
@@ -106,9 +104,9 @@ class UseCasesModule {
     fun provideGetTrainingsByTypeUseCase(
         userRepository: IUserRepository,
         subscriptionsRepository: ISubscriptionsRepository,
-        trainingRepository: ITrainingRepository
-    ): GetTrainingsByTypeUseCase =
-        GetTrainingsByTypeUseCase(
+        trainingRepository: IRecipesRepository
+    ): GetRecipesByTypeUseCase =
+        GetRecipesByTypeUseCase(
             userRepository = userRepository,
             subscriptionsRepository = subscriptionsRepository,
             trainingRepository = trainingRepository
@@ -117,7 +115,7 @@ class UseCasesModule {
     @Provides
     @ViewModelScoped
     fun provideGetInstructorsUseCase(
-        instructorRepository: IInstructorRepository
+        instructorRepository: IChefProfilesRepository
     ): GetInstructorsUseCase =
         GetInstructorsUseCase(
             instructorRepository = instructorRepository
@@ -162,9 +160,9 @@ class UseCasesModule {
     fun provideGetFeaturedTrainingsUseCase(
         userRepository: IUserRepository,
         subscriptionsRepository: ISubscriptionsRepository,
-        trainingRepository: ITrainingRepository
-    ): GetFeaturedTrainingsUseCase =
-        GetFeaturedTrainingsUseCase(
+        trainingRepository: IRecipesRepository
+    ): GetFeaturedRecipesUseCase =
+        GetFeaturedRecipesUseCase(
             userRepository = userRepository,
             subscriptionsRepository = subscriptionsRepository,
             trainingRepository = trainingRepository
@@ -175,9 +173,9 @@ class UseCasesModule {
     fun provideGetTrainingsByCategoryUseCase(
         userRepository: IUserRepository,
         subscriptionsRepository: ISubscriptionsRepository,
-        trainingRepository: ITrainingRepository
-    ): GetTrainingsByCategoryUseCase =
-        GetTrainingsByCategoryUseCase(
+        trainingRepository: IRecipesRepository
+    ): GetRecipesByCategoryUseCase =
+        GetRecipesByCategoryUseCase(
             userRepository = userRepository,
             subscriptionsRepository = subscriptionsRepository,
             trainingRepository = trainingRepository
@@ -300,9 +298,9 @@ class UseCasesModule {
     fun provideAddFavoriteTrainingUseCase(
         userRepository: IUserRepository,
         profileRepository: IProfilesRepository,
-        trainingRepository: ITrainingRepository
-    ): AddFavoriteTrainingUseCase =
-        AddFavoriteTrainingUseCase(
+        trainingRepository: IRecipesRepository
+    ): AddFavoriteRecipeUseCase =
+        AddFavoriteRecipeUseCase(
             userRepository = userRepository,
             profileRepository = profileRepository,
             trainingRepository = trainingRepository
@@ -314,9 +312,9 @@ class UseCasesModule {
     fun provideGetFavoritesTrainingsByUserUseCase(
         userRepository: IUserRepository,
         profileRepository: IProfilesRepository,
-        trainingRepository: ITrainingRepository
-    ): GetFavoritesTrainingsByUserUseCase =
-        GetFavoritesTrainingsByUserUseCase(
+        trainingRepository: IRecipesRepository
+    ): GetFavoritesRecipesByUserUseCase =
+        GetFavoritesRecipesByUserUseCase(
             userRepository = userRepository,
             profileRepository = profileRepository,
             trainingRepository = trainingRepository
@@ -326,9 +324,9 @@ class UseCasesModule {
     @ViewModelScoped
     fun provideRemoveFavoriteTrainingUseCase(
         userRepository: IUserRepository,
-        trainingRepository: ITrainingRepository
-    ): RemoveFavoriteTrainingUseCase =
-        RemoveFavoriteTrainingUseCase(
+        trainingRepository: IRecipesRepository
+    ): RemoveFavoriteRecipeUseCase =
+        RemoveFavoriteRecipeUseCase(
             userRepository = userRepository,
             trainingRepository = trainingRepository
         )
@@ -339,9 +337,9 @@ class UseCasesModule {
     fun provideVerifyTrainingInFavoritesUseCase(
         userRepository: IUserRepository,
         profileRepository: IProfilesRepository,
-        trainingRepository: ITrainingRepository
-    ): VerifyTrainingInFavoritesUseCase =
-        VerifyTrainingInFavoritesUseCase(
+        trainingRepository: IRecipesRepository
+    ): VerifyRecipeInFavoritesUseCase =
+        VerifyRecipeInFavoritesUseCase(
             userRepository = userRepository,
             profileRepository = profileRepository,
             trainingRepository = trainingRepository
@@ -441,7 +439,7 @@ class UseCasesModule {
     @Provides
     @ViewModelScoped
     fun provideGetInstructorDetailUseCase(
-        instructorRepository: IInstructorRepository
+        instructorRepository: IChefProfilesRepository
     ): GetInstructorDetailUseCase =
         GetInstructorDetailUseCase(
             instructorRepository = instructorRepository

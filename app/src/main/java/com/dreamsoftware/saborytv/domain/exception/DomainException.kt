@@ -4,16 +4,17 @@ open class DomainRepositoryException(message: String? = null, cause: Throwable? 
 class RepositoryOperationException(message: String? = null, cause: Throwable? = null) : DomainRepositoryException(message, cause)
 
 class InvalidDataException(errors: Map<String, String>, message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+
 // Training
-class FetchTrainingsException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-class FetchTrainingByIdException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-class FetchTrainingByCategoryException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-class FetchTrainingsRecommendedException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-class FetchFeaturedTrainingsException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-class AddFavoriteTrainingException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-class FetchFavoritesTrainingsByUserException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-class RemoveFavoriteTrainingException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-class VerifyFavoriteTrainingException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class FetchRecipesException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class FetchRecipeByIdException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class FetchRecipeByCategoryException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class FetchRecipesRecommendedException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class FetchFeaturedRecipesException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class AddFavoriteRecipeException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class FetchFavoritesRecipesByUserException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class RemoveFavoriteRecipeException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class VerifyFavoriteRecipeException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
 
 // Subscriptions
 class FetchSubscriptionsException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
@@ -26,12 +27,9 @@ class RemoveUserSubscriptionException(message: String? = null, cause: Throwable?
 class FetchCategoriesException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
 class FetchCategoryByIdException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
 
-// Instructors
-class FetchInstructorsException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-class FetchInstructorByIdException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
-
-// Songs
-class FetchTrainingSongsByIdException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+// Chef Profiles
+class FetchChefProfilesException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
+class FetchChefProfileByIdException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
 
 //Profiles
 class FetchProfilesByUserException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
