@@ -4,7 +4,7 @@ import com.dreamsoftware.saborytv.domain.model.CategoryBO
 import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.domain.usecase.GetCategoryByIdUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetTrainingsByCategoryUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetRecipesByCategoryUseCase
 import com.dreamsoftware.saborytv.ui.utils.toTrainingType
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CategoryDetailScreenViewModel @Inject constructor(
-    private val getTrainingsByCategoryUseCase: GetTrainingsByCategoryUseCase,
+    private val getRecipesByCategoryUseCase: GetRecipesByCategoryUseCase,
     private val getCategoryByIdUseCase: GetCategoryByIdUseCase
 ) : FudgeTvViewModel<CategoryDetailUiState, CategoryDetailSideEffects>(), CategoryDetailActionListener {
 
@@ -37,8 +37,8 @@ class CategoryDetailScreenViewModel @Inject constructor(
 
     private fun fetchTrainingsByCategory(id: String) {
         executeUseCaseWithParams(
-            useCase = getTrainingsByCategoryUseCase,
-            params = GetTrainingsByCategoryUseCase.Params(id),
+            useCase = getRecipesByCategoryUseCase,
+            params = GetRecipesByCategoryUseCase.Params(id),
             onSuccess = ::onGetTrainingsByCategorySuccessfully
         )
     }

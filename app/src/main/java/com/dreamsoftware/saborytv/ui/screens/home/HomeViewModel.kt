@@ -4,8 +4,8 @@ import com.dreamsoftware.saborytv.domain.model.CategoryBO
 import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.domain.usecase.GetCategoriesUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetFeaturedTrainingsUseCase
-import com.dreamsoftware.saborytv.domain.usecase.GetTrainingsRecommendedUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetFeaturedRecipesUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetRecipesRecommendedUseCase
 import com.dreamsoftware.saborytv.domain.usecase.HasActiveSubscriptionUseCase
 import com.dreamsoftware.saborytv.ui.utils.toTrainingType
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
@@ -16,9 +16,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getFeaturedTrainingsUseCase: GetFeaturedTrainingsUseCase,
+    private val getFeaturedRecipesUseCase: GetFeaturedRecipesUseCase,
     private val getCategoriesUseCase: GetCategoriesUseCase,
-    private val getTrainingsRecommendedUseCase: GetTrainingsRecommendedUseCase,
+    private val getRecipesRecommendedUseCase: GetRecipesRecommendedUseCase,
     private val hasActiveSubscriptionUseCase: HasActiveSubscriptionUseCase
 ) : FudgeTvViewModel<HomeUiState, HomeSideEffects>(), HomeScreenActionListener {
 
@@ -32,7 +32,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun fetchFeaturedTrainings() {
-        executeUseCase(useCase = getFeaturedTrainingsUseCase, onSuccess = ::onGetFeaturedTrainingsSuccessfully)
+        executeUseCase(useCase = getFeaturedRecipesUseCase, onSuccess = ::onGetFeaturedTrainingsSuccessfully)
     }
 
     private fun fetchCategories() {
@@ -40,7 +40,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun fetchTrainingsRecommended() {
-        executeUseCase(useCase = getTrainingsRecommendedUseCase, onSuccess = ::onGetTrainingsRecommendedSuccessfully)
+        executeUseCase(useCase = getRecipesRecommendedUseCase, onSuccess = ::onGetTrainingsRecommendedSuccessfully)
     }
 
     private fun verifyHasActiveSubscription() {

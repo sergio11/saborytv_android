@@ -1,0 +1,195 @@
+package com.dreamsoftware.saborytv.ui.screens.recipedetail
+
+import androidx.annotation.StringRes
+import com.dreamsoftware.saborytv.R
+import com.dreamsoftware.saborytv.domain.model.ChallengeBO
+import com.dreamsoftware.saborytv.domain.model.ChallengeWeaklyPlansBO
+import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
+import com.dreamsoftware.saborytv.domain.model.SeriesBO
+import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
+import com.dreamsoftware.saborytv.domain.usecase.AddFavoriteRecipeUseCase
+import com.dreamsoftware.saborytv.domain.usecase.GetRecipeByIdUseCase
+import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteRecipeUseCase
+import com.dreamsoftware.saborytv.domain.usecase.VerifyRecipeInFavoritesUseCase
+import com.dreamsoftware.saborytv.ui.screens.recipedetail.RecipeDetailUiState.ChallengeWorkoutItemUiState
+import com.dreamsoftware.saborytv.ui.screens.recipedetail.RecipeDetailUiState.TrainingInfoItem
+import com.dreamsoftware.saborytv.ui.utils.EMPTY
+import com.dreamsoftware.fudge.core.FudgeTvViewModel
+import com.dreamsoftware.fudge.core.SideEffect
+import com.dreamsoftware.fudge.core.UiState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class RecipeDetailViewModel @Inject constructor(
+    private val getRecipeByIdUseCase: GetRecipeByIdUseCase,
+    private val addFavoriteRecipeUseCase: AddFavoriteRecipeUseCase,
+    private val removeFavoriteRecipeUseCase: RemoveFavoriteRecipeUseCase,
+    private val verifyRecipeInFavoritesUseCase: VerifyRecipeInFavoritesUseCase
+) : FudgeTvViewModel<RecipeDetailUiState, TrainingDetailSideEffects>(), RecipeDetailScreenActionListener {
+
+    override fun onGetDefaultState(): RecipeDetailUiState = RecipeDetailUiState()
+
+    fun fetchData(id: String, type: TrainingTypeEnum) {
+        updateState { it.copy(trainingType = type) }
+        executeUseCaseWithParams(
+            useCase = verifyRecipeInFavoritesUseCase,
+            params = VerifyRecipeInFavoritesUseCase.Params(trainingId = id),
+            onSuccess = ::onVerifyTrainingInFavoritesCompleted
+        )
+        executeUseCaseWithParams(
+            useCase = getRecipeByIdUseCase,
+            params = GetRecipeByIdUseCase.Params(id, type),
+            onSuccess = ::onGetTrainingProgramByIdSuccessfully
+        )
+    }
+
+    override fun onRecipeStarted() {
+        with(uiState.value) {
+            launchSideEffect(TrainingDetailSideEffects.PlayingTrainingProgram(
+                id = id,
+                type = trainingType
+            ))
+        }
+    }
+
+    override fun onRecipeMoreInfoRequested() {
+        with(uiState.value) {
+            launchSideEffect(TrainingDetailSideEffects.OpenMoreInfo(
+                id = id,
+                type = trainingType
+            ))
+        }
+    }
+
+    override fun onRecipeFavoriteClicked() {
+        with(uiState.value) {
+            if(isFavorite) {
+                executeUseCaseWithParams(
+                    useCase = removeFavoriteRecipeUseCase,
+                    params = RemoveFavoriteRecipeUseCase.Params(
+                        trainingId = id
+                    ),
+                    onSuccess = ::onChangeFavoriteTrainingCompleted
+                )
+            } else {
+                executeUseCaseWithParams(
+                    useCase = addFavoriteRecipeUseCase,
+                    params = AddFavoriteRecipeUseCase.Params(
+                        trainingId = id,
+                        trainingType = trainingType
+                    ),
+                    onSuccess = ::onChangeFavoriteTrainingCompleted
+                )
+            }
+        }
+    }
+
+    private fun onChangeFavoriteTrainingCompleted(isSuccess: Boolean) {
+        if(isSuccess) {
+            updateState { it.copy(isFavorite = !it.isFavorite) }
+        }
+    }
+
+    private fun onVerifyTrainingInFavoritesCompleted(isFavorite: Boolean) {
+        updateState { it.copy(isFavorite = isFavorite) }
+    }
+
+    private fun onGetTrainingProgramByIdSuccessfully(trainingProgramBO: ITrainingProgramBO) {
+        updateState {
+            with(trainingProgramBO) {
+                it.copy(
+                    subtitle = "$instructorName | ${workoutType.value}",
+                    title = name,
+                    description = description,
+                    id = id,
+                    tabs = if(this is ChallengeBO) {
+                        weaklyPlans.map(ChallengeWeaklyPlansBO::name)
+                    } else {
+                        emptyList()
+                    },
+                    weaklyPlans = if(this is ChallengeBO) {
+                        weaklyPlans.map { weaklyPlan ->
+                            mapOf(
+                                Pair(
+                                    weaklyPlan.name,
+                                    weaklyPlan.workouts.map { workout ->
+                                        with(workout) {
+                                            ChallengeWorkoutItemUiState(
+                                                id = id,
+                                                imageUrl = imageUrl,
+                                                title = name,
+                                                time = duration,
+                                                typeText = intensity.level
+                                            )
+                                        }
+                                    })
+                            )
+                        }
+                    } else {
+                        emptyList()
+                    },
+                    itemsInfo = buildList {
+                        add(TrainingInfoItem(info = "$duration min", labelRes = R.string.length))
+                        add(TrainingInfoItem(info = intensity.value, labelRes = R.string.intensity))
+                        when(this@with) {
+                            is SeriesBO -> {
+                                add(TrainingInfoItem(info = numberOfWeeks.toString(), labelRes = R.string.week))
+                                add(TrainingInfoItem(info = numberOfClasses.toString(), labelRes = R.string.classes))
+                            }
+                            is ChallengeBO -> {
+                                add(TrainingInfoItem(info = numberOfDays.toString(), labelRes = R.string.days))
+                            }
+                        }
+                    },
+                    imageUrl = imageUrl
+                )
+            }
+        }
+    }
+}
+
+data class RecipeDetailUiState(
+    override val isLoading: Boolean = false,
+    override val errorMessage: String? = null,
+    val trainingType: TrainingTypeEnum = TrainingTypeEnum.WORK_OUT,
+    val subtitle: String = String.EMPTY,
+    val title: String = String.EMPTY,
+    val description: String = String.EMPTY,
+    val imageUrl: String = String.EMPTY,
+    val id: String = String.EMPTY,
+    val itemsInfo: List<TrainingInfoItem> = listOf(),
+    val tabs: List<String> = listOf(),
+    val weaklyPlans: List<Map<String, List<ChallengeWorkoutItemUiState>>> = listOf(),
+    val isFavorite: Boolean = false,
+    val challengePages: List<TrainingDetailPages> = listOf(
+        TrainingDetailPages.DetailDetails,
+        TrainingDetailPages.DetailTabs
+    )
+): UiState<RecipeDetailUiState>(isLoading, errorMessage) {
+
+    override fun copyState(isLoading: Boolean, errorMessage: String?): RecipeDetailUiState =
+        copy(isLoading = isLoading, errorMessage = errorMessage)
+
+    data class ChallengeWorkoutItemUiState(
+        val id: String,
+        val imageUrl: String,
+        val title: String,
+        val time: String,
+        val typeText: String,
+    )
+    data class TrainingInfoItem(
+        val info: String = String.EMPTY,
+        @StringRes val labelRes: Int
+    )
+}
+
+sealed class TrainingDetailPages {
+    data object DetailDetails : TrainingDetailPages()
+    data object DetailTabs : TrainingDetailPages()
+}
+
+sealed interface TrainingDetailSideEffects: SideEffect {
+    data class PlayingTrainingProgram(val id: String, val type: TrainingTypeEnum): TrainingDetailSideEffects
+    data class OpenMoreInfo(val id: String, val type: TrainingTypeEnum): TrainingDetailSideEffects
+}

@@ -5,7 +5,7 @@ import com.dreamsoftware.saborytv.ui.screens.favorites.FavoritesScreenSimpleErro
 import com.dreamsoftware.saborytv.ui.screens.profiles.save.SaveProfileScreenSimpleErrorMapper
 import com.dreamsoftware.saborytv.ui.screens.signin.SignInScreenSimpleErrorMapper
 import com.dreamsoftware.saborytv.ui.screens.signup.SignUpScreenSimpleErrorMapper
-import com.dreamsoftware.saborytv.ui.screens.training.TrainingScreenSimpleErrorMapper
+import com.dreamsoftware.saborytv.ui.screens.recipes.RecipesScreenSimpleErrorMapper
 import com.dreamsoftware.fudge.core.IFudgeTvErrorMapper
 import dagger.Module
 import dagger.Provides
@@ -56,5 +56,5 @@ class UiModule {
     fun provideTrainingScreenSimpleErrorMapper(
         @ApplicationContext context: Context
     ): IFudgeTvErrorMapper =
-        TrainingScreenSimpleErrorMapper(context = context)
+        RecipesScreenSimpleErrorMapper(context = context)
 }

@@ -1,6 +1,6 @@
 package com.dreamsoftware.saborytv.ui.screens.instructordetail
 
-import com.dreamsoftware.saborytv.domain.model.InstructorBO
+import com.dreamsoftware.saborytv.domain.model.ChefProfileBO
 import com.dreamsoftware.saborytv.domain.usecase.GetInstructorDetailUseCase
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
@@ -23,7 +23,7 @@ class InstructorDetailScreenViewModel @Inject constructor(
         )
     }
 
-    private fun onGetInstructorDetailsCompleted(instructorDetail: InstructorBO) {
+    private fun onGetInstructorDetailsCompleted(instructorDetail: ChefProfileBO) {
         updateState { it.copy(instructorDetail = instructorDetail) }
     }
 
@@ -35,7 +35,7 @@ class InstructorDetailScreenViewModel @Inject constructor(
 data class InstructorDetailUiState(
     override val isLoading: Boolean = false,
     override val errorMessage: String? = null,
-    val instructorDetail: InstructorBO? = null
+    val instructorDetail: ChefProfileBO? = null
 ): UiState<InstructorDetailUiState>(isLoading, errorMessage) {
     override fun copyState(isLoading: Boolean, errorMessage: String?): InstructorDetailUiState =
         copy(isLoading = isLoading, errorMessage = errorMessage)
