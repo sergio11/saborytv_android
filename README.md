@@ -1,6 +1,16 @@
 # SaboryTV 🍳📺: The Perfect Recipe Guide for Your TV
 
+<img width="auto" height="200px" align="left" src="doc/main_logo.png" />
+
 Welcome to **SaboryTV**, your ultimate kitchen companion for a delicious and interactive cooking experience on your TV. SaboryTV is designed to transform the way you cook by bringing you step-by-step recipe videos right to your screen. Whether you're a seasoned chef or a home cook, SaboryTV makes it easy to follow along with expert chefs and create mouthwatering dishes.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white" />
+  <img src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white" />
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
+  <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
+  <img src="https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" />
+</p>
 
 ## Key Features ✨
 
