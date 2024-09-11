@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
 import com.dreamsoftware.fudge.component.FudgeTvCard
 import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum

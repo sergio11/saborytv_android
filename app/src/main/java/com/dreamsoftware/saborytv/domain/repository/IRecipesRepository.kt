@@ -11,16 +11,15 @@ import com.dreamsoftware.saborytv.domain.exception.RemoveFavoriteRecipeException
 import com.dreamsoftware.saborytv.domain.exception.VerifyFavoriteRecipeException
 import com.dreamsoftware.saborytv.domain.model.AddFavoriteRecipeBO
 import com.dreamsoftware.saborytv.domain.model.RecipeBO
-import com.dreamsoftware.saborytv.domain.model.TrainingFilterDataBO
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
+import com.dreamsoftware.saborytv.domain.model.RecipeFilterDataBO
 
 interface IRecipesRepository {
 
     @Throws(FetchRecipesException::class)
-    suspend fun getRecipes(data: TrainingFilterDataBO, includePremium: Boolean = false): Iterable<RecipeBO>
+    suspend fun getRecipes(data: RecipeFilterDataBO, includePremium: Boolean = false): Iterable<RecipeBO>
 
     @Throws(FetchRecipeByIdException::class)
-    suspend fun getRecipeById(id: String, type: TrainingTypeEnum): RecipeBO
+    suspend fun getRecipeById(id: String): RecipeBO
 
     @Throws(FetchRecipesRecommendedException::class)
     suspend fun getRecipesRecommended(includePremium: Boolean = false): Iterable<RecipeBO>

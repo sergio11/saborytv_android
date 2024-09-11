@@ -1,7 +1,5 @@
 package com.dreamsoftware.saborytv.ui.screens.moreoptions
 
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
 import com.dreamsoftware.saborytv.domain.usecase.AddFavoriteRecipeUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetRecipeByIdUseCase
 import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteRecipeUseCase
@@ -97,7 +95,7 @@ class MoreOptionsViewModel @Inject constructor(
         executeUseCaseWithParams(
             useCase = addFavoriteRecipeUseCase,
             params = AddFavoriteRecipeUseCase.Params(
-                trainingId = id,
+                id = id,
                 trainingType = type
             ),
             onSuccess = ::onChangeFavoriteTrainingCompleted

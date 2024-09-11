@@ -3,15 +3,12 @@ package com.dreamsoftware.saborytv.ui.utils
 import android.content.Context
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.domain.model.AvatarTypeEnum
-import com.dreamsoftware.saborytv.domain.model.ChallengeBO
-import com.dreamsoftware.saborytv.domain.model.ITrainingProgramBO
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import com.dreamsoftware.saborytv.domain.model.SeriesBO
 import com.dreamsoftware.saborytv.domain.model.SubscriptionBO
-import com.dreamsoftware.saborytv.domain.model.TrainingTypeEnum
-import com.dreamsoftware.saborytv.domain.model.WorkoutBO
 
-fun ITrainingProgramBO?.formatTimeAndTypeTraining(): String =
-    this?.run { "$duration | $intensity ••••" }.orEmpty()
+fun RecipeBO?.formatTimeAndType(): String =
+    this?.run { "$preparationTime | $difficulty ••••" }.orEmpty()
 
 val String.Companion.EMPTY: String
     get() = ""
