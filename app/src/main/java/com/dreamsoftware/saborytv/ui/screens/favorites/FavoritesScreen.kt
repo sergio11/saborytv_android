@@ -8,7 +8,7 @@ import com.dreamsoftware.fudge.component.FudgeTvScreen
 fun FavoritesScreen(
     viewModel: FavoritesViewModel = hiltViewModel(),
     onBackPressed: () -> Unit,
-    onOpenTrainingProgramDetail: (id: String, type: TrainingTypeEnum) -> Unit
+    onOpenRecipeDetail: (id: String) -> Unit
 ) {
     FudgeTvScreen(
         viewModel = viewModel,
@@ -16,7 +16,7 @@ fun FavoritesScreen(
         onInitialUiState = { FavoritesUiState() },
         onSideEffect = {
             when(it) {
-                is FavoritesSideEffects.OpenRecipeProgramDetail -> onOpenTrainingProgramDetail(it.id, it.type)
+                is FavoritesSideEffects.OpenRecipeProgramDetail -> onOpenRecipeDetail(it.id)
             }
         },
         onInit = {

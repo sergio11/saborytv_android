@@ -52,7 +52,7 @@ fun DashboardNavHost(
                     onBackPressed = {
                         popBackStack()
                     },
-                    onOpenTrainingProgramDetail = { id, type ->
+                    onOpenRecipeDetail = { id, type ->
                         navigate(Screen.TrainingDetail.buildRoute(id, type))
                     }
                 )
@@ -64,7 +64,7 @@ fun DashboardNavHost(
                 with(navController) {
                     CategoryDetailScreen(
                         args = args,
-                        onOpenTrainingProgramDetail = {id, type ->
+                        onOpenRecipeDetail = { id, type ->
                             navigate(Screen.TrainingDetail.buildRoute(id, type))
                         },
                         onBackPressed = {

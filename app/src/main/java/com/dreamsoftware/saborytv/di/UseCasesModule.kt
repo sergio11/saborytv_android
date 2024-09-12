@@ -320,7 +320,7 @@ class UseCasesModule {
     ): RemoveFavoriteRecipeUseCase =
         RemoveFavoriteRecipeUseCase(
             userRepository = userRepository,
-            trainingRepository = trainingRepository
+            recipesRepository = trainingRepository
         )
 
 
@@ -334,7 +334,7 @@ class UseCasesModule {
         VerifyRecipeInFavoritesUseCase(
             userRepository = userRepository,
             profileRepository = profileRepository,
-            trainingRepository = trainingRepository
+            recipesRepository = trainingRepository
         )
 
     @Provides

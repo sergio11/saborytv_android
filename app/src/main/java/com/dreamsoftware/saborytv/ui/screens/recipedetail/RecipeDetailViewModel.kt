@@ -2,7 +2,6 @@ package com.dreamsoftware.saborytv.ui.screens.recipedetail
 
 import androidx.annotation.StringRes
 import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.domain.model.SeriesBO
 import com.dreamsoftware.saborytv.domain.usecase.AddFavoriteRecipeUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetRecipeByIdUseCase
 import com.dreamsoftware.saborytv.domain.usecase.RemoveFavoriteRecipeUseCase
@@ -29,7 +28,7 @@ class RecipeDetailViewModel @Inject constructor(
     fun fetchData(id: String) {
         executeUseCaseWithParams(
             useCase = verifyRecipeInFavoritesUseCase,
-            params = VerifyRecipeInFavoritesUseCase.Params(trainingId = id),
+            params = VerifyRecipeInFavoritesUseCase.Params(recipeId = id),
             onSuccess = ::onVerifyTrainingInFavoritesCompleted
         )
         executeUseCaseWithParams(
@@ -57,7 +56,7 @@ class RecipeDetailViewModel @Inject constructor(
                 executeUseCaseWithParams(
                     useCase = removeFavoriteRecipeUseCase,
                     params = RemoveFavoriteRecipeUseCase.Params(
-                        trainingId = id
+                        recipesId = id
                     ),
                     onSuccess = ::onChangeFavoriteTrainingCompleted
                 )

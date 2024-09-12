@@ -11,7 +11,6 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.ui.utils.formatTimeAndTypeTraining
 import com.dreamsoftware.saborytv.ui.utils.getStartButtonID
 import com.dreamsoftware.saborytv.ui.utils.toTrainingType
 import com.dreamsoftware.fudge.component.FudgeTvBackRowSchema
@@ -19,6 +18,7 @@ import com.dreamsoftware.fudge.component.FudgeTvCardDetails
 import com.dreamsoftware.fudge.component.FudgeTvFocusRequester
 import com.dreamsoftware.fudge.component.FudgeTvMoreOptionsButton
 import com.dreamsoftware.fudge.component.FudgeTvScreenContent
+import com.dreamsoftware.saborytv.ui.utils.formatTimeAndType
 
 @Composable
 internal fun MoreOptionsScreenContent(
@@ -47,10 +47,10 @@ internal fun MoreOptionsScreenContent(
 
                     FudgeTvCardDetails(
                         modifier = Modifier.width(268.dp).constrainAs(trainingDetails) {},
-                        title = trainingProgram?.name.orEmpty(),
-                        time = trainingProgram.formatTimeAndTypeTraining(),
-                        description = trainingProgram?.description.orEmpty(),
-                        imageUrl = trainingProgram?.imageUrl.orEmpty()
+                        title = recipe?.title.orEmpty(),
+                        time = recipe.formatTimeAndType(),
+                        description = recipe?.description.orEmpty(),
+                        imageUrl = recipe?.imageUrl.orEmpty()
                     )
                     FudgeTvBackRowSchema(
                         modifier = Modifier.constrainAs(backRowSchema) {
@@ -66,9 +66,9 @@ internal fun MoreOptionsScreenContent(
                                     top.linkTo(trainingDetails.top)
                                     start.linkTo(trainingDetails.end, margin = 164.dp)
                                 },
-                            textRes = trainingProgram?.toTrainingType()?.getStartButtonID() ?: R.string.start_workout,
+                            textRes = recipe?.toTrainingType()?.getStartButtonID() ?: R.string.start_workout,
                             icon = R.drawable.ic_rounded_play,
-                            onClick = actionListener::onTrainingProgramOpened
+                            onClick = actionListener::onRecipeOpened
                         )
                     }
 
@@ -90,22 +90,13 @@ internal fun MoreOptionsScreenContent(
                         onClick = actionListener::onFavouriteClicked
                     )
                     FudgeTvMoreOptionsButton(
-                        modifier = Modifier.constrainAs(moreInfoButton) {
-                            top.linkTo(favoritesButton.bottom, margin = 12.dp)
-                            start.linkTo(startButton.start)
-                        },
-                        textRes = R.string.play_training_song_button_text,
-                        icon = R.drawable.music_icon,
-                        onClick = actionListener::onPlayTrainingSong
-                    )
-                    FudgeTvMoreOptionsButton(
                         modifier = Modifier.constrainAs(viewInstructorButton) {
                             top.linkTo(moreInfoButton.bottom, margin = 12.dp)
                             start.linkTo(startButton.start)
                         },
                         textRes = R.string.view_instructor,
                         icon = R.drawable.ic_instructor,
-                        onClick = actionListener::onOpenInstructorDetail
+                        onClick = actionListener::onOpenChefProfileDetail
                     )
                     FudgeTvMoreOptionsButton(
                         modifier = Modifier.constrainAs(shareButton) {

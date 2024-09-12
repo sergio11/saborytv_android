@@ -5,5 +5,5 @@ import com.dreamsoftware.saborytv.domain.model.RecipeBO
 
 interface CategoryDetailActionListener: IFudgeTvScreenActionListener {
 
-    fun onRecipeProgramOpened(recipeBO: RecipeBO)
+    fun onRecipeOpened(recipeBO: RecipeBO)
 }

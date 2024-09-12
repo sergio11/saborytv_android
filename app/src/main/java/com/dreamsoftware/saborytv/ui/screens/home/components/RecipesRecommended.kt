@@ -18,12 +18,13 @@ import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.fudge.component.FudgeTvCard
 import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
 
 @Composable
-internal fun TrainingsRecommended(
+internal fun RecipesRecommended(
     modifier: Modifier = Modifier,
-    state: List<ITrainingProgramBO>,
-    onClick: (ITrainingProgramBO) -> Unit
+    state: List<RecipeBO>,
+    onClick: (RecipeBO) -> Unit
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(24.dp)) {
         FudgeTvText(
@@ -42,15 +43,17 @@ internal fun TrainingsRecommended(
             verticalArrangement = Arrangement.spacedBy(24.dp),
             contentPadding = PaddingValues(horizontal = 32.dp)
         ) {
-            items(state) { training ->
-                FudgeTvCard(
-                    modifier = modifier.width(196.dp),
-                    imageUrl = training.imageUrl,
-                    title = training.name,
-                    timeText = training.duration,
-                    typeText = training.instructorName,
-                    onClick = { onClick(training) }
-                )
+            items(state) { recipe ->
+                with(recipe) {
+                    FudgeTvCard(
+                        modifier = modifier.width(196.dp),
+                        imageUrl = imageUrl,
+                        title = title,
+                        timeText = preparationTime.toString(),
+                        typeText = chefProfileName,
+                        onClick = { onClick(recipe) }
+                    )
+                }
             }
         }
     }

@@ -53,14 +53,15 @@ import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
 import com.dreamsoftware.fudge.utils.conditional
 import com.dreamsoftware.fudge.utils.shadowBox
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
-internal fun FeaturedTrainings(
-    trainings: List<ITrainingProgramBO>,
+internal fun FeaturedRecipes(
+    recipes: List<RecipeBO>,
     padding: PaddingValues,
     carouselState: CarouselState,
-    onOpenTrainingProgram: (ITrainingProgramBO) -> Unit,
+    onOpenRecipeDetail: (RecipeBO) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var isCarouselFocused by remember { mutableStateOf(false) }
@@ -85,11 +86,11 @@ internal fun FeaturedTrainings(
             .onFocusChanged {
                 isCarouselFocused = it.hasFocus
             },
-        itemCount = trainings.size,
+        itemCount = recipes.size,
         carouselState = carouselState,
         carouselIndicator = {
             CarouselIndicator(
-                itemCount = trainings.size,
+                itemCount = recipes.size,
                 activeItemIndex = carouselState.activeItemIndex
             )
         },
@@ -101,15 +102,15 @@ internal fun FeaturedTrainings(
         )
     ) { index ->
         Box(modifier = Modifier.fillMaxSize()) {
-            val training = trainings[index]
+            val recipe = recipes[index]
             CarouselItemBackground(
                 modifier = Modifier.fillMaxSize(),
-                trainingProgram = training
+                recipe = recipe
             )
             CarouselItemForeground(
-                training = training,
+                recipe = recipe,
                 isCarouselFocused = isCarouselFocused,
-                onOpenTrainingProgram = { onOpenTrainingProgram(training) },
+                onOpenRecipeDetail = { onOpenRecipeDetail(recipe) },
                 modifier = Modifier.align(Alignment.BottomStart)
             )
         }
@@ -143,8 +144,8 @@ private fun BoxScope.CarouselIndicator(
 
 @Composable
 private fun CarouselItemForeground(
-    training: ITrainingProgramBO,
-    onOpenTrainingProgram: () -> Unit,
+    recipe: RecipeBO,
+    onOpenRecipeDetail: () -> Unit,
     modifier: Modifier = Modifier,
     isCarouselFocused: Boolean = false
 ) {
@@ -155,34 +156,36 @@ private fun CarouselItemForeground(
                 .width(360.dp),
             verticalArrangement = Arrangement.Bottom
         ) {
-            FudgeTvText(
-                type = FudgeTvTextTypeEnum.LABEL_MEDIUM,
-                titleText = training.instructorName,
-                singleLine = true,
-                textColor = onSurfaceVariant
-            )
-            FudgeTvText(
-                modifier = Modifier.padding(top = 4.dp),
-                type = FudgeTvTextTypeEnum.HEADLINE_SMALL,
-                titleText = training.name,
-                singleLine = true,
-                textColor = onSurface
-            )
-            FudgeTvText(
-                modifier = Modifier.padding(top = 12.dp, bottom = 28.dp),
-                type = FudgeTvTextTypeEnum.BODY_SMALL,
-                titleText = training.description,
-                singleLine = true,
-                textColor = onSurfaceVariant,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-            )
+            with(recipe) {
+                FudgeTvText(
+                    type = FudgeTvTextTypeEnum.LABEL_MEDIUM,
+                    titleText = chefProfileName,
+                    singleLine = true,
+                    textColor = onSurfaceVariant
+                )
+                FudgeTvText(
+                    modifier = Modifier.padding(top = 4.dp),
+                    type = FudgeTvTextTypeEnum.HEADLINE_SMALL,
+                    titleText = title,
+                    singleLine = true,
+                    textColor = onSurface
+                )
+                FudgeTvText(
+                    modifier = Modifier.padding(top = 12.dp, bottom = 28.dp),
+                    type = FudgeTvTextTypeEnum.BODY_SMALL,
+                    titleText = description,
+                    singleLine = true,
+                    textColor = onSurfaceVariant,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
             AnimatedVisibility(visible = isCarouselFocused) {
                 FudgeTvButton(
                     type = FudgeTvButtonTypeEnum.LARGE,
                     style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
                     textRes = R.string.start_session,
-                    onClick = onOpenTrainingProgram
+                    onClick = onOpenRecipeDetail
                 )
             }
         }
@@ -190,11 +193,11 @@ private fun CarouselItemForeground(
 }
 
 @Composable
-private fun CarouselItemBackground(trainingProgram: ITrainingProgramBO, modifier: Modifier = Modifier) {
+private fun CarouselItemBackground(recipe: RecipeBO, modifier: Modifier = Modifier) {
     with(MaterialTheme.colorScheme) {
         var sizeCard by remember { mutableStateOf(Size.Zero) }
-        AsyncImage(model = trainingProgram.imageUrl,
-            contentDescription = stringResource(id = R.string.image, trainingProgram.name),
+        AsyncImage(model = recipe.imageUrl,
+            contentDescription = stringResource(id = R.string.image, recipe.title),
             modifier = modifier
                 .fillMaxSize()
                 .aspectRatio(21F / 9F)

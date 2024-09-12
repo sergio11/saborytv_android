@@ -5,8 +5,8 @@ import com.dreamsoftware.saborytv.domain.model.RecipeBO
 
 interface FavoritesScreenActionListener: IFudgeTvScreenActionListener {
 
-    fun onRecipeProgramSelected(recipe: RecipeBO)
-    fun onRecipeProgramStarted(id: String)
-    fun onRecipeProgramRemovedFromFavorites(id: String)
+    fun onRecipeSelected(recipe: RecipeBO)
+    fun onRecipeStarted(id: String)
+    fun onRecipeRemovedFromFavorites(id: String)
     fun onDismissRequest()
 }

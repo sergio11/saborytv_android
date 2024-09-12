@@ -22,11 +22,9 @@ class CategoryDetailScreenViewModel @Inject constructor(
 
     override fun onGetDefaultState(): CategoryDetailUiState = CategoryDetailUiState()
 
-    override fun onRecipeProgramOpened(recipeBO: RecipeBO) {
+    override fun onRecipeOpened(recipeBO: RecipeBO) {
         with(recipeBO) {
-            launchSideEffect(
-                CategoryDetailSideEffects.OpenRecipeProgramDetail(id = id)
-            )
+            launchSideEffect(CategoryDetailSideEffects.OpenRecipeDetail(id = id))
         }
     }
 
@@ -67,5 +65,5 @@ data class CategoryDetailUiState(
 }
 
 sealed interface CategoryDetailSideEffects : SideEffect {
-    data class OpenRecipeProgramDetail(val id: String): CategoryDetailSideEffects
+    data class OpenRecipeDetail(val id: String): CategoryDetailSideEffects
 }

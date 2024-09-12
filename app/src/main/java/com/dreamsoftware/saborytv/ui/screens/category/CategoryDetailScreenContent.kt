@@ -67,7 +67,7 @@ internal fun CategoryDetailScreenContent(
                                         focusRequester(focusRequester)
                                     }),
                                     onClick = {
-                                        actionListener.onRecipeProgramOpened(item)
+                                        actionListener.onRecipeOpened(item)
                                     },
                                     imageUrl = item.imageUrl,
                                     title = item.name,

@@ -41,12 +41,14 @@ internal fun ChefProfileDetailScreenContent(
                         titleRes = R.string.instructor_detail_title,
                         textBold = true
                     )
-                    FudgeTvCardDetails(
-                        modifier = Modifier.width(400.dp),
-                        title = chefProfileDetail.name,
-                        description = chefProfileDetail.description,
-                        imageUrl = chefProfileDetail.imageUrl
-                    )
+                    with(chefProfileDetail) {
+                        FudgeTvCardDetails(
+                            modifier = Modifier.width(400.dp),
+                            title = name,
+                            description = description,
+                            imageUrl = imageUrl
+                        )
+                    }
                     FudgeTvBackRowSchema(
                         onClickBack = actionListener::onBackPressed
                     )
