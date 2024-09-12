@@ -97,7 +97,7 @@ internal fun FavoritesScreenContent(
                                     timeText = item.duration,
                                     typeText = item.intensity.level,
                                     onClick = {
-                                        actionListener.onRecipeProgramSelected(item)
+                                        actionListener.onRecipeSelected(item)
                                     })
                             }
                         }
@@ -114,8 +114,8 @@ internal fun FavoritesScreenContent(
                         recipeProgramSelected?.let {
                             TrainingProgramDetailsPopup(
                                 trainingProgram = it,
-                                onStartTrainingProgram = actionListener::onRecipeProgramStarted,
-                                onRemoveFromFavorites = actionListener::onRecipeProgramRemovedFromFavorites,
+                                onStartTrainingProgram = actionListener::onRecipeStarted,
+                                onRemoveFromFavorites = actionListener::onRecipeRemovedFromFavorites,
                                 onBackPressed = actionListener::onDismissRequest
                             )
                         }

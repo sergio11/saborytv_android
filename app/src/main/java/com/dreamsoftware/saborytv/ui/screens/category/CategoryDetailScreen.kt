@@ -12,7 +12,7 @@ data class CategoryDetailScreenArgs(
 fun CategoryDetailScreen(
     viewModel: CategoryDetailScreenViewModel = hiltViewModel(),
     args: CategoryDetailScreenArgs,
-    onOpenTrainingProgramDetail: (String, TrainingTypeEnum) -> Unit,
+    onOpenRecipeDetail: (String) -> Unit,
     onBackPressed: () -> Unit
 ) {
    FudgeTvScreen(
@@ -21,7 +21,7 @@ fun CategoryDetailScreen(
         onInitialUiState = { CategoryDetailUiState() },
         onSideEffect = {
             when(it) {
-                is CategoryDetailSideEffects.OpenRecipeProgramDetail -> onOpenTrainingProgramDetail(it.id, it.type)
+                is CategoryDetailSideEffects.OpenRecipeDetail -> onOpenRecipeDetail(it.id)
             }
         },
         onInit = {

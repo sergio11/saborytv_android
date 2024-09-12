@@ -16,8 +16,8 @@ import androidx.tv.material3.CarouselState
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.saborytv.ui.screens.home.components.Categories
-import com.dreamsoftware.saborytv.ui.screens.home.components.FeaturedTrainings
-import com.dreamsoftware.saborytv.ui.screens.home.components.TrainingsRecommended
+import com.dreamsoftware.saborytv.ui.screens.home.components.FeaturedRecipes
+import com.dreamsoftware.saborytv.ui.screens.home.components.RecipesRecommended
 import com.dreamsoftware.fudge.component.FudgeTvScreenContent
 
 @OptIn(ExperimentalTvMaterial3Api::class)
@@ -38,10 +38,10 @@ internal fun HomeScreenContent(
                 contentPadding = PaddingValues(vertical = 40.dp)
             ) {
                 item {
-                    FeaturedTrainings(
-                        trainings = featuredTrainings,
+                    FeaturedRecipes(
+                        recipes = featuredRecipes,
                         padding = PaddingValues(horizontal = 32.dp),
-                        onOpenTrainingProgram = actionListener::onOpenTrainingProgram,
+                        onOpenRecipeDetail = actionListener::onOpenRecipeDetail,
                         carouselState = carouselState,
                         modifier = Modifier
                             .height(340.dp)
@@ -55,9 +55,9 @@ internal fun HomeScreenContent(
                     )
                 }
                 item {
-                    TrainingsRecommended(
+                    RecipesRecommended(
                         state = state.recommended,
-                        onClick = actionListener::onOpenTrainingProgram
+                        onClick = actionListener::onOpenRecipeDetail
                     )
                 }
             }

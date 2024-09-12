@@ -8,19 +8,19 @@ import com.dreamsoftware.fudge.core.FudgeTvUseCaseWithParams
 class VerifyRecipeInFavoritesUseCase(
     private val userRepository: IUserRepository,
     private val profileRepository: IProfilesRepository,
-    private val trainingRepository: IRecipesRepository
+    private val recipesRepository: IRecipesRepository
 ): FudgeTvUseCaseWithParams<VerifyRecipeInFavoritesUseCase.Params, Boolean>() {
 
     override suspend fun onExecuted(params: Params) = with(params) {
         val userUid = userRepository.getAuthenticatedUid()
         val profileSelected = profileRepository.getProfileSelectedByUser(userUid)
-        trainingRepository.hasRecipeInFavorites(
+        recipesRepository.hasRecipeInFavorites(
             profileId = profileSelected.uuid,
-            recipeId = trainingId
+            recipeId = recipeId
         )
     }
 
     data class Params(
-        val trainingId: String
+        val recipeId: String
     )
 }
