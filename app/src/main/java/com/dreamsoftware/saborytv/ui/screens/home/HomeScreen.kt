@@ -16,8 +16,8 @@ val carouselSaver =
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
-    onOpenTrainingCategory: (String) -> Unit,
-    onOpenTrainingProgram: (String, TrainingTypeEnum) -> Unit,
+    onOpenCategoryDetail: (String) -> Unit,
+    onOpenRecipeDetail: (String) -> Unit,
     onGoToSubscriptions: () -> Unit
 ) {
     val carouselState = rememberSaveable(saver = carouselSaver) { CarouselState(0) }
@@ -26,8 +26,8 @@ fun HomeScreen(
         onInitialUiState = { HomeUiState() },
         onSideEffect = {
             when(it) {
-                is HomeSideEffects.OpenRecipesCategory -> onOpenTrainingCategory(it.categoryId)
-                is HomeSideEffects.OpenRecipeDetail -> onOpenTrainingProgram(it.id, it.type )
+                is HomeSideEffects.OpenRecipesCategory -> onOpenCategoryDetail(it.categoryId)
+                is HomeSideEffects.OpenRecipeDetail -> onOpenRecipeDetail(it.id)
                 HomeSideEffects.NoActivePremiumSubscription -> onGoToSubscriptions()
             }
         },

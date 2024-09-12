@@ -9,7 +9,6 @@ import com.dreamsoftware.saborytv.ui.screens.favorites.FavoritesScreen
 import com.dreamsoftware.saborytv.ui.screens.home.HomeScreen
 import com.dreamsoftware.saborytv.ui.screens.chefprofiledetail.ChefProfileDetailScreen
 import com.dreamsoftware.saborytv.ui.screens.moreoptions.MoreOptionsScreen
-import com.dreamsoftware.saborytv.ui.screens.player.audio.AudioPlayerScreen
 import com.dreamsoftware.saborytv.ui.screens.player.VideoPlayerScreen
 import com.dreamsoftware.saborytv.ui.screens.settings.SettingsScreen
 import com.dreamsoftware.saborytv.ui.screens.subscription.SubscriptionScreen
@@ -27,22 +26,22 @@ fun DashboardNavHost(
         composable(Screen.Home.route) {
             with(navController) {
                 HomeScreen(
-                    onOpenTrainingCategory = { id ->
+                    onOpenCategoryDetail = { id ->
                         navigate(Screen.CategoryDetail.buildRoute(id))
                     },
                     onGoToSubscriptions = {
                         navigate(Screen.Subscription.route)
                     },
-                    onOpenTrainingProgram = {  id, type ->
-                        navigate(Screen.TrainingDetail.buildRoute(id, type))
+                    onOpenRecipeDetail = { id ->
+                        navigate(Screen.RecipeDetail.buildRoute(id))
                     }
                 )
             }
         }
-        composable(Screen.Training.route) {
+        composable(Screen.Recipes.route) {
             RecipesScreen(
-                onGoToRecipeDetail = { id, type ->
-                    navController.navigate(Screen.TrainingDetail.buildRoute(id, type))
+                onGoToRecipeDetail = { id ->
+                    navController.navigate(Screen.RecipeDetail.buildRoute(id))
                 }
             )
         }
@@ -52,8 +51,8 @@ fun DashboardNavHost(
                     onBackPressed = {
                         popBackStack()
                     },
-                    onOpenRecipeDetail = { id, type ->
-                        navigate(Screen.TrainingDetail.buildRoute(id, type))
+                    onOpenRecipeDetail = { id ->
+                        navigate(Screen.RecipeDetail.buildRoute(id))
                     }
                 )
             }
@@ -64,8 +63,8 @@ fun DashboardNavHost(
                 with(navController) {
                     CategoryDetailScreen(
                         args = args,
-                        onOpenRecipeDetail = { id, type ->
-                            navigate(Screen.TrainingDetail.buildRoute(id, type))
+                        onOpenRecipeDetail = { id ->
+                            navigate(Screen.RecipeDetail.buildRoute(id))
                         },
                         onBackPressed = {
                             popBackStack()
@@ -84,15 +83,6 @@ fun DashboardNavHost(
                 }
             }
         }
-        composable(Screen.AudioPlayer.route) { navBackStackEntry ->
-            navBackStackEntry.arguments?.let(Screen.AudioPlayer::parseArgs)?.let { args ->
-                with(navController) {
-                    AudioPlayerScreen(args = args) {
-                        popBackStack()
-                    }
-                }
-            }
-        }
         composable(Screen.Settings.route) {
             with(navController) {
                 SettingsScreen(
@@ -105,16 +95,16 @@ fun DashboardNavHost(
                 )
             }
         }
-        composable(Screen.TrainingDetail.route) { navBackStackEntry ->
-            navBackStackEntry.arguments?.let(Screen.TrainingDetail::parseArgs)?.let { args ->
+        composable(Screen.RecipeDetail.route) { navBackStackEntry ->
+            navBackStackEntry.arguments?.let(Screen.RecipeDetail::parseArgs)?.let { args ->
                 with(navController) {
                     RecipeDetailScreen(
                         args = args,
-                        onPlayingTrainingProgram = { id, type ->
-                            navigate(Screen.VideoPlayer.buildRoute(id, type))
+                        onPlayRecipeProgram = { id ->
+                            navigate(Screen.VideoPlayer.buildRoute(id))
                         },
-                        onOpenMoreDetails = { id, type ->
-                            navigate(Screen.MoreOptions.buildRoute(id, type))
+                        onOpenMoreDetails = { id ->
+                            navigate(Screen.MoreOptions.buildRoute(id))
                         },
                         onBackPressed = {
                             popBackStack()
@@ -128,14 +118,11 @@ fun DashboardNavHost(
                 with(navController) {
                     MoreOptionsScreen(
                         args = args,
-                        onPlayTrainingProgram = { id, type ->
-                            navigate(Screen.VideoPlayer.buildRoute(id, type))
+                        onPlayRecipeProgram = { id ->
+                            navigate(Screen.VideoPlayer.buildRoute(id))
                         },
-                        onPlayTrainingSong = {
-                            navigate(Screen.AudioPlayer.buildRoute(it))
-                        },
-                        onOpenInstructorDetail = {
-                            navigate(Screen.InstructorDetail.buildRoute(it))
+                        onOpenChefProfileDetail = {
+                            navigate(Screen.ChefProfileDetail.buildRoute(it))
                         },
                         onBackPressed = {
                             popBackStack()
@@ -145,8 +132,8 @@ fun DashboardNavHost(
             }
         }
 
-        composable(Screen.InstructorDetail.route) { navBackStackEntry ->
-            navBackStackEntry.arguments?.let(Screen.InstructorDetail::parseArgs)?.let { args ->
+        composable(Screen.ChefProfileDetail.route) { navBackStackEntry ->
+            navBackStackEntry.arguments?.let(Screen.ChefProfileDetail::parseArgs)?.let { args ->
                 with(navController) {
                     ChefProfileDetailScreen(
                         args = args,
