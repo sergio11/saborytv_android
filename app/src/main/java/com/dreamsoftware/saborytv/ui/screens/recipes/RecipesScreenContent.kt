@@ -87,7 +87,7 @@ internal fun RecipesScreenContent(
                     onSelectedItem = ::onSelectedSortedItem
                 )
             }
-            TrainingProgramList(
+            RecipesList(
                 state = this,
                 actionListener = actionListener
             )
@@ -96,7 +96,7 @@ internal fun RecipesScreenContent(
 }
 
 @Composable
-private fun TrainingProgramList(
+private fun RecipesList(
     state: RecipesUiState,
     actionListener: RecipesScreenActionListener
 ) {
@@ -171,17 +171,19 @@ private fun TrainingProgramList(
                         verticalArrangement = Arrangement.spacedBy(24.dp),
                         contentPadding = PaddingValues(32.dp)
                     ) {
-                        itemsIndexed(state.recipes) { idx, training ->
-                            FudgeTvCard(
-                                modifier = Modifier.conditional(condition = idx == 0, ifTrue = {
-                                    focusRequester(focusRequester)
-                                }),
-                                imageUrl = training.imageUrl,
-                                title = training.name,
-                                timeText = training.duration,
-                                typeText = training.intensity.level,
-                                onClick = { actionListener.onItemClicked(training.id) }
-                            )
+                        itemsIndexed(state.recipes) { idx, recipe ->
+                            with(recipe) {
+                                FudgeTvCard(
+                                    modifier = Modifier.conditional(condition = idx == 0, ifTrue = {
+                                        focusRequester(focusRequester)
+                                    }),
+                                    imageUrl = recipe.imageUrl,
+                                    title = title,
+                                    timeText = preparationTime.toString(),
+                                    typeText = difficulty.value,
+                                    onClick = { actionListener.onItemClicked(id) }
+                                )
+                            }
                         }
                     }
                 }

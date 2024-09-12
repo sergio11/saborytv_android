@@ -19,7 +19,6 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Border
 import androidx.tv.material3.ButtonDefaults
@@ -35,27 +34,20 @@ import com.dreamsoftware.fudge.component.FudgeTvButtonTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvFocusRequester
 import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
-import com.dreamsoftware.fudge.utils.conditional
 
 @Composable
-fun TrainingEntityDetails(
+fun RecipeEntityDetails(
     state: RecipeDetailUiState,
-    onStartTrainingClicked: () -> Unit,
+    onOpenRecipeClicked: () -> Unit,
     onMoreInfoClicked: () -> Unit,
-    onTrainingFavoriteClicked: () -> Unit,
-    onChallengesPlanClicked: () -> Unit
+    onRecipeFavoriteClicked: () -> Unit,
 ) {
     with(state) {
         val descriptionWidth = (LocalConfiguration.current.screenWidthDp / 2).dp
-        val isChallenges = trainingType == TrainingTypeEnum.CHALLENGES
-        val paddingBottom = when (trainingType) {
-            TrainingTypeEnum.CHALLENGES -> 24.dp
-            else -> 80.dp
-        }
         with(MaterialTheme.colorScheme) {
             FudgeTvFocusRequester(requestFocusAtInMillis = 100L) { requester ->
                 Column(
-                    modifier = Modifier.padding(start = 48.dp, bottom = paddingBottom),
+                    modifier = Modifier.padding(start = 48.dp, bottom = 80.dp),
                     verticalArrangement = Arrangement.spacedBy(20.dp)
                 ) {
                     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -80,7 +72,7 @@ fun TrainingEntityDetails(
                     )
                     Row(horizontalArrangement = Arrangement.spacedBy(48.dp)) {
                         itemsInfo.forEach { item ->
-                            TrainingInfo(
+                            RecipeInfo(
                                 info = item.info,
                                 labelRes = item.labelRes
                             )
@@ -92,13 +84,11 @@ fun TrainingEntityDetails(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         FudgeTvButton(
-                            modifier = Modifier.conditional(!isChallenges, ifTrue = {
-                                focusRequester(requester)
-                            }),
+                            modifier = Modifier.focusRequester(requester),
                             type = FudgeTvButtonTypeEnum.LARGE,
                             style = FudgeTvButtonStyleTypeEnum.NORMAL,
-                            textRes = trainingType.getStartButtonID(),
-                            onClick = onStartTrainingClicked
+                            textRes = type.getStartButtonID(),
+                            onClick = onOpenRecipeClicked
                         )
                         FudgeTvButton(
                             type = FudgeTvButtonTypeEnum.LARGE,
@@ -108,17 +98,7 @@ fun TrainingEntityDetails(
                         )
                         FavouriteButton(
                             isFavorite = isFavorite,
-                            onClick = onTrainingFavoriteClicked
-                        )
-                    }
-                    if (isChallenges) {
-                        ChallengesPlanButton(
-                            modifier = Modifier
-                                .focusRequester(requester)
-                                .padding(top = 16.dp),
-                            subtitle = stringResource(R.string.weekly_plan),
-                            iconId = R.drawable.down_arrow_head_icon,
-                            onClick = onChallengesPlanClicked
+                            onClick = onRecipeFavoriteClicked
                         )
                     }
                 }
@@ -128,7 +108,7 @@ fun TrainingEntityDetails(
 }
 
 @Composable
-private fun TrainingInfo(
+private fun RecipeInfo(
     info: String,
     @StringRes labelRes: Int,
 ) {

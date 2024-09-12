@@ -5,8 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.dreamsoftware.fudge.component.FudgeTvScreen
 
 data class MoreOptionsScreenArgs(
-    val id: String,
-    val type: TrainingTypeEnum
+    val id: String
 )
 
 @Composable
@@ -14,9 +13,8 @@ fun MoreOptionsScreen(
     viewModel: MoreOptionsViewModel = hiltViewModel(),
     args: MoreOptionsScreenArgs,
     onBackPressed: () -> Unit,
-    onOpenInstructorDetail: (id: String) -> Unit,
-    onPlayTrainingProgram: (id: String, type: TrainingTypeEnum) -> Unit,
-    onPlayTrainingSong: (songId: String) -> Unit
+    onOpenChefProfileDetail: (id: String) -> Unit,
+    onPlayRecipeProgram: (id: String) -> Unit
 ) {
     FudgeTvScreen(
         viewModel = viewModel,
@@ -25,14 +23,13 @@ fun MoreOptionsScreen(
         onSideEffect = {
             when(it) {
                 MoreOptionsSideEffects.CloseMoreInfoDetail -> onBackPressed()
-                is MoreOptionsSideEffects.PlayRecipeProgram -> onPlayTrainingProgram(it.id, it.type)
-                is MoreOptionsSideEffects.PlayTrainingSong -> onPlayTrainingSong(it.songId)
-                is MoreOptionsSideEffects.OpenChefProfileDetail -> onOpenInstructorDetail(it.id)
+                is MoreOptionsSideEffects.PlayRecipeProgram -> onPlayRecipeProgram(it.id)
+                is MoreOptionsSideEffects.OpenChefProfileDetail -> onOpenChefProfileDetail(it.id)
             }
         },
         onInit = {
             with(args) {
-                fetchData(id = id, type = type)
+                fetchData(id = id)
             }
         }
     ) { uiState ->

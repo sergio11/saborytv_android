@@ -5,16 +5,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.dreamsoftware.fudge.component.FudgeTvScreen
 
 data class RecipeDetailScreenArgs(
-    val id: String,
-    val type: TrainingTypeEnum
+    val id: String
 )
 
 @Composable
 fun RecipeDetailScreen(
     viewModel: RecipeDetailViewModel = hiltViewModel(),
     args: RecipeDetailScreenArgs,
-    onPlayingTrainingProgram: (String, TrainingTypeEnum) -> Unit,
-    onOpenMoreDetails: (String, TrainingTypeEnum) -> Unit,
+    onPlayRecipeProgram: (String) -> Unit,
+    onOpenMoreDetails: (String) -> Unit,
     onBackPressed: () -> Unit
 ) {
     FudgeTvScreen(
@@ -23,15 +22,12 @@ fun RecipeDetailScreen(
         onInitialUiState = { RecipeDetailUiState() },
         onSideEffect = {
             when(it) {
-                is RecipeDetailSideEffects.PlayingRecipeProgram -> onPlayingTrainingProgram(it.id, it.type)
-                is RecipeDetailSideEffects.OpenMoreInfo -> onOpenMoreDetails(it.id, it.type)
+                is RecipeDetailSideEffects.PlayingRecipeProgram -> onPlayRecipeProgram(it.id)
+                is RecipeDetailSideEffects.OpenMoreInfo -> onOpenMoreDetails(it.id)
             }
         },
         onInit = {
-            fetchData(
-                id = args.id,
-                type = args.type
-            )
+            fetchData(id = args.id)
         }
     ) { uiState ->
         RecipeDetailScreenContent(
