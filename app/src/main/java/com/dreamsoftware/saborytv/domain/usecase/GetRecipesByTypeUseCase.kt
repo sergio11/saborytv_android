@@ -22,7 +22,7 @@ class GetRecipesByTypeUseCase(
         val userUid = userRepository.getAuthenticatedUid()
         val hasActiveSubscription = subscriptionsRepository.hasActiveSubscription(userUid)
         return recipesRepository.getRecipes(
-            data = params.toRecipeFilterData(),
+            filter = params.toRecipeFilterData(),
             includePremium = hasActiveSubscription
         ).toList()
     }

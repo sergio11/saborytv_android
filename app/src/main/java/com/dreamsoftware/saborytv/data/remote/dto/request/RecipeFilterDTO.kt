@@ -1,6 +1,6 @@
 package com.dreamsoftware.saborytv.data.remote.dto.request
 
-data class RecipesFilterDTO(
+data class RecipeFilterDTO(
     val type: String?,
     val language: String?,
     val difficulty: String?,

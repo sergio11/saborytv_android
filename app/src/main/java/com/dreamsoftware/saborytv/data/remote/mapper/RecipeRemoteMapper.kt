@@ -18,6 +18,9 @@ internal class RecipeRemoteMapper: IOneSideMapper<Map<String, Any?>, RecipeDTO> 
         const val INGREDIENTS_KEY = "ingredients"
         const val CATEGORY_KEY = "category"
         const val IS_PREMIUM_KEY = "isPremium"
+        const val LANGUAGE_KEY = "language"
+        const val DIFFICULTY_KEY = "difficulty"
+        const val CHEF_PROFILE_ID_KEY = "chef"
     }
 
     override fun mapInToOut(input: Map<String, Any?>): RecipeDTO = with(input) {
@@ -33,7 +36,10 @@ internal class RecipeRemoteMapper: IOneSideMapper<Map<String, Any?>, RecipeDTO> 
             ingredients = get(INGREDIENTS_KEY) as List<String>,
             instructions = get(INSTRUCTIONS_KEY) as List<String>,
             isPremium = get(IS_PREMIUM_KEY) as Boolean,
-            imageUrl = get(IMAGE_URL_KEY) as String
+            imageUrl = get(IMAGE_URL_KEY) as String,
+            language = get(LANGUAGE_KEY) as String,
+            difficulty = get(DIFFICULTY_KEY) as String,
+            chefProfileId = get(CHEF_PROFILE_ID_KEY) as String
         )
     }
 

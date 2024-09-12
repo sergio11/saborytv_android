@@ -9,6 +9,7 @@ import com.dreamsoftware.saborytv.data.remote.datasource.ICategoryRemoteDataSour
 import com.dreamsoftware.saborytv.data.remote.datasource.IChefProfilesRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.IFavoritesRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.IProfilesRemoteDataSource
+import com.dreamsoftware.saborytv.data.remote.datasource.IRecipesRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.ISubscriptionsRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.IUserRemoteDataSource
 import com.dreamsoftware.saborytv.data.remote.datasource.IUserSubscriptionsRemoteDataSource
@@ -16,12 +17,13 @@ import com.dreamsoftware.saborytv.data.remote.dto.request.AddFavoriteRecipeDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.AddUserSubscriptionDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.CreateProfileRequestDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.CreateUserDTO
-import com.dreamsoftware.saborytv.data.remote.dto.request.RecipesFilterDTO
+import com.dreamsoftware.saborytv.data.remote.dto.request.RecipeFilterDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.UpdatedProfileRequestDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.UpdatedUserRequestDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.CategoryDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.ChefProfileDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.ProfileDTO
+import com.dreamsoftware.saborytv.data.remote.dto.response.RecipeDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.SubscriptionDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.UserResponseDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.UserSubscriptionDTO
@@ -29,6 +31,7 @@ import com.dreamsoftware.saborytv.data.remote.mapper.ProfileSessionMapper
 import com.dreamsoftware.saborytv.data.repository.impl.CategoryRepositoryImpl
 import com.dreamsoftware.saborytv.data.repository.impl.ChefProfilesRepositoryImpl
 import com.dreamsoftware.saborytv.data.repository.impl.ProfilesRepositoryImpl
+import com.dreamsoftware.saborytv.data.repository.impl.RecipesRepositoryImpl
 import com.dreamsoftware.saborytv.data.repository.impl.SubscriptionsRepositoryImpl
 import com.dreamsoftware.saborytv.data.repository.impl.UserRepositoryImpl
 import com.dreamsoftware.saborytv.data.repository.mapper.AddFavoriteRecipeMapper
@@ -40,6 +43,7 @@ import com.dreamsoftware.saborytv.data.repository.mapper.CreateUserMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.ProfileMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.SubscriptionMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.RecipeFilterDataMapper
+import com.dreamsoftware.saborytv.data.repository.mapper.RecipeMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.UpdateProfileRequestMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.UpdatedUserRequestMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.UserDetailMapper
@@ -51,6 +55,7 @@ import com.dreamsoftware.saborytv.domain.model.CategoryBO
 import com.dreamsoftware.saborytv.domain.model.ChefProfileBO
 import com.dreamsoftware.saborytv.domain.model.CreateProfileRequestBO
 import com.dreamsoftware.saborytv.domain.model.ProfileBO
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import com.dreamsoftware.saborytv.domain.model.SignUpBO
 import com.dreamsoftware.saborytv.domain.model.SubscriptionBO
 import com.dreamsoftware.saborytv.domain.model.RecipeFilterDataBO
@@ -62,6 +67,7 @@ import com.dreamsoftware.saborytv.domain.model.UserSubscriptionBO
 import com.dreamsoftware.saborytv.domain.repository.ICategoryRepository
 import com.dreamsoftware.saborytv.domain.repository.IChefProfilesRepository
 import com.dreamsoftware.saborytv.domain.repository.IProfilesRepository
+import com.dreamsoftware.saborytv.domain.repository.IRecipesRepository
 import com.dreamsoftware.saborytv.domain.repository.ISubscriptionsRepository
 import com.dreamsoftware.saborytv.domain.repository.IUserRepository
 import com.dreamsoftware.saborytv.utils.IMapper
@@ -115,7 +121,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideTrainingFilterDataMapper(): IOneSideMapper<RecipeFilterDataBO, RecipesFilterDTO> = RecipeFilterDataMapper()
+    fun provideTrainingFilterDataMapper(): IOneSideMapper<RecipeFilterDataBO, RecipeFilterDTO> = RecipeFilterDataMapper()
 
     @Provides
     @Singleton
@@ -136,6 +142,10 @@ class RepositoryModule {
     @Provides
     @Singleton
     fun provideUserPreferencesMapper(): IMapper<UserPreferencesDTO, UserPreferenceBO> = UserPreferencesMapper()
+
+    @Provides
+    @Singleton
+    fun provideRecipeMapper(): IOneSideMapper<Pair<ChefProfileDTO, RecipeDTO>, RecipeBO> = RecipeMapper()
 
     @Provides
     @Singleton
@@ -228,6 +238,27 @@ class RepositoryModule {
             subscriptionMapper,
             addUserSubscriptionMapper,
             userSubscriptionMapper,
+            dispatcher
+        )
+
+    @Provides
+    @Singleton
+    fun provideRecipesRepository(
+        recipesRemoteDataSource: IRecipesRemoteDataSource,
+        favoritesRemoteDataSource: IFavoritesRemoteDataSource,
+        chefProfileRemoteDataSource: IChefProfilesRemoteDataSource,
+        filterDataMapper: IOneSideMapper<RecipeFilterDataBO, RecipeFilterDTO>,
+        recipeMapper: IOneSideMapper<Pair<ChefProfileDTO, RecipeDTO>, RecipeBO>,
+       addFavoriteMapper: IOneSideMapper<AddFavoriteRecipeBO, AddFavoriteRecipeDTO>,
+        @IoDispatcher dispatcher: CoroutineDispatcher
+    ): IRecipesRepository =
+        RecipesRepositoryImpl(
+            recipesRemoteDataSource,
+            favoritesRemoteDataSource,
+            chefProfileRemoteDataSource,
+            filterDataMapper,
+            recipeMapper,
+            addFavoriteMapper,
             dispatcher
         )
 }

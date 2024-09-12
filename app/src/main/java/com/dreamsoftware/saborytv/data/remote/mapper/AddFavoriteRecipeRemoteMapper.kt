@@ -8,13 +8,11 @@ internal class AddFavoriteRecipeRemoteMapper:
 
     private companion object {
         const val ID_KEY = "id"
-        const val TYPE_KEY = "type"
     }
 
     override fun mapInToOut(input: AddFavoriteRecipeDTO): Map<String, Any?> = with(input) {
         hashMapOf(
-            ID_KEY to id,
-            TYPE_KEY to type
+            ID_KEY to id
         )
     }
 

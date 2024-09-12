@@ -1,6 +1,6 @@
 package com.dreamsoftware.saborytv.data.repository.mapper
 
-import com.dreamsoftware.saborytv.data.remote.dto.request.RecipesFilterDTO
+import com.dreamsoftware.saborytv.data.remote.dto.request.RecipeFilterDTO
 import com.dreamsoftware.saborytv.domain.model.LanguageEnum
 import com.dreamsoftware.saborytv.domain.model.DifficultyEnum
 import com.dreamsoftware.saborytv.domain.model.SortTypeEnum
@@ -8,9 +8,9 @@ import com.dreamsoftware.saborytv.domain.model.RecipeFilterDataBO
 import com.dreamsoftware.saborytv.domain.model.VideoLengthEnum
 import com.dreamsoftware.saborytv.utils.IOneSideMapper
 
-internal class RecipeFilterDataMapper: IOneSideMapper<RecipeFilterDataBO, RecipesFilterDTO> {
-    override fun mapInToOut(input: RecipeFilterDataBO): RecipesFilterDTO = with(input) {
-        RecipesFilterDTO(
+internal class RecipeFilterDataMapper: IOneSideMapper<RecipeFilterDataBO, RecipeFilterDTO> {
+    override fun mapInToOut(input: RecipeFilterDataBO): RecipeFilterDTO = with(input) {
+        RecipeFilterDTO(
             language = language.takeIf { it != LanguageEnum.NOT_SET }?.value,
             type = type.value,
             difficulty = difficulty.takeIf { it != DifficultyEnum.NOT_SET }?.value,
@@ -21,6 +21,6 @@ internal class RecipeFilterDataMapper: IOneSideMapper<RecipeFilterDataBO, Recipe
         )
     }
 
-    override fun mapInListToOutList(input: Iterable<RecipeFilterDataBO>): Iterable<RecipesFilterDTO> =
+    override fun mapInListToOutList(input: Iterable<RecipeFilterDataBO>): Iterable<RecipeFilterDTO> =
         input.map(::mapInToOut)
 }
