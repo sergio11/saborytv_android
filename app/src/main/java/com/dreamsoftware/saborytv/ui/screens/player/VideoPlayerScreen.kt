@@ -5,8 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.dreamsoftware.fudge.component.FudgeTvScreen
 
 data class VideoPlayerScreenArgs(
-    val id: String,
-    val type: TrainingTypeEnum
+    val id: String
 )
 
 @Composable
@@ -21,7 +20,7 @@ fun VideoPlayerScreen(
         onInitialUiState = { VideoPlayerUiState() },
         onInit = {
             with(args) {
-                fetchData(id = id, type = type)
+                fetchData(id = id)
             }
         }
     ) { uiState ->

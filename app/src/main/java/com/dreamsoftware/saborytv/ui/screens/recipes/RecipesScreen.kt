@@ -7,14 +7,14 @@ import com.dreamsoftware.fudge.component.FudgeTvScreen
 @Composable
 fun RecipesScreen(
     viewModel: RecipesViewModel = hiltViewModel(),
-    onGoToRecipeDetail: (String, TrainingTypeEnum) -> Unit
+    onGoToRecipeDetail: (String) -> Unit
 ) {
     FudgeTvScreen(
         viewModel = viewModel,
         onInitialUiState = { RecipesUiState() },
         onSideEffect = {
             when(it) {
-                is RecipesSideEffects.OpenRecipeProgramDetail -> onGoToRecipeDetail(it.id, it.type)
+                is RecipesSideEffects.OpenRecipeProgramDetail -> onGoToRecipeDetail(it.id)
             }
         },
         onInit = {

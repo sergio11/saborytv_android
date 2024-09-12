@@ -12,6 +12,7 @@ import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
 import com.dreamsoftware.fudge.core.UiState
 import com.dreamsoftware.saborytv.domain.model.RecipeBO
+import com.dreamsoftware.saborytv.domain.model.RecipeTypeEnum
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -29,12 +30,12 @@ class RecipeDetailViewModel @Inject constructor(
         executeUseCaseWithParams(
             useCase = verifyRecipeInFavoritesUseCase,
             params = VerifyRecipeInFavoritesUseCase.Params(recipeId = id),
-            onSuccess = ::onVerifyTrainingInFavoritesCompleted
+            onSuccess = ::onVerifyRecipeInFavoritesCompleted
         )
         executeUseCaseWithParams(
             useCase = getRecipeByIdUseCase,
             params = GetRecipeByIdUseCase.Params(id),
-            onSuccess = ::onGetRecipeProgramByIdSuccessfully
+            onSuccess = ::onGetRecipeByIdSuccessfully
         )
     }
 
@@ -58,7 +59,7 @@ class RecipeDetailViewModel @Inject constructor(
                     params = RemoveFavoriteRecipeUseCase.Params(
                         recipesId = id
                     ),
-                    onSuccess = ::onChangeFavoriteTrainingCompleted
+                    onSuccess = ::onChangeFavoriteRecipeCompleted
                 )
             } else {
                 executeUseCaseWithParams(
@@ -66,23 +67,23 @@ class RecipeDetailViewModel @Inject constructor(
                     params = AddFavoriteRecipeUseCase.Params(
                         id = id
                     ),
-                    onSuccess = ::onChangeFavoriteTrainingCompleted
+                    onSuccess = ::onChangeFavoriteRecipeCompleted
                 )
             }
         }
     }
 
-    private fun onChangeFavoriteTrainingCompleted(isSuccess: Boolean) {
+    private fun onChangeFavoriteRecipeCompleted(isSuccess: Boolean) {
         if(isSuccess) {
             updateState { it.copy(isFavorite = !it.isFavorite) }
         }
     }
 
-    private fun onVerifyTrainingInFavoritesCompleted(isFavorite: Boolean) {
+    private fun onVerifyRecipeInFavoritesCompleted(isFavorite: Boolean) {
         updateState { it.copy(isFavorite = isFavorite) }
     }
 
-    private fun onGetRecipeProgramByIdSuccessfully(recipeBO: RecipeBO) {
+    private fun onGetRecipeByIdSuccessfully(recipeBO: RecipeBO) {
         updateState {
             with(recipeBO) {
                 it.copy(
@@ -90,6 +91,7 @@ class RecipeDetailViewModel @Inject constructor(
                     title = title,
                     description = description,
                     id = id,
+                    type = type,
                     itemsInfo = buildList {
                         add(RecipeInfoItem(info = "$preparationTime min", labelRes = R.string.length))
                         add(RecipeInfoItem(info = difficulty.value, labelRes = R.string.intensity))
@@ -118,33 +120,18 @@ data class RecipeDetailUiState(
     val description: String = String.EMPTY,
     val imageUrl: String = String.EMPTY,
     val id: String = String.EMPTY,
+    val type: RecipeTypeEnum = RecipeTypeEnum.VEGETARIAN,
     val itemsInfo: List<RecipeInfoItem> = listOf(),
     val isFavorite: Boolean = false,
-    val challengePages: List<TrainingDetailPages> = listOf(
-        TrainingDetailPages.DetailDetails,
-        TrainingDetailPages.DetailTabs
-    )
 ): UiState<RecipeDetailUiState>(isLoading, errorMessage) {
 
     override fun copyState(isLoading: Boolean, errorMessage: String?): RecipeDetailUiState =
         copy(isLoading = isLoading, errorMessage = errorMessage)
 
-    data class ChallengeWorkoutItemUiState(
-        val id: String,
-        val imageUrl: String,
-        val title: String,
-        val time: String,
-        val typeText: String,
-    )
     data class RecipeInfoItem(
         val info: String = String.EMPTY,
         @StringRes val labelRes: Int
     )
-}
-
-sealed class TrainingDetailPages {
-    data object DetailDetails : TrainingDetailPages()
-    data object DetailTabs : TrainingDetailPages()
 }
 
 sealed interface RecipeDetailSideEffects: SideEffect {
