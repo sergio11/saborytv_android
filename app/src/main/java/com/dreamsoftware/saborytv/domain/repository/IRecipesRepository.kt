@@ -16,7 +16,7 @@ import com.dreamsoftware.saborytv.domain.model.RecipeFilterDataBO
 interface IRecipesRepository {
 
     @Throws(FetchRecipesException::class)
-    suspend fun getRecipes(data: RecipeFilterDataBO, includePremium: Boolean = false): Iterable<RecipeBO>
+    suspend fun getRecipes(filter: RecipeFilterDataBO, includePremium: Boolean = false): Iterable<RecipeBO>
 
     @Throws(FetchRecipeByIdException::class)
     suspend fun getRecipeById(id: String): RecipeBO

@@ -27,6 +27,9 @@ class VerifyHasActiveSubscriptionRemoteException(message: String? = null, cause:
 // Recipes
 class FetchRecipesRemoteException(message: String? = null, cause: Throwable? = null): RemoteDataSourceException(message, cause)
 class FetchRecipeByIdRemoteException(message: String? = null, cause: Throwable? = null): RemoteDataSourceException(message, cause)
+class FetchRecipeByCategoryRemoteException(message: String? = null, cause: Throwable? = null): RemoteDataSourceException(message, cause)
+class FetchFeaturedRecipesRemoteException(message: String? = null, cause: Throwable? = null): RemoteDataSourceException(message, cause)
+class FetchRecommendedRecipesRemoteException(message: String? = null, cause: Throwable? = null): RemoteDataSourceException(message, cause)
 
 // Profiles
 class FetchProfilesRemoteException(message: String? = null, cause: Throwable? = null): RemoteDataSourceException(message, cause)
