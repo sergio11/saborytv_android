@@ -16,7 +16,7 @@
 
     <!-- Dashboard Items -->
     <string name="dashboard_navigation_drawer_home_item_name">Home</string>
-    <string name="dashboard_navigation_drawer_training_item_name">Training</string>
+    <string name="dashboard_navigation_drawer_recipes_item_name">Recipes</string>
     <string name="dashboard_navigation_drawer_favorite_item_name">Favorite</string>
     <string name="dashboard_navigation_drawer_settings_item_name">Settings</string>
     <string name="dashboard_navigation_drawer_profile_item_name">Profile</string>
@@ -70,17 +70,17 @@
     <string name="favorites_screen_title">Favorites</string>
     <string name="favorites_not_workout_available">No favorite recipes available yet. Explore and add your favorites to build your personal recipe collection!</string>
 
-    <!-- Trainings -->
-    <string name="trainings_not_programs_available">No training programs available</string>
+    <!-- Recipes -->
+    <string name="recipes_not_available">No recipes available</string>
 
-    <!-- Instructor Detail -->
-    <string name="instructor_detail_title">Instructor Details</string>
-    <string name="instructor_detail_not_available">Instructor details are not available at the moment.</string>
+    <!-- Chef Profile Detail -->
+    <string name="chef_profile_detail_title">Chef Profile Details</string>
+    <string name="chef_profile_detail_not_available">Chef Profile details are not available at the moment.</string>
 
     <!-- Category Detail -->
-    <string name="category_detail_trainings_title" formatted="false">"%s" Trainings</string>
-    <string name="category_detail_trainings_title_default">Trainings</string>
-    <string name="category_detail_no_trainings_available">No training programs available in this category. Please check back later or explore other categories.</string>
+    <string name="category_detail_recipes_title" formatted="false">"%s" Recipes</string>
+    <string name="category_detail_recipes_title_default">Recipes</string>
+    <string name="category_detail_no_recipes_available">No recipes available in this category. Please check back later or explore other categories.</string>
 
     <!-- Save Profile -->
     <string name="create_profile_main_title">Create Your New Profile!</string>
@@ -147,7 +147,6 @@
     <string name="categories">Explore Categories</string>
     <string name="recommended_for_you">Recommended for You</string>
     <string name="image">View Image %1$s</string>
-    <string name="song_image">Discover Song Image</string>
     <string name="set_up_daily_reminder">Set Up Daily Reminders</string>
     <string name="recommend_schedule">Get Your Recommended Schedule</string>
 
@@ -173,7 +172,7 @@
     <string name="intensity">Intensity</string>
     <string name="minutes_per_day">Minutes per Day</string>
     <string name="challenge_details">Challenge Details</string>
-    <string name="no_instructor_set">Not set</string>
+    <string name="no_chef_profile_set">Not set</string>
 
     <!-- Splash -->
     <string name="splash_main_title_text">Cooking Up Your SaboryTV Experience!</string>
@@ -214,11 +213,11 @@
     <string name="add_subscription_completed_dialog_title">Subscription Activated!</string>
     <string name="add_subscription_completed_dialog_description">Congratulations! You’ve just unlocked a world of exclusive recipes and premium content. Get ready to elevate your cooking experience to the next level. Let’s cook!</string>
 
-    <!-- Training Types -->
-    <string name="training_type_workout_name">Workout</string>
-    <string name="training_type_series_name">Series</string>
-    <string name="training_type_challenges_name">Challenges</string>
-    <string name="training_type_routines_name">Routines</string>
+    <!-- Recipe Types -->
+    <string name="recipe_type_vegetarian_name">Vegetarian</string>
+    <string name="recipe_type_vegan_name">Vegan</string>
+    <string name="recipe_type_gluten_free_name">Gluten-Free</string>
+    <string name="recipe_type_high_protein_name">High Protein</string>
 
     <!-- Miscellaneous -->
     <string name="no_text_value">--</string>

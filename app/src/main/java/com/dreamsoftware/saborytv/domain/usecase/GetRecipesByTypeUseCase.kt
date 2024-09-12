@@ -1,6 +1,6 @@
 package com.dreamsoftware.saborytv.domain.usecase
 
-import com.dreamsoftware.saborytv.domain.model.ClassLanguageEnum
+import com.dreamsoftware.saborytv.domain.model.LanguageEnum
 import com.dreamsoftware.saborytv.domain.model.SortTypeEnum
 import com.dreamsoftware.saborytv.domain.model.RecipeFilterDataBO
 import com.dreamsoftware.saborytv.domain.model.VideoLengthEnum
@@ -29,7 +29,7 @@ class GetRecipesByTypeUseCase(
 
     private fun Params.toRecipeFilterData() = RecipeFilterDataBO(
         type = type,
-        classLanguage = classLanguage,
+        language = classLanguage,
         difficulty = difficulty,
         videoLength = videoLength,
         sortType = sortType,
@@ -38,7 +38,7 @@ class GetRecipesByTypeUseCase(
 
     data class Params(
         val type: RecipeTypeEnum,
-        val classLanguage: ClassLanguageEnum,
+        val classLanguage: LanguageEnum,
         val difficulty: DifficultyEnum,
         val videoLength: VideoLengthEnum,
         val sortType: SortTypeEnum,

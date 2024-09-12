@@ -150,7 +150,7 @@ private fun RecipesList(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(400.dp),
-                        messageRes = R.string.trainings_not_programs_available
+                        messageRes = R.string.recipes_not_available
                     )
                 }
                 AnimatedVisibility(

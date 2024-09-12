@@ -1,11 +1,11 @@
 package com.dreamsoftware.saborytv.data.remote.dto.request
 
-data class TrainingFilterDTO(
-    val classLanguage: String?,
-    val workoutType: String?,
-    val intensity: String?,
+data class RecipesFilterDTO(
+    val type: String?,
+    val language: String?,
+    val difficulty: String?,
     val videoLength: IntRange?,
-    val instructor: String?,
+    val chefProfile: String?,
     val orderByReleasedDateDesc: Boolean = true,
     val priorityFeatured: Boolean = false
 )
