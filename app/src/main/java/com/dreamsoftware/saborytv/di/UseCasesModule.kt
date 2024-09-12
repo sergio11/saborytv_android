@@ -87,7 +87,7 @@ class UseCasesModule {
         GetRecipesRecommendedUseCase(
             userRepository = userRepository,
             subscriptionsRepository = subscriptionsRepository,
-            trainingRepository = trainingRepository
+            recipesRepository = trainingRepository
         )
 
     @Provides
@@ -157,7 +157,7 @@ class UseCasesModule {
         GetFeaturedRecipesUseCase(
             userRepository = userRepository,
             subscriptionsRepository = subscriptionsRepository,
-            trainingRepository = trainingRepository
+            recipesRepository = trainingRepository
         )
 
     @Provides
@@ -309,7 +309,7 @@ class UseCasesModule {
         GetFavoritesRecipesByUserUseCase(
             userRepository = userRepository,
             profileRepository = profileRepository,
-            trainingRepository = trainingRepository
+            recipesRepository = trainingRepository
         )
 
     @Provides

@@ -10,8 +10,7 @@ internal class AddFavoriteRecipeMapper :
     override fun mapInToOut(input: AddFavoriteRecipeBO): AddFavoriteRecipeDTO = with(input) {
         AddFavoriteRecipeDTO(
             profileId = profileId,
-            id = id,
-            type = type.name
+            id = id
         )
     }
 

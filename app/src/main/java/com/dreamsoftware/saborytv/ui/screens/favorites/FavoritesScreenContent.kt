@@ -39,7 +39,6 @@ import com.dreamsoftware.saborytv.ui.theme.popupShadow
 import com.dreamsoftware.saborytv.ui.theme.surfaceContainerHigh
 import com.dreamsoftware.saborytv.ui.theme.surfaceVariant
 import com.dreamsoftware.saborytv.ui.utils.getStartButtonID
-import com.dreamsoftware.saborytv.ui.utils.toTrainingType
 import com.dreamsoftware.fudge.component.FudgeTvButton
 import com.dreamsoftware.fudge.component.FudgeTvButtonStyleTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvButtonTypeEnum
@@ -52,6 +51,8 @@ import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
 import com.dreamsoftware.fudge.utils.conditional
 import com.dreamsoftware.fudge.utils.shadowBox
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
+import com.dreamsoftware.saborytv.ui.utils.formatTimeAndType
 
 @Composable
 internal fun FavoritesScreenContent(
@@ -88,17 +89,19 @@ internal fun FavoritesScreenContent(
                             verticalArrangement = Arrangement.spacedBy(24.dp)
                         ) {
                             itemsIndexed(items = recipes, key = { _, item -> item.id }) { idx, item ->
-                                FudgeTvCard(modifier = Modifier
-                                    .conditional(condition = idx == 0, ifTrue = {
-                                        focusRequester(focusRequester)
-                                    }),
-                                    imageUrl = item.imageUrl,
-                                    title = item.name,
-                                    timeText = item.duration,
-                                    typeText = item.intensity.level,
-                                    onClick = {
-                                        actionListener.onRecipeSelected(item)
-                                    })
+                                with(item) {
+                                    FudgeTvCard(modifier = Modifier
+                                        .conditional(condition = idx == 0, ifTrue = {
+                                            focusRequester(focusRequester)
+                                        }),
+                                        imageUrl = imageUrl,
+                                        title = title,
+                                        timeText = preparationTime.toString(),
+                                        typeText = item.difficulty.value,
+                                        onClick = {
+                                            actionListener.onRecipeSelected(item)
+                                        })
+                                }
                             }
                         }
                     }
@@ -112,9 +115,9 @@ internal fun FavoritesScreenContent(
                         ),
                     ) {
                         recipeProgramSelected?.let {
-                            TrainingProgramDetailsPopup(
-                                trainingProgram = it,
-                                onStartTrainingProgram = actionListener::onRecipeStarted,
+                            RecipeProgramDetailsPopup(
+                                recipeProgram = it,
+                                onStartRecipeProgram = actionListener::onRecipeStarted,
                                 onRemoveFromFavorites = actionListener::onRecipeRemovedFromFavorites,
                                 onBackPressed = actionListener::onDismissRequest
                             )
@@ -127,9 +130,9 @@ internal fun FavoritesScreenContent(
 }
 
 @Composable
-private fun TrainingProgramDetailsPopup(
-    trainingProgram: ITrainingProgramBO,
-    onStartTrainingProgram: (id: String) -> Unit,
+private fun RecipeProgramDetailsPopup(
+    recipeProgram: RecipeBO,
+    onStartRecipeProgram: (id: String) -> Unit,
     onRemoveFromFavorites: (id: String) -> Unit,
     onBackPressed: () -> Unit
 ) {
@@ -152,7 +155,7 @@ private fun TrainingProgramDetailsPopup(
                         .fillMaxWidth()
                         .fillMaxHeight(0.5f)
                         .alpha(0.88f),
-                    model = trainingProgram.imageUrl,
+                    model = recipeProgram.imageUrl,
                     contentDescription = null,
                     contentScale = ContentScale.Crop
                 )
@@ -169,7 +172,7 @@ private fun TrainingProgramDetailsPopup(
                         type = FudgeTvTextTypeEnum.HEADLINE_SMALL,
                         textColor = onSurface,
                         textAlign = TextAlign.Justify,
-                        titleText = trainingProgram.name,
+                        titleText = recipeProgram.title,
                         overflow = TextOverflow.Ellipsis,
                     )
                     Row(
@@ -182,7 +185,7 @@ private fun TrainingProgramDetailsPopup(
                         FudgeTvText(
                             modifier = Modifier,
                             type = FudgeTvTextTypeEnum.LABEL_MEDIUM,
-                            titleText = "${trainingProgram.duration} | ${trainingProgram.intensity.value} ",
+                            titleText = recipeProgram.formatTimeAndType(),
                             textColor = onSurface,
                             overflow = TextOverflow.Ellipsis,
                             softWrap = true,
@@ -190,7 +193,7 @@ private fun TrainingProgramDetailsPopup(
                         )
                     }
                     FudgeTvText(
-                        titleText = trainingProgram.description,
+                        titleText = recipeProgram.description,
                         modifier = Modifier.padding(bottom = 28.dp),
                         type = FudgeTvTextTypeEnum.BODY_SMALL,
                         textColor = Color.LightGray,
@@ -205,9 +208,9 @@ private fun TrainingProgramDetailsPopup(
                             .padding(bottom = 12.dp),
                         type = FudgeTvButtonTypeEnum.MEDIUM,
                         style = FudgeTvButtonStyleTypeEnum.NORMAL,
-                        textRes = trainingProgram.toTrainingType().getStartButtonID()
+                        textRes = recipeProgram.type.getStartButtonID()
                     ) {
-                        onStartTrainingProgram(trainingProgram.id)
+                        onStartRecipeProgram(recipeProgram.id)
                     }
                     FudgeTvButton(
                         modifier = Modifier
@@ -217,7 +220,7 @@ private fun TrainingProgramDetailsPopup(
                         style = FudgeTvButtonStyleTypeEnum.INVERSE,
                         textRes = R.string.remove_from_favorites
                     ) {
-                        onRemoveFromFavorites(trainingProgram.id)
+                        onRemoveFromFavorites(recipeProgram.id)
                     }
                 }
             }
