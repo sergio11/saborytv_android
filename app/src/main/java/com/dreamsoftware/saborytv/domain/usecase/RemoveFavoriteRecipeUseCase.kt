@@ -6,17 +6,17 @@ import com.dreamsoftware.fudge.core.FudgeTvUseCaseWithParams
 
 class RemoveFavoriteRecipeUseCase(
     private val userRepository: IUserRepository,
-    private val trainingRepository: IRecipesRepository
+    private val recipesRepository: IRecipesRepository
 ): FudgeTvUseCaseWithParams<RemoveFavoriteRecipeUseCase.Params, Boolean>() {
 
     override suspend fun onExecuted(params: Params) = with(params) {
-        trainingRepository.removeFavoriteRecipe(
+        recipesRepository.removeFavoriteRecipe(
             profileId = userRepository.getAuthenticatedUid(),
-            recipeId = trainingId
+            recipeId = recipesId
         )
     }
 
     data class Params(
-        val trainingId: String
+        val recipesId: String
     )
 }

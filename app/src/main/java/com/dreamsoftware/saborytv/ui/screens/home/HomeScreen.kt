@@ -26,8 +26,8 @@ fun HomeScreen(
         onInitialUiState = { HomeUiState() },
         onSideEffect = {
             when(it) {
-                is HomeSideEffects.OpenTrainingCategory -> onOpenTrainingCategory(it.categoryId)
-                is HomeSideEffects.OpenTrainingProgram -> onOpenTrainingProgram(it.id, it.type )
+                is HomeSideEffects.OpenRecipesCategory -> onOpenTrainingCategory(it.categoryId)
+                is HomeSideEffects.OpenRecipeDetail -> onOpenTrainingProgram(it.id, it.type )
                 HomeSideEffects.NoActivePremiumSubscription -> onGoToSubscriptions()
             }
         },

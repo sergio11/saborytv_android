@@ -28,21 +28,21 @@ class FavoritesViewModel @Inject constructor(
         )
     }
 
-    override fun onRecipeProgramSelected(recipe: RecipeBO) {
+    override fun onRecipeSelected(recipe: RecipeBO) {
         updateState { it.copy(recipeProgramSelected = recipe) }
     }
 
-    override fun onRecipeProgramStarted(id: String) {
+    override fun onRecipeStarted(id: String) {
         uiState.value.recipeProgramSelected?.let { trainingProgramSelected ->
             updateState { it.copy(recipeProgramSelected = null) }
             launchSideEffect(FavoritesSideEffects.OpenRecipeProgramDetail(id = trainingProgramSelected.id))
         }
     }
 
-    override fun onRecipeProgramRemovedFromFavorites(id: String) {
+    override fun onRecipeRemovedFromFavorites(id: String) {
         executeUseCaseWithParams(
             useCase = removeFavoriteRecipeUseCase,
-            params = RemoveFavoriteRecipeUseCase.Params(trainingId = id),
+            params = RemoveFavoriteRecipeUseCase.Params(recipesId = id),
             onSuccess = ::onRecipeProgramRemovedFromFavoritesCompletedSuccessfully
         )
     }

@@ -1,14 +1,14 @@
 package com.dreamsoftware.saborytv.ui.screens.home
 
+import com.dreamsoftware.fudge.core.FudgeTvViewModel
+import com.dreamsoftware.fudge.core.SideEffect
+import com.dreamsoftware.fudge.core.UiState
 import com.dreamsoftware.saborytv.domain.model.CategoryBO
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import com.dreamsoftware.saborytv.domain.usecase.GetCategoriesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetFeaturedRecipesUseCase
 import com.dreamsoftware.saborytv.domain.usecase.GetRecipesRecommendedUseCase
 import com.dreamsoftware.saborytv.domain.usecase.HasActiveSubscriptionUseCase
-import com.dreamsoftware.saborytv.ui.utils.toTrainingType
-import com.dreamsoftware.fudge.core.FudgeTvViewModel
-import com.dreamsoftware.fudge.core.SideEffect
-import com.dreamsoftware.fudge.core.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -23,30 +23,30 @@ class HomeViewModel @Inject constructor(
     override fun onGetDefaultState(): HomeUiState = HomeUiState()
 
     fun fetchData() {
-        fetchFeaturedTrainings()
+        fetchFeaturedRecipes()
         fetchCategories()
-        fetchTrainingsRecommended()
+        fetchRecipesRecommended()
         verifyHasActiveSubscription()
     }
 
-    private fun fetchFeaturedTrainings() {
-        executeUseCase(useCase = getFeaturedRecipesUseCase, onSuccess = ::onGetFeaturedTrainingsSuccessfully)
+    private fun fetchFeaturedRecipes() {
+        executeUseCase(useCase = getFeaturedRecipesUseCase, onSuccess = ::onGetFeaturedRecipesSuccessfully)
     }
 
     private fun fetchCategories() {
         executeUseCase(useCase = getCategoriesUseCase, onSuccess = ::onGetCategoriesSuccessfully)
     }
 
-    private fun fetchTrainingsRecommended() {
-        executeUseCase(useCase = getRecipesRecommendedUseCase, onSuccess = ::onGetTrainingsRecommendedSuccessfully)
+    private fun fetchRecipesRecommended() {
+        executeUseCase(useCase = getRecipesRecommendedUseCase, onSuccess = ::onGetRecipesRecommendedSuccessfully)
     }
 
     private fun verifyHasActiveSubscription() {
         executeUseCase(useCase = hasActiveSubscriptionUseCase, onSuccess = ::onVerifyHasActiveSubscriptionCompleted)
     }
 
-    private fun onGetFeaturedTrainingsSuccessfully(trainings: List<ITrainingProgramBO>) {
-        updateState { it.copy(featuredTrainings = trainings) }
+    private fun onGetFeaturedRecipesSuccessfully(recipes: List<RecipeBO>) {
+        updateState { it.copy(featuredRecipes = recipes) }
     }
 
     private fun onVerifyHasActiveSubscriptionCompleted(hasActiveSubscription: Boolean){
@@ -59,21 +59,18 @@ class HomeViewModel @Inject constructor(
         updateState { it.copy(categories = categories) }
     }
 
-    private fun onGetTrainingsRecommendedSuccessfully(trainingsRecommended: List<ITrainingProgramBO>) {
-        updateState { it.copy(recommended = trainingsRecommended) }
+    private fun onGetRecipesRecommendedSuccessfully(recipesRecommended: List<RecipeBO>) {
+        updateState { it.copy(recommended = recipesRecommended) }
     }
 
-    override fun onOpenTrainingProgram(trainingProgram: ITrainingProgramBO) {
-        with(trainingProgram) {
-            launchSideEffect(HomeSideEffects.OpenTrainingProgram(
-                id = id,
-                type = toTrainingType()
-            ))
+    override fun onOpenRecipeDetail(recipe: RecipeBO) {
+        with(recipe) {
+            launchSideEffect(HomeSideEffects.OpenRecipeDetail(id = id))
         }
     }
 
     override fun onCategorySelected(categoryId: String) {
-        launchSideEffect(HomeSideEffects.OpenTrainingCategory(categoryId))
+        launchSideEffect(HomeSideEffects.OpenRecipesCategory(categoryId))
     }
 }
 
@@ -81,15 +78,15 @@ data class HomeUiState(
     override val isLoading: Boolean = false,
     override val errorMessage: String? = null,
     val categories: List<CategoryBO> = listOf(),
-    val featuredTrainings: List<ITrainingProgramBO> = emptyList(),
-    val recommended: List<ITrainingProgramBO> = listOf()
+    val featuredRecipes: List<RecipeBO> = emptyList(),
+    val recommended: List<RecipeBO> = listOf()
 ): UiState<HomeUiState>(isLoading, errorMessage) {
     override fun copyState(isLoading: Boolean, errorMessage: String?): HomeUiState =
         copy(isLoading = isLoading, errorMessage = errorMessage)
 }
 
 sealed interface HomeSideEffects: SideEffect {
-    data class OpenTrainingProgram(val id: String, val type: TrainingTypeEnum): HomeSideEffects
-    data class OpenTrainingCategory(val categoryId: String): HomeSideEffects
+    data class OpenRecipeDetail(val id: String): HomeSideEffects
+    data class OpenRecipesCategory(val categoryId: String): HomeSideEffects
     data object NoActivePremiumSubscription: HomeSideEffects
 }

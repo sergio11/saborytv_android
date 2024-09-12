@@ -24,10 +24,10 @@ fun MoreOptionsScreen(
         onInitialUiState = { MoreOptionsUiState() },
         onSideEffect = {
             when(it) {
-                MoreOptionsSideEffects.ExitFromMoreDetail -> onBackPressed()
-                is MoreOptionsSideEffects.PlayTrainingProgram -> onPlayTrainingProgram(it.id, it.type)
+                MoreOptionsSideEffects.CloseMoreInfoDetail -> onBackPressed()
+                is MoreOptionsSideEffects.PlayRecipeProgram -> onPlayTrainingProgram(it.id, it.type)
                 is MoreOptionsSideEffects.PlayTrainingSong -> onPlayTrainingSong(it.songId)
-                is MoreOptionsSideEffects.OpenInstructorDetail -> onOpenInstructorDetail(it.id)
+                is MoreOptionsSideEffects.OpenChefProfileDetail -> onOpenInstructorDetail(it.id)
             }
         },
         onInit = {
