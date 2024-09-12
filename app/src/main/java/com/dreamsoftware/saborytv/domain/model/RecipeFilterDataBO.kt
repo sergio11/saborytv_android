@@ -2,7 +2,7 @@ package com.dreamsoftware.saborytv.domain.model
 
 data class RecipeFilterDataBO(
     val type: RecipeTypeEnum,
-    val classLanguage: ClassLanguageEnum,
+    val language: LanguageEnum,
     val difficulty: DifficultyEnum,
     val videoLength: VideoLengthEnum,
     val sortType: SortTypeEnum,

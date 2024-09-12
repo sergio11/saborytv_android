@@ -36,7 +36,7 @@ internal fun CategoryDetailScreenContent(
             } else if(category != null && recipes.isEmpty()) {
                 FudgeTvNoContentState(
                     modifier = Modifier.fillMaxSize(),
-                    messageRes = R.string.category_detail_no_trainings_available
+                    messageRes = R.string.category_detail_no_recipes_available
                 )
             } else {
                 Column(
@@ -45,9 +45,9 @@ internal fun CategoryDetailScreenContent(
                     FudgeTvText(
                         modifier = Modifier.padding(bottom = 8.dp, top = 56.dp, start = 32.dp, end = 32.dp),
                         type = FudgeTvTextTypeEnum.HEADLINE_MEDIUM,
-                        titleRes = R.string.category_detail_trainings_title_default.takeUnless { category != null },
+                        titleRes = R.string.category_detail_recipes_title_default.takeUnless { category != null },
                         titleText = category?.let {
-                            stringResource(id = R.string.category_detail_trainings_title, it.title)
+                            stringResource(id = R.string.category_detail_recipes_title, it.title)
                         },
                         textBold = true
                     )
@@ -62,18 +62,20 @@ internal fun CategoryDetailScreenContent(
                             verticalArrangement = Arrangement.spacedBy(24.dp)
                         ) {
                             itemsIndexed(items = recipes, key = { _, item -> item.id }) { idx, item ->
-                                FudgeTvCard(modifier = Modifier
-                                    .conditional(condition = idx == 0, ifTrue = {
-                                        focusRequester(focusRequester)
-                                    }),
-                                    onClick = {
-                                        actionListener.onRecipeOpened(item)
-                                    },
-                                    imageUrl = item.imageUrl,
-                                    title = item.name,
-                                    timeText = item.duration,
-                                    typeText = item.intensity.value
-                                )
+                                with(item) {
+                                    FudgeTvCard(modifier = Modifier
+                                        .conditional(condition = idx == 0, ifTrue = {
+                                            focusRequester(focusRequester)
+                                        }),
+                                        onClick = {
+                                            actionListener.onRecipeOpened(item)
+                                        },
+                                        imageUrl = imageUrl,
+                                        title = title,
+                                        timeText = preparationTime.toString(),
+                                        typeText = difficulty.value
+                                    )
+                                }
                             }
                         }
                     }

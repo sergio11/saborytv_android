@@ -29,7 +29,7 @@ internal fun ChefProfileDetailScreenContent(
             } else if (chefProfileDetail == null) {
                 FudgeTvNoContentState(
                     modifier = Modifier.fillMaxSize(),
-                    messageRes = R.string.instructor_detail_not_available
+                    messageRes = R.string.chef_profile_detail_not_available
                 )
             } else {
                 Column(
@@ -38,7 +38,7 @@ internal fun ChefProfileDetailScreenContent(
                 ) {
                     FudgeTvText(
                         type = FudgeTvTextTypeEnum.HEADLINE_MEDIUM,
-                        titleRes = R.string.instructor_detail_title,
+                        titleRes = R.string.chef_profile_detail_title,
                         textBold = true
                     )
                     with(chefProfileDetail) {

@@ -4,15 +4,16 @@ import com.dreamsoftware.saborytv.domain.repository.ISubscriptionsRepository
 import com.dreamsoftware.saborytv.domain.repository.IRecipesRepository
 import com.dreamsoftware.saborytv.domain.repository.IUserRepository
 import com.dreamsoftware.fudge.core.FudgeTvUseCase
+import com.dreamsoftware.saborytv.domain.model.RecipeBO
 
 class GetFeaturedRecipesUseCase(
     private val userRepository: IUserRepository,
     private val subscriptionsRepository: ISubscriptionsRepository,
-    private val trainingRepository: IRecipesRepository
-) : FudgeTvUseCase<List<ITrainingProgramBO>>() {
-    override suspend fun onExecuted(): List<ITrainingProgramBO> {
+    private val recipesRepository: IRecipesRepository
+) : FudgeTvUseCase<List<RecipeBO>>() {
+    override suspend fun onExecuted(): List<RecipeBO> {
         val userUid = userRepository.getAuthenticatedUid()
         val hasActiveSubscription = subscriptionsRepository.hasActiveSubscription(userUid)
-        return trainingRepository.getFeaturedRecipes(includePremium = hasActiveSubscription).toList()
+        return recipesRepository.getFeaturedRecipes(includePremium = hasActiveSubscription).toList()
     }
 }

@@ -2,7 +2,7 @@ package com.dreamsoftware.saborytv.ui.screens.recipes
 
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.di.FavoritesScreenErrorMapper
-import com.dreamsoftware.saborytv.domain.model.ClassLanguageEnum
+import com.dreamsoftware.saborytv.domain.model.LanguageEnum
 import com.dreamsoftware.saborytv.domain.model.ChefProfileBO
 import com.dreamsoftware.saborytv.domain.model.SortTypeEnum
 import com.dreamsoftware.saborytv.domain.model.VideoLengthEnum
@@ -33,7 +33,7 @@ class RecipesViewModel @Inject constructor(
     private var chefProfile: String = String.EMPTY
     private var videoLength: VideoLengthEnum = VideoLengthEnum.NOT_SET
     private var difficulty: DifficultyEnum = DifficultyEnum.NOT_SET
-    private var classLanguage: ClassLanguageEnum = ClassLanguageEnum.NOT_SET
+    private var classLanguage: LanguageEnum = LanguageEnum.NOT_SET
     private var sortType: SortTypeEnum = SortTypeEnum.NOT_SET
 
     override fun onGetDefaultState(): RecipesUiState = RecipesUiState(
@@ -49,8 +49,8 @@ class RecipesViewModel @Inject constructor(
                 id = CLASS_LANGUAGE_FILTER,
                 icon = R.drawable.language_ic,
                 title = R.string.class_language,
-                description = ClassLanguageEnum.NOT_SET.value,
-                options = ClassLanguageEnum.entries.map { it.value }
+                description = LanguageEnum.NOT_SET.value,
+                options = LanguageEnum.entries.map { it.value }
             ),
             FudgeTvFilterVO(
                 id = DIFFICULTY_FILTER,
@@ -128,7 +128,7 @@ class RecipesViewModel @Inject constructor(
                     difficulty = DifficultyEnum.entries[currentIndex]
                 }
                 CLASS_LANGUAGE_FILTER -> {
-                    classLanguage = ClassLanguageEnum.entries[currentIndex]
+                    classLanguage = LanguageEnum.entries[currentIndex]
                 }
                 CHEF_PROFILE_FILTER -> {
                     chefProfile = chefProfiles.getOrNull(currentIndex)?.id.orEmpty()
@@ -143,7 +143,7 @@ class RecipesViewModel @Inject constructor(
                                 description = when(filter.id) {
                                     VIDEO_LENGTH_FILTER -> VideoLengthEnum.entries[currentIndex].value
                                     DIFFICULTY_FILTER -> DifficultyEnum.entries[currentIndex].value
-                                    CLASS_LANGUAGE_FILTER -> ClassLanguageEnum.entries[currentIndex].value
+                                    CLASS_LANGUAGE_FILTER -> LanguageEnum.entries[currentIndex].value
                                     else -> chefProfiles.getOrNull(currentIndex)?.name.orEmpty()
                                 }
                             )
@@ -208,7 +208,7 @@ class RecipesViewModel @Inject constructor(
 
     private fun onGetChefProfilesSuccessfully(chefProfileList: List<ChefProfileBO>) {
         chefProfiles = chefProfileList
-        val noChefProfileSet = applicationAware.getString(R.string.no_instructor_set)
+        val noChefProfileSet = applicationAware.getString(R.string.no_chef_profile_set)
         updateState {
             it.copy(
                 filterItems = it.filterItems.map { item ->
@@ -235,7 +235,7 @@ class RecipesViewModel @Inject constructor(
     private fun resetFilters() {
         videoLength = VideoLengthEnum.NOT_SET
         difficulty = DifficultyEnum.NOT_SET
-        classLanguage = ClassLanguageEnum.NOT_SET
+        classLanguage = LanguageEnum.NOT_SET
         chefProfile = String.EMPTY
         updateState {
             it.copy(
@@ -251,7 +251,7 @@ class RecipesViewModel @Inject constructor(
             description = when(item.id) {
                 VIDEO_LENGTH_FILTER -> VideoLengthEnum.NOT_SET.value
                 DIFFICULTY_FILTER -> DifficultyEnum.NOT_SET.value
-                CLASS_LANGUAGE_FILTER -> ClassLanguageEnum.NOT_SET.value
+                CLASS_LANGUAGE_FILTER -> LanguageEnum.NOT_SET.value
                 else -> String.EMPTY
             }
         )
@@ -270,10 +270,10 @@ data class RecipesUiState(
     val selectedTrainingFilter: FudgeTvFilterVO? = null,
     val selectedTab: Int = 0,
     val tabsTitle: List<Int> = listOf(
-        R.string.training_type_workout_name,
-        R.string.training_type_series_name,
-        R.string.training_type_challenges_name,
-        R.string.training_type_routines_name,
+        R.string.recipe_type_vegetarian_name,
+        R.string.recipe_type_vegan_name,
+        R.string.recipe_type_gluten_free_name,
+        R.string.recipe_type_high_protein_name,
     ),
     val typeSelected: RecipeTypeEnum = RecipeTypeEnum.VEGETARIAN,
     val focusTabIndex: Int = 0,

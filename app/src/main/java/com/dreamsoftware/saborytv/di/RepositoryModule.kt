@@ -16,7 +16,7 @@ import com.dreamsoftware.saborytv.data.remote.dto.request.AddFavoriteRecipeDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.AddUserSubscriptionDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.CreateProfileRequestDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.CreateUserDTO
-import com.dreamsoftware.saborytv.data.remote.dto.request.TrainingFilterDTO
+import com.dreamsoftware.saborytv.data.remote.dto.request.RecipesFilterDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.UpdatedProfileRequestDTO
 import com.dreamsoftware.saborytv.data.remote.dto.request.UpdatedUserRequestDTO
 import com.dreamsoftware.saborytv.data.remote.dto.response.CategoryDTO
@@ -39,7 +39,7 @@ import com.dreamsoftware.saborytv.data.repository.mapper.CreateProfileRequestMap
 import com.dreamsoftware.saborytv.data.repository.mapper.CreateUserMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.ProfileMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.SubscriptionMapper
-import com.dreamsoftware.saborytv.data.repository.mapper.TrainingFilterDataMapper
+import com.dreamsoftware.saborytv.data.repository.mapper.RecipeFilterDataMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.UpdateProfileRequestMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.UpdatedUserRequestMapper
 import com.dreamsoftware.saborytv.data.repository.mapper.UserDetailMapper
@@ -115,7 +115,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideTrainingFilterDataMapper(): IOneSideMapper<RecipeFilterDataBO, TrainingFilterDTO> = TrainingFilterDataMapper()
+    fun provideTrainingFilterDataMapper(): IOneSideMapper<RecipeFilterDataBO, RecipesFilterDTO> = RecipeFilterDataMapper()
 
     @Provides
     @Singleton
