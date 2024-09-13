@@ -92,7 +92,7 @@ internal fun MoreOptionsScreenContent(
                             top.linkTo(favoritesButton.bottom, margin = 12.dp)
                             start.linkTo(startButton.start)
                         },
-                        textRes = R.string.view_instructor,
+                        textRes = R.string.view_chef_profile,
                         icon = R.drawable.ic_chef_profile,
                         onClick = actionListener::onOpenChefProfileDetail
                     )

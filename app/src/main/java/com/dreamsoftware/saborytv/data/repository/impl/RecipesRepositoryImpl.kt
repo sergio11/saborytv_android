@@ -122,9 +122,7 @@ internal class RecipesRepositoryImpl(
     @Throws(FetchFavoritesRecipesByUserException::class)
     override suspend fun getFavoritesRecipesByProfile(profileId: String): List<RecipeBO> = safeExecute {
         try {
-            favoritesRemoteDataSource.getFavoritesByUser(profileId).parallelMap {
-                getRecipeById(id = it.id)
-            }
+            favoritesRemoteDataSource.getFavoritesByUser(profileId).parallelMap { getRecipeById(id = it.id) }
         } catch (ex: GetFavoritesByUserRemoteException) {
             throw FetchFavoritesRecipesByUserException(
                 "An error occurred when fetching favorites",

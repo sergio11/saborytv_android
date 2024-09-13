@@ -183,7 +183,7 @@ private fun CarouselItemForeground(
             AnimatedVisibility(visible = isCarouselFocused) {
                 FudgeTvButton(
                     type = FudgeTvButtonTypeEnum.LARGE,
-                    style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
+                    style = FudgeTvButtonStyleTypeEnum.NORMAL,
                     textRes = R.string.start_session,
                     onClick = onOpenRecipeDetail
                 )
@@ -223,7 +223,7 @@ private fun CarouselItemBackground(recipe: RecipeBO, modifier: Modifier = Modifi
                         Brush.radialGradient(
                             colors = listOf(
                                 surface.copy(alpha = 0.1f),
-                                surface,
+                                surface.copy(alpha = 0.95f),
                             ),
                             center = Offset(sizeCard.width, -(sizeCard.width * .35F)),
                             radius = sizeCard.width * .75f,

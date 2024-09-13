@@ -12,7 +12,7 @@ interface RecipesScreenActionListener: IFudgeTvScreenActionListener {
     fun onDismissFilterSideMenu()
     fun onFilterCleared()
     fun onDismissFieldFilterSideMenu()
-    fun onFilterFieldSelected(trainingFilter: FudgeTvFilterVO)
+    fun onFilterFieldSelected(filter: FudgeTvFilterVO)
     fun onSelectedSortedItem(currentIndex: Int)
     fun onSelectedFilterOption(currentIndex: Int)
     fun onChangeSelectedTab(index: Int)
