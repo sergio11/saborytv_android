@@ -155,7 +155,7 @@ private fun FavouriteButton(isFavorite: Boolean, onClick: () -> Unit) {
             Icon(
                 painter = painterResource(
                     if (isFavorite)
-                        R.drawable.favorite
+                        R.drawable.ic_favorite
                     else
                         R.drawable.fav_icon
                 ),

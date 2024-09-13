@@ -39,7 +39,6 @@ internal fun MoreOptionsScreenContent(
                         backRowSchema,
                         startButton,
                         favoritesButton,
-                        moreInfoButton,
                         viewInstructorButton,
                         shareButton
                     ) = createRefs()
@@ -82,7 +81,7 @@ internal fun MoreOptionsScreenContent(
                             R.string.add_to_favorites
                         },
                         icon = if (isFavorite) {
-                            R.drawable.favorite
+                            R.drawable.ic_favorite
                         } else {
                             R.drawable.ic_outline_favorite
                         },
@@ -90,11 +89,11 @@ internal fun MoreOptionsScreenContent(
                     )
                     FudgeTvMoreOptionsButton(
                         modifier = Modifier.constrainAs(viewInstructorButton) {
-                            top.linkTo(moreInfoButton.bottom, margin = 12.dp)
+                            top.linkTo(favoritesButton.bottom, margin = 12.dp)
                             start.linkTo(startButton.start)
                         },
                         textRes = R.string.view_instructor,
-                        icon = R.drawable.ic_instructor,
+                        icon = R.drawable.ic_chef_profile,
                         onClick = actionListener::onOpenChefProfileDetail
                     )
                     FudgeTvMoreOptionsButton(
