@@ -19,6 +19,7 @@ import com.dreamsoftware.fudge.component.FudgeTvCard
 import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
 import com.dreamsoftware.saborytv.domain.model.RecipeBO
+import com.dreamsoftware.saborytv.ui.utils.formatPreparationTime
 
 @Composable
 internal fun RecipesRecommended(
@@ -49,7 +50,7 @@ internal fun RecipesRecommended(
                         modifier = modifier.width(196.dp),
                         imageUrl = imageUrl,
                         title = title,
-                        timeText = preparationTime.toString(),
+                        timeText = preparationTime.formatPreparationTime(),
                         typeText = chefProfileName,
                         onClick = { onClick(recipe) }
                     )

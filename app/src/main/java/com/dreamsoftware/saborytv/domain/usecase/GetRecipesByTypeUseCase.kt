@@ -29,19 +29,19 @@ class GetRecipesByTypeUseCase(
 
     private fun Params.toRecipeFilterData() = RecipeFilterDataBO(
         type = type,
-        language = classLanguage,
+        language = language,
         difficulty = difficulty,
         videoLength = videoLength,
         sortType = sortType,
-        chefProfile = instructor
+        chefProfile = chefProfile
     )
 
     data class Params(
         val type: RecipeTypeEnum,
-        val classLanguage: LanguageEnum,
+        val language: LanguageEnum,
         val difficulty: DifficultyEnum,
         val videoLength: VideoLengthEnum,
         val sortType: SortTypeEnum,
-        val instructor: String
+        val chefProfile: String
     )
 }

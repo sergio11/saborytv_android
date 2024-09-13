@@ -1,5 +1,6 @@
 package com.dreamsoftware.saborytv.ui.screens.recipes
 
+import android.util.Log
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.di.FavoritesScreenErrorMapper
 import com.dreamsoftware.saborytv.domain.model.LanguageEnum
@@ -33,7 +34,7 @@ class RecipesViewModel @Inject constructor(
     private var chefProfile: String = String.EMPTY
     private var videoLength: VideoLengthEnum = VideoLengthEnum.NOT_SET
     private var difficulty: DifficultyEnum = DifficultyEnum.NOT_SET
-    private var classLanguage: LanguageEnum = LanguageEnum.NOT_SET
+    private var language: LanguageEnum = LanguageEnum.NOT_SET
     private var sortType: SortTypeEnum = SortTypeEnum.NOT_SET
 
     override fun onGetDefaultState(): RecipesUiState = RecipesUiState(
@@ -46,7 +47,7 @@ class RecipesViewModel @Inject constructor(
                 options = VideoLengthEnum.entries.map { it.value }
             ),
             FudgeTvFilterVO(
-                id = CLASS_LANGUAGE_FILTER,
+                id = LANGUAGE_FILTER,
                 icon = R.drawable.language_ic,
                 title = R.string.class_language,
                 description = LanguageEnum.NOT_SET.value,
@@ -102,10 +103,10 @@ class RecipesViewModel @Inject constructor(
         updateState { it.copy(isFieldFilterSelected = false) }
     }
 
-    override fun onFilterFieldSelected(trainingFilter: FudgeTvFilterVO) {
+    override fun onFilterFieldSelected(filter: FudgeTvFilterVO) {
         updateState {
             it.copy(
-                selectedTrainingFilter = trainingFilter,
+                selectedFilter = filter,
                 isFieldFilterSelected = true
             )
         }
@@ -119,7 +120,7 @@ class RecipesViewModel @Inject constructor(
 
     override fun onSelectedFilterOption(currentIndex: Int) {
         updateState { it.copy(isFieldFilterSelected = false) }
-        uiState.value.selectedTrainingFilter?.let { filter ->
+        uiState.value.selectedFilter?.let { filter ->
             when(filter.id) {
                 VIDEO_LENGTH_FILTER -> {
                     videoLength = VideoLengthEnum.entries[currentIndex]
@@ -127,8 +128,8 @@ class RecipesViewModel @Inject constructor(
                 DIFFICULTY_FILTER -> {
                     difficulty = DifficultyEnum.entries[currentIndex]
                 }
-                CLASS_LANGUAGE_FILTER -> {
-                    classLanguage = LanguageEnum.entries[currentIndex]
+                LANGUAGE_FILTER -> {
+                    language = LanguageEnum.entries[currentIndex]
                 }
                 CHEF_PROFILE_FILTER -> {
                     chefProfile = chefProfiles.getOrNull(currentIndex)?.id.orEmpty()
@@ -143,7 +144,7 @@ class RecipesViewModel @Inject constructor(
                                 description = when(filter.id) {
                                     VIDEO_LENGTH_FILTER -> VideoLengthEnum.entries[currentIndex].value
                                     DIFFICULTY_FILTER -> DifficultyEnum.entries[currentIndex].value
-                                    CLASS_LANGUAGE_FILTER -> LanguageEnum.entries[currentIndex].value
+                                    LANGUAGE_FILTER -> LanguageEnum.entries[currentIndex].value
                                     else -> chefProfiles.getOrNull(currentIndex)?.name.orEmpty()
                                 }
                             )
@@ -151,7 +152,7 @@ class RecipesViewModel @Inject constructor(
                             item
                         }
                     },
-                    selectedTrainingFilter = null
+                    selectedFilter = null
                 )
             }
             fetchRecipes()
@@ -188,19 +189,19 @@ class RecipesViewModel @Inject constructor(
             useCase = getRecipesByTypeUseCase,
             params = GetRecipesByTypeUseCase.Params(
                 type = uiState.value.typeSelected,
-                classLanguage = classLanguage,
+                language = language,
                 difficulty = difficulty,
                 videoLength = videoLength,
                 sortType = sortType,
-                instructor = chefProfile
+                chefProfile = chefProfile
             ),
             onSuccess = ::onGetRecipesSuccessfully,
             onMapExceptionToState = ::onMapExceptionToState
         )
     }
 
-    private fun onGetRecipesSuccessfully(trainingPrograms: List<RecipeBO>) {
-        updateState { it.copy(recipes = trainingPrograms) }
+    private fun onGetRecipesSuccessfully(recipes: List<RecipeBO>) {
+        updateState { it.copy(recipes = recipes) }
         if(chefProfiles.isEmpty()) {
             fetchChefProfiles()
         }
@@ -235,7 +236,7 @@ class RecipesViewModel @Inject constructor(
     private fun resetFilters() {
         videoLength = VideoLengthEnum.NOT_SET
         difficulty = DifficultyEnum.NOT_SET
-        classLanguage = LanguageEnum.NOT_SET
+        language = LanguageEnum.NOT_SET
         chefProfile = String.EMPTY
         updateState {
             it.copy(
@@ -251,7 +252,7 @@ class RecipesViewModel @Inject constructor(
             description = when(item.id) {
                 VIDEO_LENGTH_FILTER -> VideoLengthEnum.NOT_SET.value
                 DIFFICULTY_FILTER -> DifficultyEnum.NOT_SET.value
-                CLASS_LANGUAGE_FILTER -> LanguageEnum.NOT_SET.value
+                LANGUAGE_FILTER -> LanguageEnum.NOT_SET.value
                 else -> String.EMPTY
             }
         )
@@ -267,7 +268,7 @@ data class RecipesUiState(
     val recipes: List<RecipeBO> = emptyList(),
     val filterItems: List<FudgeTvFilterVO> = emptyList(),
     val selectedSortItem: Int = 0,
-    val selectedTrainingFilter: FudgeTvFilterVO? = null,
+    val selectedFilter: FudgeTvFilterVO? = null,
     val selectedTab: Int = 0,
     val tabsTitle: List<Int> = listOf(
         R.string.recipe_type_vegetarian_name,
@@ -288,5 +289,5 @@ sealed interface RecipesSideEffects : SideEffect {
 
 const val VIDEO_LENGTH_FILTER = "VIDEO_LENGTH_FILTER"
 const val DIFFICULTY_FILTER = "DIFFICULTY_FILTER"
-const val CLASS_LANGUAGE_FILTER = "CLASS_LANGUAGE_FILTER"
+const val LANGUAGE_FILTER = "LANGUAGE_FILTER"
 const val CHEF_PROFILE_FILTER = "CHEF_PROFILE_FILTER"

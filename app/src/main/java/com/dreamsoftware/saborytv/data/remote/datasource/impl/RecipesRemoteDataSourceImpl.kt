@@ -11,6 +11,7 @@ import com.dreamsoftware.saborytv.data.remote.exception.FetchRecipesRemoteExcept
 import com.dreamsoftware.saborytv.data.remote.exception.FetchRecommendedRecipesRemoteException
 import com.dreamsoftware.saborytv.utils.IOneSideMapper
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.CoroutineDispatcher
 
 internal class RecipesRemoteDataSourceImpl(
@@ -26,6 +27,12 @@ internal class RecipesRemoteDataSourceImpl(
         const val CATEGORY_FIELD = "category"
         const val IS_RECOMMENDED_FIELD = "isRecommended"
         const val IS_FEATURED_FIELD = "isFeatured"
+        const val LANGUAGE = "language"
+        const val DURATION = "duration"
+        const val DIFFICULTY = "difficulty"
+        const val RELEASED_DATE = "releasedDate"
+        const val TYPE = "type"
+        const val CHEF_PROFILE = "chef"
     }
 
     @Throws(FetchRecipesRemoteException::class)
@@ -34,8 +41,34 @@ internal class RecipesRemoteDataSourceImpl(
         includePremium: Boolean
     ): List<RecipeDTO> = try {
         fetchListFromFireStore(
-            query = { firebaseStore.collection(COLLECTION_NAME).get() },
-            mapper = { recipesMapper.mapInToOut(it) }
+            query = {
+                with(filter) {
+                    var query: Query = firebaseStore.collection(COLLECTION_NAME)
+
+                    language?.let { query = query.whereEqualTo(LANGUAGE, it) }
+                    difficulty?.let { query = query.whereEqualTo(DIFFICULTY, it) }
+                    type?.let { query = query.whereEqualTo(TYPE, it) }
+                    chefProfile?.let { query = query.whereEqualTo(CHEF_PROFILE, it) }
+                    videoLength?.let {
+                        query = query.whereGreaterThanOrEqualTo(DURATION, it.first.toString())
+                            .whereLessThanOrEqualTo(DURATION, it.last.toString())
+                    }
+                    // Apply sorting
+                    if (priorityFeatured) {
+                        query = query.orderBy(IS_FEATURED_FIELD, Query.Direction.DESCENDING)
+                    }
+                    query = if (orderByReleasedDateDesc) {
+                        query.orderBy(RELEASED_DATE, Query.Direction.DESCENDING)
+                    } else {
+                        query.orderBy(RELEASED_DATE, Query.Direction.ASCENDING)
+                    }
+                    if(!includePremium) {
+                        query.whereEqualTo(IS_PREMIUM, false)
+                    }
+                    query.get()
+                }
+            },
+            mapper = { data -> recipesMapper.mapInToOut(data) }
         )
     } catch (ex: Exception) {
         throw FetchRecipesRemoteException("An error occurred when trying to fetch recipes", ex)

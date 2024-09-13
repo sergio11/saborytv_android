@@ -8,7 +8,9 @@ import com.dreamsoftware.saborytv.domain.model.RecipeTypeEnum
 import com.dreamsoftware.saborytv.domain.model.SubscriptionBO
 
 fun RecipeBO?.formatTimeAndType(): String =
-    this?.run { "$preparationTime | $difficulty ••••" }.orEmpty()
+    this?.run { "${preparationTime.formatPreparationTime()} | $difficulty" }.orEmpty()
+
+fun Long.formatPreparationTime(): String = "$this minutes"
 
 val String.Companion.EMPTY: String
     get() = ""
