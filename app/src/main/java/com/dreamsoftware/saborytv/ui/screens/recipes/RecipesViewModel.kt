@@ -61,8 +61,8 @@ class RecipesViewModel @Inject constructor(
             ),
             FudgeTvFilterVO(
                 id = CHEF_PROFILE_FILTER,
-                icon = R.drawable.person_ic,
-                title = R.string.instructor
+                icon = R.drawable.ic_chef_profile,
+                title = R.string.chef_profile
             )
         )
     )
