@@ -51,22 +51,22 @@ class DashboardViewModel @Inject constructor(
         ),
         FudgeTvNavigationDrawerItemModel(
             nameRes = R.string.dashboard_navigation_drawer_home_item_name,
-            imageRes = R.drawable.home,
+            imageRes = R.drawable.ic_home,
             route = Screen.Home.route
         ),
         FudgeTvNavigationDrawerItemModel(
             nameRes = R.string.dashboard_navigation_drawer_recipes_item_name,
-            imageRes = R.drawable.fitness_center,
+            imageRes = R.drawable.ic_recipes,
             route = Screen.Recipes.route
         ),
         FudgeTvNavigationDrawerItemModel(
             nameRes = R.string.dashboard_navigation_drawer_favorite_item_name,
-            imageRes = R.drawable.favorite,
+            imageRes = R.drawable.ic_favorite,
             route = Screen.Favorite.route
         ),
         FudgeTvNavigationDrawerItemModel(
             nameRes = R.string.dashboard_navigation_drawer_settings_item_name,
-            imageRes = R.drawable.settings,
+            imageRes = R.drawable.ic_settings,
             route = Screen.Settings.route
         )
     )
