@@ -156,9 +156,7 @@
     <string name="whos_working_out_today">Who\'s Joining Today?</string>
     <string name="sign_in_with_a_different_user">Sign in as Someone New</string>
     <string name="length">Duration</string>
-    <string name="_15_30_mins">15–30 Minutes</string>
-    <string name="instructor">Instructor</string>
-    <string name="class_type">Class Type</string>
+    <string name="chef_profile">Chef</string>
     <string name="class_language">Language</string>
     <string name="difficulty">Difficulty</string>
     <string name="subtitles">Subtitles</string>

@@ -36,6 +36,7 @@ import com.dreamsoftware.fudge.component.FudgeTvFocusRequester
 import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvVideoBackground
+import com.dreamsoftware.saborytv.ui.theme.surface
 
 @Composable
 internal fun OnboardingScreenContent(
@@ -100,47 +101,53 @@ private fun OnBoardingLogo(modifier: Modifier) {
         Image(
             painter = painterResource(id = R.drawable.main_logo_inverse),
             contentDescription = null,
-            contentScale = ContentScale.FillBounds,
+            contentScale = ContentScale.FillHeight,
             modifier = Modifier
-                .height(180.dp)
+                .height(280.dp)
                 .align(Alignment.TopCenter)
-                .padding(top = 60.dp)
+                .padding(top = 100.dp)
         )
     }
 }
 
 @Composable
 private fun OnboardingContentInfo(modifier: Modifier) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            modifier = Modifier.align(Alignment.Center),
-            horizontalAlignment = Alignment.CenterHorizontally,
+    with(MaterialTheme.colorScheme) {
+        Box(
+            modifier = modifier,
+            contentAlignment = Alignment.Center
         ) {
-            FudgeTvText(
-                titleRes = R.string.onboarding_main_title_text,
-                type = FudgeTvTextTypeEnum.HEADLINE_LARGE,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(bottom = 8.dp),
-                textBold = true
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-            FudgeTvText(
-                titleRes = R.string.onboarding_secondary_title_text,
-                type = FudgeTvTextTypeEnum.BODY_LARGE,
-                textAlign = TextAlign.Center,
-                textBold = true
-            )
-            Spacer(modifier = Modifier.height(50.dp))
-            FudgeTvText(
-                titleRes = R.string.onboarding_additional_info_text,
-                type = FudgeTvTextTypeEnum.HEADLINE_SMALL,
-                textAlign = TextAlign.Center
-            )
+            Column(
+                modifier = Modifier.align(Alignment.Center),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                FudgeTvText(
+                    titleRes = R.string.onboarding_main_title_text,
+                    type = FudgeTvTextTypeEnum.HEADLINE_LARGE,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(bottom = 8.dp),
+                    textBold = true,
+                    textColor = surface
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                FudgeTvText(
+                    titleRes = R.string.onboarding_secondary_title_text,
+                    type = FudgeTvTextTypeEnum.BODY_LARGE,
+                    textAlign = TextAlign.Center,
+                    textBold = true,
+                    textColor = surface
+                )
+                Spacer(modifier = Modifier.height(50.dp))
+                FudgeTvText(
+                    titleRes = R.string.onboarding_additional_info_text,
+                    type = FudgeTvTextTypeEnum.HEADLINE_SMALL,
+                    textAlign = TextAlign.Center,
+                    textColor = surface
+                )
+            }
         }
     }
+
 }
 
 @Composable
@@ -149,7 +156,7 @@ private fun OnboardingVideoBackground() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.inverseSurface.copy(alpha = 0.8f))
+            .background(MaterialTheme.colorScheme.inverseSurface.copy(alpha = 0.7f))
     )
 }
 
@@ -172,7 +179,8 @@ private fun OnBoardingActions(
                 FudgeTvText(
                     titleRes = R.string.developer_credits_text,
                     type = FudgeTvTextTypeEnum.LABEL_MEDIUM,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    textColor = surface
                 )
             }
             FudgeTvButton(

@@ -1,5 +1,6 @@
 package com.dreamsoftware.saborytv.ui.screens.home.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.tv.material3.Border
 import androidx.tv.material3.Card
 import androidx.tv.material3.CardDefaults
 import androidx.tv.material3.MaterialTheme
@@ -75,43 +78,49 @@ private fun CategoryItem(
         GRADIENT_START to MaterialTheme.colorScheme.surfaceVariant,
         GRADIENT_END to Color.Transparent
     )
-    with(categoryBO) {
-        Card(
-            colors = CardDefaults.colors(Color.Transparent),
-            onClick = onClick,
-        ) {
-            Box(
-                modifier = Modifier.clip(MaterialTheme.shapes.small),
-                contentAlignment = Alignment.CenterStart
+    with(MaterialTheme.colorScheme) {
+        with(categoryBO) {
+            Card(
+                colors = CardDefaults.colors(Color.Transparent),
+                border = CardDefaults.border(
+                    border = Border(BorderStroke(width = 2.dp, color = onSurface)),
+                    focusedBorder = Border(BorderStroke(width = 3.dp, color = border))
+                ),
+                onClick = onClick,
             ) {
-                AsyncImage(
-                    modifier = modifier
-                        .size(280.dp, 80.dp)
-                        .drawWithContent {
-                            drawContent()
-                            drawRect(Brush.horizontalGradient(colorStops = gradiantColors))
-                        },
-                    model = imageUrl,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop
-                )
-                Column(modifier = Modifier.padding(start = 16.dp)) {
-                    FudgeTvText(
-                        modifier = Modifier.width(180.dp),
-                        titleText = title,
-                        type = FudgeTvTextTypeEnum.BODY_LARGE,
-                        textColor = MaterialTheme.colorScheme.onSurface,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                Box(
+                    modifier = Modifier.clip(MaterialTheme.shapes.small),
+                    contentAlignment = Alignment.CenterStart
+                ) {
+                    AsyncImage(
+                        modifier = modifier
+                            .size(280.dp, 80.dp)
+                            .drawWithContent {
+                                drawContent()
+                                drawRect(Brush.horizontalGradient(colorStops = gradiantColors))
+                            },
+                        model = imageUrl,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
                     )
-                    FudgeTvText(
-                        modifier = Modifier.width(200.dp),
-                        titleText = description,
-                        type = FudgeTvTextTypeEnum.BODY_SMALL,
-                        textColor = MaterialTheme.colorScheme.onSurface,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                    Column(modifier = Modifier.padding(start = 16.dp)) {
+                        FudgeTvText(
+                            modifier = Modifier.width(180.dp),
+                            titleText = title,
+                            type = FudgeTvTextTypeEnum.BODY_LARGE,
+                            textColor = onSurface,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                        FudgeTvText(
+                            modifier = Modifier.width(200.dp),
+                            titleText = description,
+                            type = FudgeTvTextTypeEnum.BODY_SMALL,
+                            textColor = onSurface,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
                 }
             }
         }
