@@ -64,7 +64,7 @@ internal fun RecipesScreenContent(
                 backgroundContainerColor = surfaceContainerHigh,
                 isSideMenuExpended = isFieldFilterSelected
             ) {
-                selectedTrainingFilter?.run {
+                selectedFilter?.run {
                     FudgeTvOptionsSideMenu(
                         onDismissSideMenu = ::onDismissFieldFilterSideMenu,
                         selectedIndex = selectedOption,
