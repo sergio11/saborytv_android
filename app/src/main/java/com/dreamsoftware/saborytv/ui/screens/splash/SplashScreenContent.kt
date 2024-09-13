@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -48,14 +49,14 @@ internal fun SplashScreenContent(
                 FudgeTvText(
                     type = FudgeTvTextTypeEnum.TITLE_LARGE,
                     titleRes = R.string.splash_main_title_text,
-                    textColor = onSurface,
+                    textColor = onPrimary,
                     textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 FudgeTvText(
                     type = FudgeTvTextTypeEnum.TITLE_MEDIUM,
                     titleRes = R.string.splash_description_text,
-                    textColor = onSurface,
+                    textColor = onPrimary,
                     textAlign = TextAlign.Center
                 )
             }
@@ -77,7 +78,7 @@ private fun SplashLogo() {
         label = "Splash Logo Anim"
     )
     Image(
-        painter = painterResource(id = R.drawable.main_logo_inverse),
+        painter = painterResource(id = R.drawable.main_logo_background),
         contentDescription = null,
         modifier = Modifier
             .height(heightState)

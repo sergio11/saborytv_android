@@ -92,7 +92,7 @@ private fun BoxScope.SignInLogo() {
         contentDescription = null,
         modifier = Modifier
             .height(120.dp)
-            .padding(horizontal = 20.dp, vertical = 15.dp)
+            .padding(start = 25.dp, top = 25.dp)
             .align(Alignment.TopStart)
     )
 }
@@ -127,34 +127,38 @@ private fun SignInMainContent(
 
 @Composable
 private fun ColumnScope.SignInSecondaryContent(onGoToSignUp: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth(0.9f)
-            .fillMaxHeight(0.3f)
-            .align(Alignment.CenterHorizontally),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Box(
-            modifier = Modifier.weight(1f),
-            contentAlignment = Alignment.Center
+    with(MaterialTheme.colorScheme) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .fillMaxHeight(0.3f)
+                .align(Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically
         ) {
+            Box(
+                modifier = Modifier.weight(1f),
+                contentAlignment = Alignment.Center
+            ) {
+                FudgeTvText(
+                    titleRes = R.string.developer_credits_text,
+                    type = FudgeTvTextTypeEnum.LABEL_MEDIUM,
+                    textAlign = TextAlign.Center,
+                    textColor = surface
+                )
+            }
             FudgeTvText(
-                titleRes = R.string.developer_credits_text,
-                type = FudgeTvTextTypeEnum.LABEL_MEDIUM,
-                textAlign = TextAlign.Center
+                titleRes = R.string.sign_in_do_not_have_account_yet_text,
+                type = FudgeTvTextTypeEnum.LABEL_LARGE,
+                textColor = surface
+            )
+            Spacer(modifier = Modifier.width(20.dp))
+            FudgeTvButton(
+                textRes = R.string.sign_in_go_sign_up_button_text,
+                type = FudgeTvButtonTypeEnum.SMALL,
+                style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
+                onClick = onGoToSignUp
             )
         }
-        FudgeTvText(
-            titleRes = R.string.sign_in_do_not_have_account_yet_text,
-            type = FudgeTvTextTypeEnum.LABEL_LARGE
-        )
-        Spacer(modifier = Modifier.width(20.dp))
-        FudgeTvButton(
-            textRes = R.string.sign_in_go_sign_up_button_text,
-            type = FudgeTvButtonTypeEnum.SMALL,
-            style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
-            onClick = onGoToSignUp
-        )
     }
 }
 
@@ -164,31 +168,35 @@ private fun SignInVideoBackground() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.inverseSurface.copy(alpha = 0.8f))
+            .background(MaterialTheme.colorScheme.inverseSurface.copy(alpha = 0.7f))
     )
 }
 
 
 @Composable
 private fun SignInFormInfo(modifier: Modifier) {
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        FudgeTvText(
-            titleRes = R.string.sign_in_main_title_text,
-            type = FudgeTvTextTypeEnum.HEADLINE_MEDIUM,
-            textAlign = TextAlign.Center,
-            textBold = true
-        )
-        Spacer(modifier = Modifier.height(20.dp))
-        FudgeTvText(
-            titleRes = R.string.sign_in_secondary_title_text,
-            type = FudgeTvTextTypeEnum.BODY_LARGE,
-            textAlign = TextAlign.Center,
-            textBold = true
-        )
+    with(MaterialTheme.colorScheme) {
+        Column(
+            modifier = modifier,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            FudgeTvText(
+                titleRes = R.string.sign_in_main_title_text,
+                type = FudgeTvTextTypeEnum.HEADLINE_MEDIUM,
+                textAlign = TextAlign.Center,
+                textBold = true,
+                textColor = surface
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            FudgeTvText(
+                titleRes = R.string.sign_in_secondary_title_text,
+                type = FudgeTvTextTypeEnum.BODY_LARGE,
+                textAlign = TextAlign.Center,
+                textBold = true,
+                textColor = surface
+            )
+        }
     }
 }
 
@@ -202,40 +210,43 @@ private fun SignInFormContent(
     onSigInPressed: () -> Unit
 ) {
     with(uiState) {
-        FudgeTvFocusRequester { requester ->
-            Column(
-                modifier = modifier,
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                FudgeTvText(
-                    titleRes = R.string.sign_in_form_heading_text,
-                    type = FudgeTvTextTypeEnum.HEADLINE_MEDIUM,
-                )
-                Spacer(modifier = Modifier.height(20.dp))
-                FudgeTvTextField(
-                    icon = Icons.Filled.Person,
-                    value = email,
-                    type = FudgeTvTextFieldTypeEnum.EMAIL,
-                    labelRes = R.string.sign_in_form_email_label_text,
-                    errorMessage = emailError,
-                    onValueChange = onEmailChanged
-                )
-                Spacer(modifier = Modifier.height(20.dp))
-                FudgeTvTextField(
-                    icon = Icons.Filled.Password,
-                    value = password,
-                    type = FudgeTvTextFieldTypeEnum.PASSWORD,
-                    labelRes = R.string.sign_in_form_password_label_text,
-                    errorMessage = passwordError,
-                    onValueChange = onPasswordChanged
-                )
-                Spacer(modifier = Modifier.height(40.dp))
-                FudgeTvButton(
-                    modifier = Modifier.focusRequester(requester),
-                    onClick = onSigInPressed,
-                    textRes = R.string.sign_in_main_button_text
-                )
+        with(MaterialTheme.colorScheme) {
+            FudgeTvFocusRequester { requester ->
+                Column(
+                    modifier = modifier,
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    FudgeTvText(
+                        titleRes = R.string.sign_in_form_heading_text,
+                        type = FudgeTvTextTypeEnum.HEADLINE_MEDIUM,
+                        textColor = surface
+                    )
+                    Spacer(modifier = Modifier.height(20.dp))
+                    FudgeTvTextField(
+                        icon = Icons.Filled.Person,
+                        value = email,
+                        type = FudgeTvTextFieldTypeEnum.EMAIL,
+                        labelRes = R.string.sign_in_form_email_label_text,
+                        errorMessage = emailError,
+                        onValueChange = onEmailChanged
+                    )
+                    Spacer(modifier = Modifier.height(20.dp))
+                    FudgeTvTextField(
+                        icon = Icons.Filled.Password,
+                        value = password,
+                        type = FudgeTvTextFieldTypeEnum.PASSWORD,
+                        labelRes = R.string.sign_in_form_password_label_text,
+                        errorMessage = passwordError,
+                        onValueChange = onPasswordChanged
+                    )
+                    Spacer(modifier = Modifier.height(40.dp))
+                    FudgeTvButton(
+                        modifier = Modifier.focusRequester(requester),
+                        onClick = onSigInPressed,
+                        textRes = R.string.sign_in_main_button_text
+                    )
+                }
             }
         }
     }

@@ -138,13 +138,16 @@ private fun FavouriteButton(isFavorite: Boolean, onClick: () -> Unit) {
             onClick = onClick,
             interactionSource = interactionSource,
             modifier = Modifier.size(50.dp),
-            colors = ButtonDefaults.colors(containerColor = Color.Transparent),
+            colors = ButtonDefaults.colors(
+                containerColor = Color.Transparent,
+                focusedContainerColor = primary
+            ),
             border = ButtonDefaults.border(
                 border = Border(
                     BorderStroke(
                         2.dp,
                         if(isFocused) {
-                            border
+                            surface
                         } else {
                             onPrimary
                         }
@@ -160,7 +163,7 @@ private fun FavouriteButton(isFavorite: Boolean, onClick: () -> Unit) {
                         R.drawable.fav_icon
                 ),
                 tint = if(isFocused) {
-                    border
+                    surface
                 } else {
                     onPrimary
                 },

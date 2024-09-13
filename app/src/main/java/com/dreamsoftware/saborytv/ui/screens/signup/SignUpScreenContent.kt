@@ -42,6 +42,7 @@ import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextField
 import com.dreamsoftware.fudge.component.FudgeTvTextFieldTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
+import com.dreamsoftware.saborytv.ui.theme.surface
 
 @Composable
 internal fun SignUpScreenContent(
@@ -86,7 +87,8 @@ internal fun SignUpScreenContent(
                         FudgeTvText(
                             titleRes = R.string.developer_credits_text_single_line,
                             type = FudgeTvTextTypeEnum.LABEL_SMALL,
-                            textAlign = TextAlign.Start
+                            textAlign = TextAlign.Start,
+                            textColor = surface
                         )
                     }
                 }
@@ -116,7 +118,7 @@ private fun SignUpBackground() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.inverseSurface.copy(alpha = 0.8f))
+            .background(MaterialTheme.colorScheme.inverseSurface.copy(alpha = 0.7f))
     )
 }
 
@@ -152,12 +154,14 @@ private fun SignUpFormContent(
                 FudgeTvText(
                     titleRes = R.string.sign_up_main_title_text,
                     type = FudgeTvTextTypeEnum.TITLE_LARGE,
+                    textColor = surface
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 FudgeTvText(
                     titleRes = R.string.sign_up_secondary_title_text,
                     type = FudgeTvTextTypeEnum.TITLE_SMALL,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    textColor = surface
                 )
             }
             Image(

@@ -3,8 +3,8 @@ package com.dreamsoftware.saborytv.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val primary = Color(0xFFF5A623) // Warm Orange
-val onPrimary = Color(0xFFFFFFFF) // White for good contrast on warm orange
-val primaryContainer = Color(0xFFE0A82E) // Lighter Warm Orange
+val onPrimary = Color(0xFF4E342E) // Dark Brown for text on warm beige surfaces
+val primaryContainer = Color(0xFFB3741E) // Significantly Darker Warm Orange
 val onPrimaryContainer = Color(0xFFFFF3E0) // Very Light Beige
 
 val secondary = Color(0xFF8BC34A) // Fresh Green
