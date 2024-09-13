@@ -172,12 +172,12 @@ private fun VideoPlayerControls(
                     isPlaying = isPlaying,
                 ) {}
                 FudgeTvVideoPlayerControlsIcon(
-                    icon = R.drawable.audio,
+                    icon = R.drawable.ic_audio,
                     state = state,
                     isPlaying = isPlaying,
                 ) {}
                 FudgeTvVideoPlayerControlsIcon(
-                    icon = R.drawable.settings,
+                    icon = R.drawable.ic_settings,
                     state = state,
                     isPlaying = isPlaying,
                 ) {}
