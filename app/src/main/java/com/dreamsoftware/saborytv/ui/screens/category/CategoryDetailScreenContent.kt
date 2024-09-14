@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.dreamsoftware.saborytv.R
@@ -23,6 +24,7 @@ import com.dreamsoftware.fudge.component.FudgeTvScreenContent
 import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
 import com.dreamsoftware.fudge.utils.conditional
+import com.dreamsoftware.saborytv.ui.utils.formatInfo
 
 @Composable
 internal fun CategoryDetailScreenContent(
@@ -72,8 +74,7 @@ internal fun CategoryDetailScreenContent(
                                         },
                                         imageUrl = imageUrl,
                                         title = title,
-                                        timeText = preparationTime.toString(),
-                                        typeText = difficulty.value
+                                        subtitle = formatInfo(LocalContext.current)
                                     )
                                 }
                             }
