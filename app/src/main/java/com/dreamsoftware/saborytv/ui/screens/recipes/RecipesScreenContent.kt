@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
@@ -39,6 +40,7 @@ import com.dreamsoftware.fudge.component.menu.FudgeTvFilterSideMenu
 import com.dreamsoftware.fudge.component.menu.FudgeTvOptionsSideMenu
 import com.dreamsoftware.fudge.component.menu.FudgeTvSideMenu
 import com.dreamsoftware.fudge.utils.conditional
+import com.dreamsoftware.saborytv.ui.utils.formatInfo
 
 @Composable
 internal fun RecipesScreenContent(
@@ -186,8 +188,7 @@ private fun RecipesList(
                                         }),
                                         imageUrl = recipe.imageUrl,
                                         title = title,
-                                        timeText = preparationTime.toString(),
-                                        typeText = difficulty.value,
+                                        subtitle = formatInfo(LocalContext.current),
                                         onClick = { actionListener.onItemClicked(id) }
                                     )
                                 }

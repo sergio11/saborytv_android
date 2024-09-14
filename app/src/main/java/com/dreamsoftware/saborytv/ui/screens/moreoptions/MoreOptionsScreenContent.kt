@@ -17,7 +17,8 @@ import com.dreamsoftware.fudge.component.FudgeTvCardDetails
 import com.dreamsoftware.fudge.component.FudgeTvFocusRequester
 import com.dreamsoftware.fudge.component.FudgeTvMoreOptionsButton
 import com.dreamsoftware.fudge.component.FudgeTvScreenContent
-import com.dreamsoftware.saborytv.ui.utils.formatTimeAndType
+import com.dreamsoftware.saborytv.ui.theme.surfaceVariant
+import com.dreamsoftware.saborytv.ui.utils.formatInfo
 
 @Composable
 internal fun MoreOptionsScreenContent(
@@ -44,9 +45,9 @@ internal fun MoreOptionsScreenContent(
                     ) = createRefs()
 
                     FudgeTvCardDetails(
-                        modifier = Modifier.width(268.dp).constrainAs(trainingDetails) {},
+                        modifier = Modifier.width(350.dp).constrainAs(trainingDetails) {},
                         title = recipe?.title.orEmpty(),
-                        time = recipe.formatTimeAndType(LocalContext.current),
+                        subtitle = recipe.formatInfo(LocalContext.current, fullDetails = true),
                         description = recipe?.description.orEmpty(),
                         imageUrl = recipe?.imageUrl.orEmpty()
                     )
@@ -62,10 +63,11 @@ internal fun MoreOptionsScreenContent(
                                 .focusRequester(focusRequester)
                                 .constrainAs(startButton) {
                                     top.linkTo(trainingDetails.top)
-                                    start.linkTo(trainingDetails.end, margin = 164.dp)
+                                    start.linkTo(trainingDetails.end, margin = 140.dp)
                                 },
                             textRes = R.string.play_recipe_program,
                             icon = R.drawable.ic_rounded_play,
+                            containerColor = surfaceVariant,
                             onClick = actionListener::onRecipeOpened
                         )
                     }
@@ -85,6 +87,7 @@ internal fun MoreOptionsScreenContent(
                         } else {
                             R.drawable.ic_outline_favorite
                         },
+                        containerColor = surfaceVariant,
                         onClick = actionListener::onFavouriteClicked
                     )
                     FudgeTvMoreOptionsButton(
@@ -94,6 +97,7 @@ internal fun MoreOptionsScreenContent(
                         },
                         textRes = R.string.view_chef_profile,
                         icon = R.drawable.ic_chef_profile,
+                        containerColor = surfaceVariant,
                         onClick = actionListener::onOpenChefProfileDetail
                     )
                     FudgeTvMoreOptionsButton(
@@ -102,6 +106,7 @@ internal fun MoreOptionsScreenContent(
                             start.linkTo(startButton.start)
                         },
                         textRes = R.string.share,
+                        containerColor = surfaceVariant,
                         icon = R.drawable.ic_share
                     )
                 }

@@ -6,8 +6,12 @@ import com.dreamsoftware.saborytv.domain.model.AvatarTypeEnum
 import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import com.dreamsoftware.saborytv.domain.model.SubscriptionBO
 
-fun RecipeBO?.formatTimeAndType(context: Context): String =
-    this?.run { "${preparationTime.formatPreparationTime(context)} | ${difficulty.value}" }.orEmpty()
+fun RecipeBO?.formatInfo(context: Context, fullDetails: Boolean = false): String =
+    this?.run { "${preparationTime.formatPreparationTime(context)} | ${difficulty.value} | ${context.getString(R.string.serving_value, servings)} ${if(fullDetails) {
+        " | $country | ${context.getString(R.string.ingredients_count_value, ingredients.size)}"
+    } else {
+        String.EMPTY
+    }} " }.orEmpty()
 
 fun Long.formatPreparationTime(context: Context) =
     context.getString(R.string.preparation_time_value, this)
