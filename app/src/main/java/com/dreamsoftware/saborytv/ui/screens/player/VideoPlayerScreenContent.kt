@@ -32,6 +32,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
+import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.ui.theme.FitFlexTVTheme
 import com.dreamsoftware.fudge.component.FudgeTvFocusRequester
@@ -114,19 +115,23 @@ internal fun VideoPlayerScreenContent(
                 state = videoPlayerState,
                 isPlaying = isPlaying,
                 onBuildCenterButton = {
-                    FudgeTvVideoPlayerControlsIcon(
-                        modifier = Modifier.focusRequester(focusRequester),
-                        icon = if (!isPlaying) R.drawable.play_icon else R.drawable.pause,
-                        onClick = {
-                            if (isPlaying) {
-                                exoPlayer.pause()
-                            } else {
-                                exoPlayer.play()
-                            }
-                        },
-                        state = videoPlayerState,
-                        isPlaying = isPlaying,
-                    )
+                    with(MaterialTheme.colorScheme) {
+                        FudgeTvVideoPlayerControlsIcon(
+                            modifier = Modifier.focusRequester(focusRequester),
+                            icon = if (!isPlaying) R.drawable.play_icon else R.drawable.pause,
+                            onClick = {
+                                if (isPlaying) {
+                                    exoPlayer.pause()
+                                } else {
+                                    exoPlayer.play()
+                                }
+                            },
+                            contentColor = surface,
+                            focusedContentColor = primary,
+                            state = videoPlayerState,
+                            isPlaying = isPlaying,
+                        )
+                    }
                 },
                 onBuildControls = {
                     VideoPlayerControls(
@@ -135,7 +140,7 @@ internal fun VideoPlayerScreenContent(
                         exoPlayer = exoPlayer,
                         state = videoPlayerState,
                         title = state.title,
-                        instructor = state.chefProfileName,
+                        authorName = state.chefProfileName,
                     )
                 }
             )
@@ -150,48 +155,60 @@ private fun VideoPlayerControls(
     exoPlayer: ExoPlayer,
     state: FudgeTvVideoPlayerState,
     title: String,
-    instructor: String,
+    authorName: String,
 ) {
-    FudgeTvVideoPlayerFrame(
-        videoTitle = {
-            FudgeTvPlayerTitle(
-                title = title,
-                description = instructor,
-                modifier = Modifier.fillMaxWidth()
-            )
-        },
-        videoActions = {
-            Row(
-                modifier = Modifier.padding(bottom = 16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                FudgeTvVideoPlayerControlsIcon(
-                    icon = R.drawable.subtitles,
+    with(MaterialTheme.colorScheme) {
+        FudgeTvVideoPlayerFrame(
+            videoTitle = {
+                FudgeTvPlayerTitle(
+                    title = title,
+                    description = authorName,
+                    titleColor = surface,
+                    descriptionColor = surface,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            },
+            videoActions = {
+                Row(
+                    modifier = Modifier.padding(bottom = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    FudgeTvVideoPlayerControlsIcon(
+                        icon = R.drawable.subtitles,
+                        state = state,
+                        isPlaying = isPlaying,
+                        contentColor = surface,
+                        focusedContentColor = primary
+                    ) {}
+                    FudgeTvVideoPlayerControlsIcon(
+                        icon = R.drawable.ic_audio,
+                        state = state,
+                        isPlaying = isPlaying,
+                        contentColor = surface,
+                        focusedContentColor = primary
+                    ) {}
+                    FudgeTvVideoPlayerControlsIcon(
+                        icon = R.drawable.ic_settings,
+                        state = state,
+                        isPlaying = isPlaying,
+                        contentColor = surface,
+                        focusedContentColor = primary
+                    ) {}
+                }
+            },
+            videoSeeker = {
+                FudgeTvVideoPlayerSeeker(
                     state = state,
-                    isPlaying = isPlaying,
-                ) {}
-                FudgeTvVideoPlayerControlsIcon(
-                    icon = R.drawable.ic_audio,
-                    state = state,
-                    isPlaying = isPlaying,
-                ) {}
-                FudgeTvVideoPlayerControlsIcon(
-                    icon = R.drawable.ic_settings,
-                    state = state,
-                    isPlaying = isPlaying,
-                ) {}
+                    onSeek = { exoPlayer.seekTo(exoPlayer.duration.times(it).toLong()) },
+                    contentProgress = contentCurrentPosition.milliseconds,
+                    contentDuration = exoPlayer.duration.milliseconds,
+                    normalColor = surface,
+                    isSelectedColor = primary
+                )
             }
-        },
-        videoSeeker = {
-            FudgeTvVideoPlayerSeeker(
-                state = state,
-                onSeek = { exoPlayer.seekTo(exoPlayer.duration.times(it).toLong()) },
-                contentProgress = contentCurrentPosition.milliseconds,
-                contentDuration = exoPlayer.duration.milliseconds
-            )
-        }
-    )
+        )
+    }
 }
 
 

@@ -14,8 +14,8 @@ val onSecondaryContainer = Color(0xFFC8E6C9) // Very Light Green
 
 val tertiary = Color(0xFFF0E5D8) // Warm Beige for accents
 val onTertiary = Color(0xFF5A3D2D) // Darker Beige
-val tertiaryContainer = Color(0xFF8B5E3C) // Medium Beige
-val onTertiaryContainer = Color(0xFFFFF0E1) // Very Light Beige
+val tertiaryContainer = Color(0xFFFFF0E1) // Very Light Beige
+val onTertiaryContainer = Color(0xFF8B5E3C) // Medium Beige
 
 val error = Color(0xFFD32F2F) // Soft Red for errors
 val onError = Color(0xFF4A0000) // Dark Red for contrast
@@ -32,8 +32,8 @@ val surfaceVariant = Color(0xFFDAC7B0) // Medium Beige for variants
 val onSurfaceVariant = Color(0xFF3E2723) // Darker Brown for text on beige variants
 
 val outline = Color(0xFFF5A623) // Warm Orange for outlines
-val inverseOnSurface = Color(0xFFD7BFA8) // Warm Wood for inverted text on surface
-val inverseSurface = Color(0xFF4E342E) // Dark Brown for inverted surfaces
+val inverseOnSurface = Color(0xFFD7BFA8) // Dark Brown for inverted surfaces
+val inverseSurface = Color(0xFF4E342E) // Warm Wood for inverted text on surface
 val shadowCarouselColor = Color(0x993D2B1F) // Semi-transparent dark brown for shadows
 val inversePrimary = Color(0xFFFFB74D) // Lighter Warm Orange for inverse primary
 val popupShadow = Color(0x332E312F) // Semi-transparent black for popup shadows
