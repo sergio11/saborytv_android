@@ -51,7 +51,7 @@ import com.dreamsoftware.saborytv.ui.theme.popupShadow
 import com.dreamsoftware.saborytv.ui.theme.surfaceContainerHigh
 import com.dreamsoftware.saborytv.ui.theme.surfaceVariant
 import com.dreamsoftware.saborytv.ui.utils.formatPreparationTime
-import com.dreamsoftware.saborytv.ui.utils.formatTimeAndType
+import com.dreamsoftware.saborytv.ui.utils.formatInfo
 
 @Composable
 internal fun FavoritesScreenContent(
@@ -95,8 +95,7 @@ internal fun FavoritesScreenContent(
                                         }),
                                         imageUrl = imageUrl,
                                         title = title,
-                                        timeText = preparationTime.formatPreparationTime(LocalContext.current),
-                                        typeText = item.difficulty.value,
+                                        subtitle = formatInfo(LocalContext.current),
                                         onClick = {
                                             actionListener.onRecipeSelected(item)
                                         })
@@ -184,7 +183,7 @@ private fun RecipeProgramDetailsPopup(
                         FudgeTvText(
                             modifier = Modifier,
                             type = FudgeTvTextTypeEnum.LABEL_MEDIUM,
-                            titleText = recipeProgram.formatTimeAndType(LocalContext.current),
+                            titleText = recipeProgram.formatInfo(LocalContext.current),
                             textColor = onSurfaceVariant,
                             overflow = TextOverflow.Ellipsis,
                             softWrap = true,
