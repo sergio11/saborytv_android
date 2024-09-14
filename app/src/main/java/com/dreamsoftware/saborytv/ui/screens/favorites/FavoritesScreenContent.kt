@@ -207,7 +207,7 @@ private fun RecipeProgramDetailsPopup(
                             .padding(bottom = 12.dp),
                         type = FudgeTvButtonTypeEnum.MEDIUM,
                         style = FudgeTvButtonStyleTypeEnum.NORMAL,
-                        textRes = R.string.play_recipe_program
+                        textRes = R.string.open_recipe_program
                     ) {
                         onStartRecipeProgram(recipeProgram.id)
                     }

@@ -147,8 +147,6 @@
     <!-- Miscellaneous -->
     <string name="to_go_back">Press Back</string>
     <string name="press">Press</string>
-    <string name="whos_working_out_today">Who\'s Joining Today?</string>
-    <string name="sign_in_with_a_different_user">Sign in as Someone New</string>
     <string name="length">Duration</string>
     <string name="chef_profile">Chef</string>
     <string name="language">Language</string>
@@ -157,11 +155,9 @@
     <string name="sort_by">Sort By</string>
     <string name="clear">Clear</string>
     <string name="filters">Apply Filters</string>
-    <string name="days">Days</string>
-    <string name="week">Week</string>
     <string name="filters_button">Filters</string>
-    <string name="classes">Classes</string>
     <string name="no_chef_profile_set">Not set</string>
+    <string name="open_recipe_program">Explore the Delicious Details!</string>
     <string name="play_recipe_program">Start Cooking Now!</string>
     <string name="serving">Serves Up To</string>
     <string name="serving_value" formatted="false">%d People</string>
