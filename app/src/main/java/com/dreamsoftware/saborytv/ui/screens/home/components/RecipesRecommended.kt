@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.saborytv.R
@@ -50,7 +51,7 @@ internal fun RecipesRecommended(
                         modifier = modifier.width(196.dp),
                         imageUrl = imageUrl,
                         title = title,
-                        timeText = preparationTime.formatPreparationTime(),
+                        timeText = preparationTime.formatPreparationTime(LocalContext.current),
                         typeText = chefProfileName,
                         onClick = { onClick(recipe) }
                     )
