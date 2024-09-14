@@ -67,7 +67,7 @@
     <string name="sign_up_form_repeat_password_label_text">Repeat Password</string>
 
     <!-- Favorites -->
-    <string name="favorites_screen_title">Favorites</string>
+    <string name="favorites_screen_title">Delicious Favorites: Recipes You Love</string>
     <string name="favorites_not_workout_available">No favorite recipes available yet. Explore and add your favorites to build your personal recipe collection!</string>
 
     <!-- Recipes -->

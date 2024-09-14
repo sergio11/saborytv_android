@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.domain.model.SortTypeEnum
 import com.dreamsoftware.saborytv.ui.theme.surfaceContainerHigh
@@ -100,89 +101,96 @@ private fun RecipesList(
     state: RecipesUiState,
     actionListener: RecipesScreenActionListener
 ) {
-    FudgeTvFocusRequester(state) { focusRequester ->
-        LazyColumn(
-            Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            item {
-                Row(
-                    modifier = Modifier.padding(top = 50.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Spacer(modifier = Modifier.width(20.dp))
-                    FudgeTvTabRow(
-                        tabsRes = state.tabsTitle,
-                        selectedTabIndex = state.selectedTab,
-                        focusTabIndex = state.focusTabIndex,
-                        onClick = actionListener::onChangeSelectedTab,
-                        onFocus = actionListener::onChangeFocusTab,
-                    )
-                    Spacer(modifier = Modifier.weight(1F))
-                    FudgeTvButton(
-                        type = FudgeTvButtonTypeEnum.SMALL,
-                        style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
-                        textRes = R.string.filters_button,
-                        onClick = actionListener::onFilterClicked
-                    )
-                    Spacer(modifier = Modifier.width(14.dp))
-                    FudgeTvButton(
-                        modifier = Modifier.width(140.dp),
-                        type = FudgeTvButtonTypeEnum.SMALL,
-                        style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
-                        text = "${stringResource(id = R.string.sort_by)}: ${SortTypeEnum.entries[state.selectedSortItem].value}",
-                        onClick = actionListener::onSortedClicked
-                    )
-                    Spacer(modifier = Modifier.width(58.dp))
-                }
-            }
-
-            item {
-                if (state.isLoading) {
-                    FudgeTvLoadingState(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(400.dp)
-                    )
-                } else if(state.recipes.isEmpty()) {
-                    FudgeTvNoContentState(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(400.dp),
-                        messageRes = R.string.recipes_not_available
-                    )
-                }
-                AnimatedVisibility(
-                    visible = !state.isLoading && state.recipes.isNotEmpty(),
-                    enter = fadeIn(
-                        animationSpec = tween(800)
-                    ),
-                    exit = fadeOut(
-                        animationSpec = tween(800)
-                    ),
-                ) {
-                    LazyHorizontalGrid(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(650.dp),
-                        rows = GridCells.Fixed(3),
-                        horizontalArrangement = Arrangement.spacedBy(24.dp),
-                        verticalArrangement = Arrangement.spacedBy(24.dp),
-                        contentPadding = PaddingValues(32.dp)
+    with(MaterialTheme.colorScheme) {
+        FudgeTvFocusRequester(state) { focusRequester ->
+            LazyColumn(
+                Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                item {
+                    Row(
+                        modifier = Modifier.padding(top = 50.dp),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        itemsIndexed(state.recipes) { idx, recipe ->
-                            with(recipe) {
-                                FudgeTvCard(
-                                    modifier = Modifier.conditional(condition = idx == 0, ifTrue = {
-                                        focusRequester(focusRequester)
-                                    }),
-                                    imageUrl = recipe.imageUrl,
-                                    title = title,
-                                    timeText = preparationTime.toString(),
-                                    typeText = difficulty.value,
-                                    onClick = { actionListener.onItemClicked(id) }
-                                )
+                        Spacer(modifier = Modifier.width(20.dp))
+                        FudgeTvTabRow(
+                            tabsRes = state.tabsTitle,
+                            selectedTabIndex = state.selectedTab,
+                            focusTabIndex = state.focusTabIndex,
+                            tabContentColor = onSurface,
+                            tabSelectedContentColor = primary,
+                            tabInactiveContentColor = inversePrimary,
+                            indicatorActiveColor = primary,
+                            indicatorInverseActiveColor = inversePrimary,
+                            onClick = actionListener::onChangeSelectedTab,
+                            onFocus = actionListener::onChangeFocusTab,
+                        )
+                        Spacer(modifier = Modifier.weight(1F))
+                        FudgeTvButton(
+                            type = FudgeTvButtonTypeEnum.SMALL,
+                            style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
+                            textRes = R.string.filters_button,
+                            onClick = actionListener::onFilterClicked
+                        )
+                        Spacer(modifier = Modifier.width(14.dp))
+                        FudgeTvButton(
+                            modifier = Modifier.width(140.dp),
+                            type = FudgeTvButtonTypeEnum.SMALL,
+                            style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
+                            text = "${stringResource(id = R.string.sort_by)}: ${SortTypeEnum.entries[state.selectedSortItem].value}",
+                            onClick = actionListener::onSortedClicked
+                        )
+                        Spacer(modifier = Modifier.width(58.dp))
+                    }
+                }
+
+                item {
+                    if (state.isLoading) {
+                        FudgeTvLoadingState(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(400.dp)
+                        )
+                    } else if(state.recipes.isEmpty()) {
+                        FudgeTvNoContentState(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(400.dp),
+                            messageRes = R.string.recipes_not_available
+                        )
+                    }
+                    AnimatedVisibility(
+                        visible = !state.isLoading && state.recipes.isNotEmpty(),
+                        enter = fadeIn(
+                            animationSpec = tween(800)
+                        ),
+                        exit = fadeOut(
+                            animationSpec = tween(800)
+                        ),
+                    ) {
+                        LazyHorizontalGrid(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(650.dp),
+                            rows = GridCells.Fixed(3),
+                            horizontalArrangement = Arrangement.spacedBy(24.dp),
+                            verticalArrangement = Arrangement.spacedBy(24.dp),
+                            contentPadding = PaddingValues(32.dp)
+                        ) {
+                            itemsIndexed(state.recipes) { idx, recipe ->
+                                with(recipe) {
+                                    FudgeTvCard(
+                                        modifier = Modifier.conditional(condition = idx == 0, ifTrue = {
+                                            focusRequester(focusRequester)
+                                        }),
+                                        imageUrl = recipe.imageUrl,
+                                        title = title,
+                                        timeText = preparationTime.toString(),
+                                        typeText = difficulty.value,
+                                        onClick = { actionListener.onItemClicked(id) }
+                                    )
+                                }
                             }
                         }
                     }
