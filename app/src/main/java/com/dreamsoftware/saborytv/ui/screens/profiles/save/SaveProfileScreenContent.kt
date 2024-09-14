@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.domain.model.AvatarTypeEnum
 import com.dreamsoftware.saborytv.ui.theme.Dimens
@@ -32,54 +33,59 @@ internal fun SaveProfileScreenContent(
     uiState: SaveProfileUiState,
     actionListener: SaveProfileScreenActionListener
 ) {
-    with(uiState) {
-        FudgeTvProfileScreenContent(
-            isLoading = isLoading,
-            error = errorMessage,
-            mainLogoRes = R.drawable.main_logo,
-            mainLogoInverseRes = R.drawable.main_logo_inverse,
-            loadingTitleRes = R.string.generic_progress_dialog_title,
-            loadingDescriptionRes = R.string.generic_progress_dialog_description,
-            onErrorAccepted = actionListener::onErrorMessageCleared,
-            mainTitleRes = if(isEditMode) {
-                R.string.edit_profile_main_title
-            } else {
-                R.string.create_profile_main_title
-            },
-            secondaryTitleRes = if(isEditMode) {
-                R.string.edit_profile_secondary_title
-            } else {
-                R.string.create_profile_secondary_title
-            },
-            primaryOptionTextRes = R.string.save_profile_confirm_button_text,
-            secondaryOptionTextRes = R.string.save_profile_cancel_button_text,
-            tertiaryOptionTextRes = if(isEditMode) {
-                R.string.save_profile_change_secure_pin_button_text
-            } else {
-                null
-            },
-            onPrimaryOptionPressed = actionListener::onSaveProfilePressed,
-            onSecondaryOptionPressed = actionListener::onCancelPressed,
-            onTertiaryOptionPressed = actionListener::onAdvanceConfigurationPressed,
-        ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
-            ) {
-                if(isEditMode) {
-                    EditProfile(
-                        uiState = uiState,
-                        onAliasChanged = actionListener::onAliasChanged,
-                        onPinChanged = actionListener::onPinChanged,
-                        onAvatarTypeChanged = actionListener::onAvatarTypeChanged,
-                    )
+    with(MaterialTheme.colorScheme) {
+        with(uiState) {
+            FudgeTvProfileScreenContent(
+                isLoading = isLoading,
+                error = errorMessage,
+                mainLogoRes = R.drawable.main_logo,
+                mainLogoInverseRes = R.drawable.main_logo_inverse,
+                loadingTitleRes = R.string.generic_progress_dialog_title,
+                loadingDescriptionRes = R.string.generic_progress_dialog_description,
+                onErrorAccepted = actionListener::onErrorMessageCleared,
+                mainTitleRes = if (isEditMode) {
+                    R.string.edit_profile_main_title
                 } else {
-                    CreateNewProfile(
-                        uiState = uiState,
-                        onAliasChanged = actionListener::onAliasChanged,
-                        onPinChanged = actionListener::onPinChanged,
-                        onAvatarTypeChanged = actionListener::onAvatarTypeChanged,
-                    )
+                    R.string.create_profile_main_title
+                },
+                secondaryTitleRes = if (isEditMode) {
+                    R.string.edit_profile_secondary_title
+                } else {
+                    R.string.create_profile_secondary_title
+                },
+                primaryOptionTextRes = R.string.save_profile_confirm_button_text,
+                secondaryOptionTextRes = R.string.save_profile_cancel_button_text,
+                tertiaryOptionTextRes = if (isEditMode) {
+                    R.string.save_profile_change_secure_pin_button_text
+                } else {
+                    null
+                },
+                mainColor = primary,
+                secondaryColor = primaryContainer,
+                ternaryColor = onPrimary,
+                onPrimaryOptionPressed = actionListener::onSaveProfilePressed,
+                onSecondaryOptionPressed = actionListener::onCancelPressed,
+                onTertiaryOptionPressed = actionListener::onAdvanceConfigurationPressed,
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    if (isEditMode) {
+                        EditProfile(
+                            uiState = uiState,
+                            onAliasChanged = actionListener::onAliasChanged,
+                            onPinChanged = actionListener::onPinChanged,
+                            onAvatarTypeChanged = actionListener::onAvatarTypeChanged,
+                        )
+                    } else {
+                        CreateNewProfile(
+                            uiState = uiState,
+                            onAliasChanged = actionListener::onAliasChanged,
+                            onPinChanged = actionListener::onPinChanged,
+                            onAvatarTypeChanged = actionListener::onAvatarTypeChanged,
+                        )
+                    }
                 }
             }
         }

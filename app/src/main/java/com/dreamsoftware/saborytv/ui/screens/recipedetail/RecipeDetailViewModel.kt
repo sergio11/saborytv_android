@@ -100,7 +100,7 @@ class RecipeDetailViewModel @Inject constructor(
                         add(RecipeInfoItem(info = applicationAware.getString(R.string.serving_value, servings), labelRes = R.string.serving))
                         add(RecipeInfoItem(info = applicationAware.getString(R.string.ingredients_count_value, ingredients.size), labelRes = R.string.ingredients_count))
                         add(RecipeInfoItem(info = applicationAware.getString(R.string.steps_count_value, instructions.size), labelRes = R.string.steps_count))
-                        add(RecipeInfoItem(info = "Italy", labelRes = R.string.country_origin))
+                        add(RecipeInfoItem(info = country, labelRes = R.string.country_origin))
                     },
                     imageUrl = imageUrl
                 )
