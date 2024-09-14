@@ -18,5 +18,6 @@ data class RecipeBO(
     val imageUrl: String,
     val releasedDate: Date,
     val language: LanguageEnum,
-    val isPremium: Boolean
+    val isPremium: Boolean,
+    val country: String
 )

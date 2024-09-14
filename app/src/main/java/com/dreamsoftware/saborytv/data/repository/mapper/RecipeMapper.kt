@@ -8,7 +8,6 @@ import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import com.dreamsoftware.saborytv.domain.model.RecipeTypeEnum
 import com.dreamsoftware.saborytv.utils.IOneSideMapper
 import com.dreamsoftware.saborytv.utils.enumNameOfOrDefault
-import java.util.Date
 
 internal class RecipeMapper : IOneSideMapper<Pair<ChefProfileDTO, RecipeDTO>, RecipeBO> {
 
@@ -27,9 +26,10 @@ internal class RecipeMapper : IOneSideMapper<Pair<ChefProfileDTO, RecipeDTO>, Re
             difficulty = enumNameOfOrDefault(second.difficulty, DifficultyEnum.EASY),
             videoUrl = second.videoUrl,
             imageUrl = second.imageUrl,
-            releasedDate = Date(),
+            releasedDate = second.releasedData.toDate(),
             language = enumNameOfOrDefault(second.language, LanguageEnum.ENGLISH),
-            isPremium = second.isPremium
+            isPremium = second.isPremium,
+            country = second.country
         )
     }
 

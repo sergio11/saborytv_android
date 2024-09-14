@@ -2,6 +2,7 @@ package com.dreamsoftware.saborytv.data.remote.mapper
 
 import com.dreamsoftware.saborytv.data.remote.dto.response.RecipeDTO
 import com.dreamsoftware.saborytv.utils.IOneSideMapper
+import com.google.firebase.Timestamp
 
 internal class RecipeRemoteMapper: IOneSideMapper<Map<String, Any?>, RecipeDTO> {
 
@@ -21,6 +22,8 @@ internal class RecipeRemoteMapper: IOneSideMapper<Map<String, Any?>, RecipeDTO> 
         const val LANGUAGE_KEY = "language"
         const val DIFFICULTY_KEY = "difficulty"
         const val CHEF_PROFILE_ID_KEY = "chef"
+        const val COUNTRY_KEY = "country"
+        const val RELEASED_DATE_KEY = "releasedDate"
     }
 
     override fun mapInToOut(input: Map<String, Any?>): RecipeDTO = with(input) {
@@ -39,7 +42,9 @@ internal class RecipeRemoteMapper: IOneSideMapper<Map<String, Any?>, RecipeDTO> 
             imageUrl = get(IMAGE_URL_KEY) as String,
             language = get(LANGUAGE_KEY) as String,
             difficulty = get(DIFFICULTY_KEY) as String,
-            chefProfileId = get(CHEF_PROFILE_ID_KEY) as String
+            chefProfileId = get(CHEF_PROFILE_ID_KEY) as String,
+            country = get(COUNTRY_KEY) as String,
+            releasedData = get(RELEASED_DATE_KEY) as Timestamp
         )
     }
 
