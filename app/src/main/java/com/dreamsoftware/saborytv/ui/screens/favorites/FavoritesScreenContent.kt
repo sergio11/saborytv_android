@@ -25,19 +25,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
-import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.ui.theme.onSurface
-import com.dreamsoftware.saborytv.ui.theme.popupShadow
-import com.dreamsoftware.saborytv.ui.theme.surfaceContainerHigh
-import com.dreamsoftware.saborytv.ui.theme.surfaceVariant
 import com.dreamsoftware.fudge.component.FudgeTvButton
 import com.dreamsoftware.fudge.component.FudgeTvButtonStyleTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvButtonTypeEnum
@@ -50,7 +44,13 @@ import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
 import com.dreamsoftware.fudge.utils.conditional
 import com.dreamsoftware.fudge.utils.shadowBox
+import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.domain.model.RecipeBO
+import com.dreamsoftware.saborytv.ui.theme.onSurfaceVariant
+import com.dreamsoftware.saborytv.ui.theme.popupShadow
+import com.dreamsoftware.saborytv.ui.theme.surfaceContainerHigh
+import com.dreamsoftware.saborytv.ui.theme.surfaceVariant
+import com.dreamsoftware.saborytv.ui.utils.formatPreparationTime
 import com.dreamsoftware.saborytv.ui.utils.formatTimeAndType
 
 @Composable
@@ -95,7 +95,7 @@ internal fun FavoritesScreenContent(
                                         }),
                                         imageUrl = imageUrl,
                                         title = title,
-                                        timeText = preparationTime.toString(),
+                                        timeText = preparationTime.formatPreparationTime(LocalContext.current),
                                         typeText = item.difficulty.value,
                                         onClick = {
                                             actionListener.onRecipeSelected(item)
@@ -161,17 +161,17 @@ private fun RecipeProgramDetailsPopup(
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(surfaceVariant.copy(alpha = 0.35f))
+                        .background(surfaceVariant.copy(alpha = 0.6f))
                         .padding(horizontal = 24.dp),
                     horizontalAlignment = Alignment.Start
                 ) {
-                    Spacer(modifier = Modifier.fillMaxHeight(0.35f))
+                    Spacer(modifier = Modifier.fillMaxHeight(0.42f))
                     FudgeTvText(
                         modifier = Modifier.padding(bottom = 8.dp),
                         type = FudgeTvTextTypeEnum.HEADLINE_SMALL,
-                        textColor = onSurface,
-                        textAlign = TextAlign.Justify,
+                        textColor = onSurfaceVariant,
                         titleText = recipeProgram.title,
+                        singleLine = true,
                         overflow = TextOverflow.Ellipsis,
                     )
                     Row(
@@ -184,8 +184,8 @@ private fun RecipeProgramDetailsPopup(
                         FudgeTvText(
                             modifier = Modifier,
                             type = FudgeTvTextTypeEnum.LABEL_MEDIUM,
-                            titleText = recipeProgram.formatTimeAndType(),
-                            textColor = onSurface,
+                            titleText = recipeProgram.formatTimeAndType(LocalContext.current),
+                            textColor = onSurfaceVariant,
                             overflow = TextOverflow.Ellipsis,
                             softWrap = true,
                             maxLines = 4
@@ -195,7 +195,7 @@ private fun RecipeProgramDetailsPopup(
                         titleText = recipeProgram.description,
                         modifier = Modifier.padding(bottom = 28.dp),
                         type = FudgeTvTextTypeEnum.BODY_SMALL,
-                        textColor = Color.LightGray,
+                        textColor = onSurfaceVariant,
                         overflow = TextOverflow.Ellipsis,
                         softWrap = true,
                         maxLines = 3
@@ -216,7 +216,7 @@ private fun RecipeProgramDetailsPopup(
                             .fillMaxWidth()
                             .padding(bottom = 12.dp),
                         type = FudgeTvButtonTypeEnum.MEDIUM,
-                        style = FudgeTvButtonStyleTypeEnum.INVERSE,
+                        style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
                         textRes = R.string.remove_from_favorites
                     ) {
                         onRemoveFromFavorites(recipeProgram.id)

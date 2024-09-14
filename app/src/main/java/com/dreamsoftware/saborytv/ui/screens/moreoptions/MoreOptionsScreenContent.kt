@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.dreamsoftware.saborytv.R
@@ -45,7 +46,7 @@ internal fun MoreOptionsScreenContent(
                     FudgeTvCardDetails(
                         modifier = Modifier.width(268.dp).constrainAs(trainingDetails) {},
                         title = recipe?.title.orEmpty(),
-                        time = recipe.formatTimeAndType(),
+                        time = recipe.formatTimeAndType(LocalContext.current),
                         description = recipe?.description.orEmpty(),
                         imageUrl = recipe?.imageUrl.orEmpty()
                     )

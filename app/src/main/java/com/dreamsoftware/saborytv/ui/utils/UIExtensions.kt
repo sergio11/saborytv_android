@@ -6,10 +6,11 @@ import com.dreamsoftware.saborytv.domain.model.AvatarTypeEnum
 import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import com.dreamsoftware.saborytv.domain.model.SubscriptionBO
 
-fun RecipeBO?.formatTimeAndType(): String =
-    this?.run { "${preparationTime.formatPreparationTime()} | $difficulty" }.orEmpty()
+fun RecipeBO?.formatTimeAndType(context: Context): String =
+    this?.run { "${preparationTime.formatPreparationTime(context)} | ${difficulty.value}" }.orEmpty()
 
-fun Long.formatPreparationTime(): String = "$this minutes"
+fun Long.formatPreparationTime(context: Context) =
+    context.getString(R.string.preparation_time_value, this)
 
 val String.Companion.EMPTY: String
     get() = ""
