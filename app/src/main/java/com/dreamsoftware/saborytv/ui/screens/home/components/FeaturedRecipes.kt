@@ -126,7 +126,7 @@ private fun BoxScope.CarouselIndicator(
 ) {
     Box(modifier = modifier
         .padding(32.dp)
-        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
+        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f))
         .graphicsLayer {
             clip = true
             shape = ShapeDefaults.ExtraSmall
@@ -184,7 +184,7 @@ private fun CarouselItemForeground(
                 FudgeTvButton(
                     type = FudgeTvButtonTypeEnum.LARGE,
                     style = FudgeTvButtonStyleTypeEnum.NORMAL,
-                    textRes = R.string.start_session,
+                    textRes = R.string.play_recipe_program,
                     onClick = onOpenRecipeDetail
                 )
             }

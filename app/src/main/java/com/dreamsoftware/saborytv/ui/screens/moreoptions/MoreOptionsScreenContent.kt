@@ -11,7 +11,6 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.ui.utils.getStartButtonID
 import com.dreamsoftware.fudge.component.FudgeTvBackRowSchema
 import com.dreamsoftware.fudge.component.FudgeTvCardDetails
 import com.dreamsoftware.fudge.component.FudgeTvFocusRequester
@@ -64,7 +63,7 @@ internal fun MoreOptionsScreenContent(
                                     top.linkTo(trainingDetails.top)
                                     start.linkTo(trainingDetails.end, margin = 164.dp)
                                 },
-                            textRes = recipe?.type?.getStartButtonID() ?: R.string.start_workout,
+                            textRes = R.string.play_recipe_program,
                             icon = R.drawable.ic_rounded_play,
                             onClick = actionListener::onRecipeOpened
                         )

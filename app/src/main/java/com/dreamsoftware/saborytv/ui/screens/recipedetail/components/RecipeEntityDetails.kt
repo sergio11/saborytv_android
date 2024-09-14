@@ -2,11 +2,13 @@ package com.dreamsoftware.saborytv.ui.screens.recipedetail.components
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -27,7 +29,6 @@ import androidx.tv.material3.IconButton
 import androidx.tv.material3.MaterialTheme
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.ui.screens.recipedetail.RecipeDetailUiState
-import com.dreamsoftware.saborytv.ui.utils.getStartButtonID
 import com.dreamsoftware.fudge.component.FudgeTvButton
 import com.dreamsoftware.fudge.component.FudgeTvButtonStyleTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvButtonTypeEnum
@@ -70,7 +71,11 @@ fun RecipeEntityDetails(
                         maxLines = 2,
                         textColor = onSurfaceVariant
                     )
-                    Row(horizontalArrangement = Arrangement.spacedBy(48.dp)) {
+                    Row(
+                        modifier = Modifier.height(50.dp),
+                        horizontalArrangement = Arrangement.spacedBy(48.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         itemsInfo.forEach { item ->
                             RecipeInfo(
                                 info = item.info,
@@ -87,7 +92,7 @@ fun RecipeEntityDetails(
                             modifier = Modifier.focusRequester(requester),
                             type = FudgeTvButtonTypeEnum.LARGE,
                             style = FudgeTvButtonStyleTypeEnum.NORMAL,
-                            textRes = type.getStartButtonID(),
+                            textRes = R.string.play_recipe_program,
                             onClick = onOpenRecipeClicked
                         )
                         FudgeTvButton(

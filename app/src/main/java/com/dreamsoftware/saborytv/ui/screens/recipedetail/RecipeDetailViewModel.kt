@@ -11,6 +11,7 @@ import com.dreamsoftware.saborytv.ui.utils.EMPTY
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
 import com.dreamsoftware.fudge.core.UiState
+import com.dreamsoftware.fudge.utils.IFudgeTvApplicationAware
 import com.dreamsoftware.saborytv.domain.model.RecipeBO
 import com.dreamsoftware.saborytv.domain.model.RecipeTypeEnum
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +22,8 @@ class RecipeDetailViewModel @Inject constructor(
     private val getRecipeByIdUseCase: GetRecipeByIdUseCase,
     private val addFavoriteRecipeUseCase: AddFavoriteRecipeUseCase,
     private val removeFavoriteRecipeUseCase: RemoveFavoriteRecipeUseCase,
-    private val verifyRecipeInFavoritesUseCase: VerifyRecipeInFavoritesUseCase
+    private val verifyRecipeInFavoritesUseCase: VerifyRecipeInFavoritesUseCase,
+    private val applicationAware: IFudgeTvApplicationAware
 ) : FudgeTvViewModel<RecipeDetailUiState, RecipeDetailSideEffects>(), RecipeDetailScreenActionListener {
 
     override fun onGetDefaultState(): RecipeDetailUiState = RecipeDetailUiState()
@@ -93,17 +95,12 @@ class RecipeDetailViewModel @Inject constructor(
                     id = id,
                     type = type,
                     itemsInfo = buildList {
-                        add(RecipeInfoItem(info = "$preparationTime min", labelRes = R.string.length))
-                        add(RecipeInfoItem(info = difficulty.value, labelRes = R.string.intensity))
-                        /*when(this@with) {
-                            is SeriesBO -> {
-                                add(RecipeInfoItem(info = numberOfWeeks.toString(), labelRes = R.string.week))
-                                add(RecipeInfoItem(info = numberOfClasses.toString(), labelRes = R.string.classes))
-                            }
-                            is ChallengeBO -> {
-                                add(RecipeInfoItem(info = numberOfDays.toString(), labelRes = R.string.days))
-                            }
-                        }*/
+                        add(RecipeInfoItem(info = applicationAware.getString(R.string.preparation_time_value, preparationTime), labelRes = R.string.length))
+                        add(RecipeInfoItem(info = difficulty.value, labelRes = R.string.difficulty))
+                        add(RecipeInfoItem(info = applicationAware.getString(R.string.serving_value, servings), labelRes = R.string.serving))
+                        add(RecipeInfoItem(info = applicationAware.getString(R.string.ingredients_count_value, ingredients.size), labelRes = R.string.ingredients_count))
+                        add(RecipeInfoItem(info = applicationAware.getString(R.string.steps_count_value, instructions.size), labelRes = R.string.steps_count))
+                        add(RecipeInfoItem(info = "Italy", labelRes = R.string.country_origin))
                     },
                     imageUrl = imageUrl
                 )

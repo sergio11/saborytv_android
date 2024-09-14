@@ -4,7 +4,6 @@ import android.content.Context
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.domain.model.AvatarTypeEnum
 import com.dreamsoftware.saborytv.domain.model.RecipeBO
-import com.dreamsoftware.saborytv.domain.model.RecipeTypeEnum
 import com.dreamsoftware.saborytv.domain.model.SubscriptionBO
 
 fun RecipeBO?.formatTimeAndType(): String =
@@ -17,15 +16,6 @@ val String.Companion.EMPTY: String
 
 val Char.Companion.SPACE: Char
     get() = ' '
-
-
-fun RecipeTypeEnum.getStartButtonID() = when (this) {
-    RecipeTypeEnum.VEGETARIAN -> R.string.start_session
-    RecipeTypeEnum.VEGAN -> R.string.start_program
-    RecipeTypeEnum.GLUTEN_FREE -> R.string.start_workout
-    RecipeTypeEnum.HIGH_PROTEIN -> R.string.start_workout
-    RecipeTypeEnum.NOT_SET -> R.string.start_session
-}
 
 fun AvatarTypeEnum.toDrawableResource(): Int =
     when(this) {

@@ -1,6 +1,5 @@
 package com.dreamsoftware.saborytv.ui.screens.recipes
 
-import android.util.Log
 import com.dreamsoftware.saborytv.R
 import com.dreamsoftware.saborytv.di.FavoritesScreenErrorMapper
 import com.dreamsoftware.saborytv.domain.model.LanguageEnum
@@ -49,7 +48,7 @@ class RecipesViewModel @Inject constructor(
             FudgeTvFilterVO(
                 id = LANGUAGE_FILTER,
                 icon = R.drawable.language_ic,
-                title = R.string.class_language,
+                title = R.string.language,
                 description = LanguageEnum.NOT_SET.value,
                 options = LanguageEnum.entries.map { it.value }
             ),

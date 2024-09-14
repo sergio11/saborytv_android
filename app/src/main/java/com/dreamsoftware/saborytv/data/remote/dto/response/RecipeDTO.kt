@@ -1,5 +1,7 @@
 package com.dreamsoftware.saborytv.data.remote.dto.response
 
+import com.google.firebase.Timestamp
+
 data class RecipeDTO(
     val id: String,
     val category: String,
@@ -15,5 +17,7 @@ data class RecipeDTO(
     val type: String,
     val videoUrl: String,
     val imageUrl: String,
-    val isPremium: Boolean
+    val isPremium: Boolean,
+    val country: String,
+    val releasedData: Timestamp
 )

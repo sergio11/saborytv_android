@@ -38,7 +38,6 @@ import com.dreamsoftware.saborytv.ui.theme.onSurface
 import com.dreamsoftware.saborytv.ui.theme.popupShadow
 import com.dreamsoftware.saborytv.ui.theme.surfaceContainerHigh
 import com.dreamsoftware.saborytv.ui.theme.surfaceVariant
-import com.dreamsoftware.saborytv.ui.utils.getStartButtonID
 import com.dreamsoftware.fudge.component.FudgeTvButton
 import com.dreamsoftware.fudge.component.FudgeTvButtonStyleTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvButtonTypeEnum
@@ -208,7 +207,7 @@ private fun RecipeProgramDetailsPopup(
                             .padding(bottom = 12.dp),
                         type = FudgeTvButtonTypeEnum.MEDIUM,
                         style = FudgeTvButtonStyleTypeEnum.NORMAL,
-                        textRes = recipeProgram.type.getStartButtonID()
+                        textRes = R.string.play_recipe_program
                     ) {
                         onStartRecipeProgram(recipeProgram.id)
                     }
