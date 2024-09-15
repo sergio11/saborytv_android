@@ -213,15 +213,35 @@ The **Recipe Player** is where your culinary creations come to life on SaboryTV.
 
 The **Recipe Player** on SaboryTV is your ultimate kitchen companion, ensuring every recipe is not only delicious but also fun to prepare. Whether you're whipping up a quick meal or crafting a gourmet feast, the player provides everything you need for an exceptional cooking experience. 🍴🌟
 
+### Subscription Options 🌟🍴
+
+In the **Subscriptions** section, discover flexible plans designed to enhance your culinary adventures on SaboryTV! 🎉✨ Whether you’re a casual cook or a culinary enthusiast, our subscription options offer exclusive access to premium recipes and features that will elevate your cooking experience.
+
+Here’s what you need to know:
+
+- **Choose Your Plan** 🗓️: Pick the subscription that fits your cooking style and culinary goals. We offer three options: 1 month, 6 months, or 12 months. Each plan is crafted to provide continuous inspiration and access to a diverse array of recipes.
+
+- **Enjoy Discounts** 💰: The longer you commit, the more you save! Opt for a longer subscription period and enjoy special discounts. It’s a win-win—more savings and more delicious recipes at your fingertips!
+
+- **Unlock Premium Recipes** 🔓: With a subscription, you’ll gain exclusive access to high-quality, premium recipes not available in the free plan. Dive into gourmet dishes, advanced cooking techniques, and exclusive chef tutorials that will take your culinary skills to the next level.
+
+The **Subscriptions** section ensures that your cooking journey is not only flavorful but also rewarding. With the flexibility to choose your plan and the added value of premium recipes, you’ll stay inspired and engaged, creating amazing dishes with ease. 🍽️🚀
 
 
+## Contribution
+Contributions to SaboryTV Android are highly encouraged! If you're interested in adding new features, resolving bugs, or enhancing the project's functionality, please feel free to submit pull requests.
 
-## Contributing 🤝
+## Credits
+SaboryTV is developed and maintained by Sergio Sánchez Sánchez (Dream Software). Special thanks to the open-source community and the contributors who have made this project possible. If you have any questions, feedback, or suggestions, feel free to reach out at dreamsoftware92@gmail.com.
 
-We welcome contributions to improve SaboryTV. If you have suggestions or find bugs, please open an issue on our GitHub repository. Pull requests are also welcome! 💡🔧
+## Acknowledgements 🙏
 
-## License 📜
+We express our deep appreciation to [Freepik](https://www.freepik.es/) for generously providing the resources used in this project.
+<div> Icons and images takes from <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es'</a></div>
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+A heartfelt thank you to the creators of the [JetFit repository](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit) for providing such an invaluable starting point for Jetpack Compose for TV. Your work has been incredibly inspiring and instrumental in shaping the development of this project.
+
+The resources, examples, and insights provided in the JetFit repository served as a foundational reference, enabling us to build and expand upon your excellent groundwork. Your contributions have significantly accelerated our journey and enriched our understanding of creating seamless TV applications using Jetpack Compose. 📺✨
 
 Happy cooking with SaboryTV! 🎉👨‍🍳
