@@ -114,6 +114,53 @@ By applying MVI, we achieve a unidirectional data flow, making state management 
 
 This architecture ensures that our application is well-structured, easy to maintain, and scalable, while adhering to best practices and design principles.
 
+## App Screenshots 📸
+
+Dive into **SaboryTV** and explore its vibrant and intuitive design with these screenshots showcasing the heart of our app!
+
+### Onboarding 🏠
+
+Kickstart your culinary adventure with our Onboarding screens. If you’re new to **SaboryTV** and haven’t logged in yet, you’ll be greeted by our welcoming landing page. Here, you can get a sneak peek of what’s in store 📜 and easily navigate to login 🔒 or create a new account 🆕 to start your flavorful journey.
+
+### Sign In 🔑
+
+Ready to join the **SaboryTV** kitchen? Log in with your email and password to access all the delicious features awaiting you. If you’re not yet a member, don’t worry—our sign-up process is just a tap away! 🌟✉️
+
+### Sign Up ✨
+
+Welcome to **SaboryTV**! 🎉 Setting up your account is a breeze and opens the door to a world of culinary delights. Ready to cook up something amazing? 🍽️
+
+Simply enter your details: your name 📝, email 📧, and a secure password 🔒. Choose a password that’s memorable yet secure—your culinary adventure is our priority!
+
+Once you’ve filled in the fields, hit "Register" ✅ and you’re all set! 🎊 You’re now part of the **SaboryTV** family, ready to explore and enjoy exclusive recipes and features. 🚀🌟
+
+### Managing Your Profiles 👤
+
+Step into the **Profiles** section where customization and ease meet to enhance your cooking journey. Here’s how you can make **SaboryTV** truly yours:
+
+- **Profile Selection**: Choose which profile you’d like to use from the **Profile Selection** screen. It’s your personal space where you can keep track of favorite recipes and tailored recommendations.
+
+- **Creating Profiles**: Add up to four profiles to cater to family members or different users. Customize each profile with its own alias and avatar, and make cooking a fun, personalized experience for everyone!
+
+- **Editing Profiles**: Update your profile’s alias and avatar or change your security PIN with ease. Keep your account secure and reflect your personality in every way you choose.
+
+- **Deleting Profiles**: If a profile is no longer needed, delete it and remove all associated favorites and data. This keeps your app clean and organized, focusing on the recipes and features that matter most to you.
+
+The **Profiles** section is all about flexibility and personalization, ensuring your cooking journey is as unique as you are.
+
+### Exploring the Home Screen 📱
+
+Welcome to the vibrant **Home Screen**, the hub of your culinary adventure. Here’s what awaits you:
+
+- **Featured Recipes Carousel** 🎠: Swipe through our rotating selection of standout recipes. This dynamic showcase highlights popular and trending dishes to inspire your next culinary creation.
+
+- **Categories Row** 📊: Browse through a variety of recipe categories, from appetizers to desserts. Presented in a sleek horizontal list, it’s easy to find recipes based on what you’re craving or your current cooking goals.
+
+- **Personalized Recipe Recommendations** ⭐: Discover recipes tailored to your taste and preferences. Based on your cooking history and likes, this section offers suggestions that are perfect for your culinary journey.
+
+The Home Screen is designed to make your exploration of recipes delightful and engaging. Whether you’re checking out featured dishes, exploring categories, or receiving personalized suggestions, everything is organized to enhance your cooking experience.
+
+
 ## Contributing 🤝
 
 We welcome contributions to improve SaboryTV. If you have suggestions or find bugs, please open an issue on our GitHub repository. Pull requests are also welcome! 💡🔧
