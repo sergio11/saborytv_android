@@ -227,6 +227,24 @@ Here’s what you need to know:
 
 The **Subscriptions** section ensures that your cooking journey is not only flavorful but also rewarding. With the flexibility to choose your plan and the added value of premium recipes, you’ll stay inspired and engaged, creating amazing dishes with ease. 🍽️🚀
 
+### Settings 🛠️🍽️
+
+The **Settings** section on SaboryTV is your personal culinary control center, where you can fine-tune your app experience to match your tastes and preferences. 🌟 Here’s what you can customize:
+
+- **Adjust Language** 🌐: Choose the language that makes you feel most at home. Whether you prefer English, Spanish, or another language we offer, SaboryTV will adapt to your choice, ensuring a seamless and enjoyable cooking experience.
+
+- **Select Measurement Units** 📏: Pick your preferred unit of measurement—metric or imperial. Whether you’re accustomed to grams and liters or ounces and cups, SaboryTV will display recipe measurements in the format that suits you best.
+
+- **Set Video Quality** 📹: Control your video streaming experience by selecting the video quality. Choose from Full HD for crisp, clear visuals or opt for Automatic to let the app adjust the quality up to 4K based on your internet connection.
+
+- **Learn About Us** 🧑‍🍳: Discover more about the team behind SaboryTV and the vision that drives our platform. We’re excited to share our passion for food and cooking with you!
+
+- **Log Out** 🚪: Need to take a break or switch accounts? Easily log out and take a pause or switch profiles with just a few taps.
+
+- **Manage Subscriptions** 💳: Review and adjust your subscription plan. Change your current plan or even cancel your subscription if needed. Stay in control of your culinary journey and ensure your plan meets your evolving tastes and needs.
+
+The **Settings** section ensures that you have the flexibility to tailor SaboryTV to your liking, enhancing your overall cooking experience. From language preferences to video quality settings, everything is designed to offer you a personalized and delightful culinary adventure. 🍽️🛠️
+
 
 ## Contribution
 Contributions to SaboryTV Android are highly encouraged! If you're interested in adding new features, resolving bugs, or enhancing the project's functionality, please feel free to submit pull requests.
