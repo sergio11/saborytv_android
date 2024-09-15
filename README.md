@@ -1,10 +1,12 @@
-# SaboryTV 🍳📺: The Perfect Recipe Guide for Your TV
+# SaboryTV 🍳📺: Your Personal Chef, Right on Your TV
 
 <img width="auto" height="200px" align="left" src="doc/main_logo.png" />
 
-Welcome to **SaboryTV**, your ultimate kitchen companion for a delicious and interactive cooking experience on your TV. SaboryTV is designed to transform the way you cook by bringing you step-by-step recipe videos right to your screen. Whether you're a seasoned chef or a home cook, SaboryTV makes it easy to follow along with expert chefs and create mouthwatering dishes.
+Welcome to **SaboryTV**, the ultimate platform to elevate your cooking experience directly from your Smart TV. Whether you're aiming to refine your culinary skills, explore new flavors, or simply follow along with top chefs, SaboryTV is designed to cater to your tastes and dietary goals. With an extensive collection of recipes, tailored to your preferences, you'll be able to create the perfect dish every time. 🍝🍰
 
-Built with **Jetpack Compose for TV**, **FitFlexTV** leverages the power of [**🍮 Fudge**](https://github.com/sergio11/fudge_tv_compose_library) — a Jetpack Compose UI Kit for TV apps. **Fudge** offers pre-built components and tools to create seamless and engaging experiences on the big screen 🎬. With **Fudge**, we’ve simplified TV app development, ensuring that FitFlexTV delivers a smooth, intuitive user experience 🚀.
+With SaboryTV, you can watch expert chefs in action and follow their step-by-step instructions from the comfort of your kitchen. The platform offers an interactive, hands-free experience that guides you through every detail of the recipe—from ingredient prep to plating—so you can focus on perfecting your dish without distractions. 👨‍🍳👩‍🍳
+
+**Built using Jetpack Compose for TV**, SaboryTV integrates seamlessly into your Smart TV environment. Utilizing [**🍮 Fudge**](https://github.com/sergio11/fudge_tv_compose_library), a powerful UI Kit for TV apps, SaboryTV ensures smooth navigation and a delightful user experience. Our platform is designed to make following along with cooking videos intuitive, engaging, and fun, turning your kitchen into a culinary playground. 🍽️✨
 
 <p align="center">
   <img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white" />
@@ -14,14 +16,27 @@ Built with **Jetpack Compose for TV**, **FitFlexTV** leverages the power of [**�
   <img src="https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" />
 </p>
 
-## Key Features ✨
+## Overview 🌐
 
-- **Interactive Recipe Videos:** Watch and follow detailed cooking videos with clear instructions, right from your TV screen. 🎥👨‍🍳
-- **Varied Recipe Collection:** Explore a wide range of recipes, from quick weeknight dinners to elaborate gourmet meals. 🍲🥗
-- **User-Friendly Interface:** Designed specifically for TV screens, SaboryTV offers an intuitive and easy-to-navigate interface. 📺🕹️
-- **Personalized Recommendations:** Discover recipes based on your cooking history and preferences. 🔍🍴
-- **Step-by-Step Guidance:** Enjoy clear, step-by-step instructions to ensure your cooking experience is smooth and enjoyable. 📝🍳
+**SaboryTV** is not just a recipe guide—it's your ultimate culinary companion designed to enhance your cooking experience and accommodate the entire family. Here’s a look at what makes SaboryTV a standout platform:
 
+### Personalized Profiles 👥
+With SaboryTV, each family member can create their own profile, allowing everyone to save their favorite recipes and receive personalized recommendations. This feature ensures that everyone in your household can enjoy a tailored cooking experience based on their own tastes and dietary preferences.
+
+### Advanced Recipe Search 🔍
+Our advanced search functionality lets you find recipes based on various criteria, including:
+- **Preparation Time** ⏳: Find recipes that fit your schedule.
+- **Video Language** 🌍: Choose recipes with instructions in your preferred language.
+- **Recipe Category** 📂: Explore recipes categorized as appetizers, main courses, sides, and desserts.
+- **Recipe Type** 🥗: Filter by types such as Vegan, Vegetarian, Gluten-Free, and High Protein.
+
+### Customizable Preferences ⚙️
+SaboryTV offers a range of customization options to enhance your experience:
+- **Default Video Resolution** 📺: Set your preferred resolution for streaming recipes.
+- **App Language** 🌐: Select the language for the app interface.
+- **Measurement System** 📏: Choose between Metric and Imperial units for your recipes.
+
+With these features, SaboryTV ensures a seamless, user-friendly experience tailored to your cooking needs and preferences. Whether you're looking for new recipes, saving your favorites, or adjusting the app to fit your lifestyle, SaboryTV has got you covered. 🍳📺
 
 ## Technologies Used 🛠️
 
@@ -99,18 +114,6 @@ By applying MVI, we achieve a unidirectional data flow, making state management 
 
 This architecture ensures that our application is well-structured, easy to maintain, and scalable, while adhering to best practices and design principles.
 
-## How It Works 🔄
-
-1. **Browse Recipes:** Navigate through a diverse collection of recipes categorized by cuisine, difficulty, and meal type. 📜🍝
-2. **Watch and Cook:** Select a recipe and follow along with video instructions displayed on your TV. 🎬🍲
-3. **Save and Share:** Save your favorite recipes and share them with friends and family. 💾📤
-
-## Getting Started 🚀
-
-1. **Install SaboryTV:** Download and install the app from the Android TV store. 🛒📥
-2. **Create an Account:** Set up your profile to start personalizing your recipe recommendations. 🖊️👤
-3. **Start Cooking:** Browse recipes, select a video, and get cooking! 🍽️👩‍🍳
-
 ## Contributing 🤝
 
 We welcome contributions to improve SaboryTV. If you have suggestions or find bugs, please open an issue on our GitHub repository. Pull requests are also welcome! 💡🔧
@@ -118,9 +121,5 @@ We welcome contributions to improve SaboryTV. If you have suggestions or find bu
 ## License 📜
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact 📬
-
-For any questions or support, please contact us at [support@saborytv.com](mailto:support@saborytv.com).
 
 Happy cooking with SaboryTV! 🎉👨‍🍳
