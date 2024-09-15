@@ -160,6 +160,61 @@ Welcome to the vibrant **Home Screen**, the hub of your culinary adventure. Here
 
 The Home Screen is designed to make your exploration of recipes delightful and engaging. Whether you’re checking out featured dishes, exploring categories, or receiving personalized suggestions, everything is organized to enhance your cooking experience.
 
+## Exploring Recipes and More 🍽️✨
+
+Step into the **Recipes** section, your ultimate culinary playground where your cooking adventures come to life! 🎉 This hub is designed to help you explore and enjoy a variety of recipes that cater to your dietary preferences and goals.
+
+In this section, you’ll find a diverse array of categories and types to explore:
+
+- **Recipe Types** 🌱🍲: Discover a wide range of recipes tailored to different dietary needs:
+  - **Vegan** 🌿: Plant-based recipes that are completely free from animal products. Perfect for those who follow a vegan lifestyle or want to try something new and plant-powered.
+  - **Vegetarian** 🥕: Delicious recipes that exclude meat but may include dairy and eggs. Ideal for those who prefer a vegetarian diet or are looking for tasty meat-free options.
+  - **Gluten-Free** 🌾🚫: Mouthwatering dishes that are free from gluten, perfect for those with gluten sensitivities or celiac disease.
+  - **High-Protein** 💪: Recipes packed with protein to support muscle building and recovery. Great for athletes or anyone looking to boost their protein intake.
+
+- **Categories** 📚: Browse through various recipe categories to find exactly what you’re in the mood for:
+  - **Appetizers** 🍢: Tantalizing starters to kick off your meal with flair.
+  - **Main Courses** 🍽️: Hearty and satisfying dishes that are the centerpiece of your meal.
+  - **Side Dishes** 🥗: Delicious sides to complement your main course and add variety to your plate.
+  - **Desserts** 🍰: Sweet treats and indulgent desserts to finish your meal on a high note.
+
+- **Special Features** ✨: Take advantage of our advanced filtering and sorting options 🔍. Customize your search based on preparation time, recipe type, or dietary restrictions to find the perfect recipe for any occasion.
+
+Once you find a recipe that excites your taste buds, check out the **detailed view** 📋. Here you’ll get all the essential information, including ingredients, instructions, preparation time, and any special tips, so you can easily recreate it in your own kitchen.
+
+The **Recipes** section is crafted to be your personal culinary hub, where every meal is an adventure waiting to happen. Whether you’re exploring new dietary options or looking for your next favorite dish, this section has everything you need to make your cooking experience enjoyable and rewarding. 🌟🚀
+
+### Favorites Section 🌟
+
+Welcome to the **Favorites** section, your personal culinary treasure trove! Here you can keep all your cherished recipes just a tap away. 🍽️✨ This space is designed to make your cooking adventures even more enjoyable by providing quick access to your most-loved dishes.
+
+#### What’s in the Favorites Section?
+
+- **Quick Access:** Instantly view all the recipes you’ve marked as favorites, so you can easily revisit and enjoy your top picks without searching again. ❤️
+- **Detailed View:** Tap on any favorite recipe to dive straight into its detailed view. You’ll find all the essential details, from ingredients to step-by-step instructions, right at your fingertips. 📋
+- **Easy Cook:** With just one click, you can start cooking any of your favorite recipes immediately. It’s all about making your kitchen experience as seamless and delightful as possible! 🚀
+
+Make your cooking journey more efficient and personalized by keeping your favorite recipes close at hand. Enjoy effortless access to the dishes you love most, and savor every meal with ease! 🌟🍴
+
+
+### Recipe Player 🎥🍽️
+
+The **Recipe Player** is where your culinary creations come to life on SaboryTV. Designed to provide a seamless and immersive cooking experience, it ensures you stay engaged and inspired throughout your culinary journey.
+
+- **High-Quality Video** 📺: Experience your recipes in stunning detail with support for Full HD and even 4K resolutions. The player adapts automatically to offer the best quality based on your connection, so you never miss a step.
+
+- **Recipe Controls** ⏯️: Effortlessly navigate through your cooking video with intuitive controls. You can pause, rewind, or skip forward, ensuring you stay right on track with your recipe.
+
+- **On-Screen Guidance** 🧭: Follow along with clear, on-screen instructions that guide you through each cooking step. Real-time tips and tricks from expert chefs help you master every dish with confidence.
+
+- **Progress Tracking** 📊: Keep track of your progress with visual cues that show how far you’ve come in the recipe and what’s left to do. Stay motivated as you cook through each step.
+
+- **Full-Screen Mode** 🖥️: Dive into your recipe with full-screen mode, minimizing distractions and allowing you to focus completely on your cooking.
+
+The **Recipe Player** on SaboryTV is your ultimate kitchen companion, ensuring every recipe is not only delicious but also fun to prepare. Whether you're whipping up a quick meal or crafting a gourmet feast, the player provides everything you need for an exceptional cooking experience. 🍴🌟
+
+
+
 
 ## Contributing 🤝
 
