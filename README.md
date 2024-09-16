@@ -8,6 +8,8 @@ With SaboryTV, you can watch expert chefs in action and follow their step-by-ste
 
 **Built using Jetpack Compose for TV**, SaboryTV integrates seamlessly into your Smart TV environment. Utilizing [**🍮 Fudge**](https://github.com/sergio11/fudge_tv_compose_library), a powerful UI Kit for TV apps, SaboryTV ensures smooth navigation and a delightful user experience. Our platform is designed to make following along with cooking videos intuitive, engaging, and fun, turning your kitchen into a culinary playground. 🍽️✨
 
+Happy cooking with SaboryTV! 🎉👨‍🍳
+
 <p align="center">
   <img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white" />
   <img src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white" />
@@ -330,4 +332,17 @@ A heartfelt thank you to the creators of the [JetFit repository](https://github.
 
 The resources, examples, and insights provided in the JetFit repository served as a foundational reference, enabling us to build and expand upon your excellent groundwork. Your contributions have significantly accelerated our journey and enriched our understanding of creating seamless TV applications using Jetpack Compose. 📺✨
 
-Happy cooking with SaboryTV! 🎉👨‍🍳
+<a href="https://www.freepik.es/foto-gratis/espaguetis-salsa-bolonesa-tablexa-madera_38744102.htm#fromView=search&page=1&position=2&uuid=d536ab4f-d11c-49d5-82d3-eb4f117e0df0">Imagen de chandlervid85 en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/fettucine-salsa-crema-blanca-camarones-champinones_3519157.htm#fromView=search&page=1&position=2&uuid=ece10ef8-c656-4e0d-ad2d-46d519bb5465">Imagen de lifeforstock en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/tacos-carne-mesa-madera_1138286.htm#fromView=search&page=1&position=6&uuid=97d9bfad-76c2-4739-af1a-95d93bb85e9a">Imagen de jcstudio en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/ensalada-cesar-vista-superior-plato-ovalado-verde-mantel-cuadros-blanco-tenedor-cuchillo-sobre-fondo-rojo-oscuro_16936995.htm#fromView=search&page=1&position=1&uuid=0462af90-852d-4da4-833d-c6a9d3b2160d">Imagen de KamranAydinov en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/salteado-pollo-pimientos-judias-verdes_7701182.htm#fromView=search&page=1&position=1&uuid=af4272c3-0220-4e72-bfb8-3c53f11c0c0b">Imagen de timolina en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/sabrosos-apetitosos-camarones-fritos-sarten-sobre-fondo-piedra-oscura-vista-superior_21707372.htm#fromView=search&page=1&position=1&uuid=d99fcafa-3c6d-4c9f-b7ce-4d4435e102f8">Imagen de valeria_aksakova en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/ensalada-griega-o-horiatiki-grandes-trozos-tomates-pepinos-cebolla-queso-feta-aceitunas-tazon-blanco-aislado-vista-superior-ensalada-pueblo-dados-mozzarella-rucula-perejil-aceite-oliva_14628711.htm#fromView=search&page=1&position=9&uuid=dffa7b02-a748-4fe0-a1c7-f808e48beadd">Imagen de jcomp en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/curry-pollo-cebolla-comida-india-cocina-asiatica-vista-superior_6713076.htm#fromView=search&page=1&position=44&uuid=ba0274b8-7205-48e0-9970-ad0ff12d6c68">Imagen de timolina en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/sabrosos-sabrosos-aperitivos-italianos-tomate-o-bruschetta-sobre-rebanadas-baguette-tostado-aderezado-albahaca-verduras-hierbas-sobre-pan-ciabatta-crujiente-parrilla-o-tostado_14628415.htm#fromView=search&page=1&position=5&uuid=30263806-71e9-44b8-b2a6-cc1526db37f3">Imagen de jcomp en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/champinones-rellenos-caseros-al-horno-eneldo-fresco-queso_8826550.htm#fromView=search&page=1&position=5&uuid=9334ae69-3355-41a3-9931-03ff1abe212d">Imagen de azerbaijan_stockers en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/mojito-ingredientes_8749127.htm#fromView=search&page=1&position=5&uuid=bc645d5f-ad64-4840-9f41-359fa645c1ba">Imagen de Racool_studio en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/bebida-verano-frambuesas-limon-hielo-mesa-madera-antigua_20989797.htm#fromView=search&page=1&position=1&uuid=b917e65a-b2ae-4423-b7cd-5a35e81cddaa">Imagen de fabrikasimf en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/bebida-madera-detox-verano-sacudida_1130230.htm#fromView=search&page=1&position=1&uuid=4443741b-8e77-43c3-a6c9-6ab77192c58c">Imagen de topntp26 en Freepik</a>
+<a href="https://www.freepik.es/foto-gratis/latte-helado-matcha_1154010.htm#fromView=search&page=1&position=10&uuid=43a34124-12c7-4bee-a054-051fb606dedc">Imagen de topntp26 en Freepik</a>
