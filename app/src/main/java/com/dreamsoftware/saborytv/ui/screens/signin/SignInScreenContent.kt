@@ -155,6 +155,8 @@ private fun ColumnScope.SignInSecondaryContent(onGoToSignUp: () -> Unit) {
             FudgeTvButton(
                 textRes = R.string.sign_in_go_sign_up_button_text,
                 type = FudgeTvButtonTypeEnum.SMALL,
+                borderColor = surface,
+                contentColor = surface,
                 style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
                 onClick = onGoToSignUp
             )
@@ -228,6 +230,8 @@ private fun SignInFormContent(
                         value = email,
                         type = FudgeTvTextFieldTypeEnum.EMAIL,
                         labelRes = R.string.sign_in_form_email_label_text,
+                        focusedLabelColor = surface,
+                        unfocusedLabelColor = surface.takeIf { email.isNotBlank() },
                         errorMessage = emailError,
                         onValueChange = onEmailChanged
                     )
@@ -237,6 +241,8 @@ private fun SignInFormContent(
                         value = password,
                         type = FudgeTvTextFieldTypeEnum.PASSWORD,
                         labelRes = R.string.sign_in_form_password_label_text,
+                        focusedLabelColor = surface,
+                        unfocusedLabelColor = surface.takeIf { password.isNotBlank() },
                         errorMessage = passwordError,
                         onValueChange = onPasswordChanged
                     )
