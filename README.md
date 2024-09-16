@@ -164,6 +164,14 @@ Simply enter your details: your name 📝, email 📧, and a secure password �
 
 Once you’ve filled in the fields, hit "Register" ✅ and you’re all set! 🎊 You’re now part of the **SaboryTV** family, ready to explore and enjoy exclusive recipes and features. 🚀🌟
 
+<p align="center">
+  <img src="doc/screenshots/picture_19.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_20.png" />
+</p>
+
 ### Managing Your Profiles 👤
 
 Step into the **Profiles** section where customization and ease meet to enhance your cooking journey. Here’s how you can make **SaboryTV** truly yours:
@@ -224,9 +232,41 @@ Welcome to the vibrant **Home Screen**, the hub of your culinary adventure. Here
 
 - **Featured Recipes Carousel** 🎠: Swipe through our rotating selection of standout recipes. This dynamic showcase highlights popular and trending dishes to inspire your next culinary creation.
 
+<p align="center">
+  <img src="doc/screenshots/picture_18.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_21.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_22.png" />
+</p>
+
 - **Categories Row** 📊: Browse through a variety of recipe categories, from appetizers to desserts. Presented in a sleek horizontal list, it’s easy to find recipes based on what you’re craving or your current cooking goals.
 
+<p align="center">
+  <img src="doc/screenshots/picture_23.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_25.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_26.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_27.png" />
+</p>
+
 - **Personalized Recipe Recommendations** ⭐: Discover recipes tailored to your taste and preferences. Based on your cooking history and likes, this section offers suggestions that are perfect for your culinary journey.
+
+<p align="center">
+  <img src="doc/screenshots/picture_24.png" />
+</p>
 
 The Home Screen is designed to make your exploration of recipes delightful and engaging. Whether you’re checking out featured dishes, exploring categories, or receiving personalized suggestions, everything is organized to enhance your cooking experience.
 
