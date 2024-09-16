@@ -369,6 +369,19 @@ The **Recipe Player** is where your culinary creations come to life on SaboryTV.
 
 - **Full-Screen Mode** 🖥️: Dive into your recipe with full-screen mode, minimizing distractions and allowing you to focus completely on your cooking.
 
+<p align="center">
+  <img src="doc/screenshots/picture_49.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_50.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_51.png" />
+</p>
+
+
 The **Recipe Player** on SaboryTV is your ultimate kitchen companion, ensuring every recipe is not only delicious but also fun to prepare. Whether you're whipping up a quick meal or crafting a gourmet feast, the player provides everything you need for an exceptional cooking experience. 🍴🌟
 
 ### Subscription Options 🌟🍴
