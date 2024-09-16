@@ -138,8 +138,10 @@
     <string name="add_to_favorites">Add to favorites</string>
     <string name="remove_from_favorites">Remove from favorites</string>
     <string name="more_info">Get More Info</string>
-    <string name="view_chef_profile">Meet Your Amazing Chef</string>
-    <string name="share">Share the Flavor!</string>
+    <string name="view_chef_profile_button_text">Meet Your Amazing Chef</string>
+    <string name="share_button_text">Share the Flavor!</string>
+    <string name="check_recipe_ingredients_button_text">Check Out the Ingredients</string>
+    <string name="check_recipe_instructions_button_text">Let’s Cook: View Instructions</string>
     <string name="categories">Discover Delicious Categories</string>
     <string name="recommended_for_you">Handpicked Recipes for You</string>
     <string name="image">View Image %1$s</string>
@@ -216,4 +218,14 @@
 
     <!-- Miscellaneous -->
     <string name="no_text_value">--</string>
+
+    <!-- Ingredients Detail -->
+    <string name="ingredients_main_title_text">Your Ingredients Are Ready!</string>
+    <string name="ingredients_main_secondary_text">All the delicious pieces of the puzzle are here. Double-check your ingredients and get ready to create a masterpiece!</string>
+    <string name="ingredients_confirm_button_text">Got It, Let’s Cook!</string>
+
+    <!-- Instructions Detail -->
+    <string name="instructions_main_title_text">Step-by-Step to Perfection</string>
+    <string name="instructions_main_secondary_text">We\'ve laid out every step so you can cook with confidence. Follow along and watch your dish come to life, one easy step at a time!</string>
+    <string name="instructions_confirm_button_text">Ready, Set, Cook!</string>
 </resources>

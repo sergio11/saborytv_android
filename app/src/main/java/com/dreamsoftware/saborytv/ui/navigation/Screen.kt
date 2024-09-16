@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.dreamsoftware.saborytv.ui.screens.category.CategoryDetailScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.chefprofiledetail.ChefProfileDetailScreenArgs
+import com.dreamsoftware.saborytv.ui.screens.ingredients.IngredientsDetailScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.moreoptions.MoreOptionsScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.player.VideoPlayerScreenArgs
 import com.dreamsoftware.saborytv.ui.screens.profiles.changesecurepin.ChangeSecurePinScreenArgs
@@ -194,6 +195,24 @@ sealed class Screen(
         fun parseArgs(args: Bundle): MoreOptionsScreenArgs? = with(args) {
             getString("id")?.let { id ->
                 MoreOptionsScreenArgs(id = id)
+            }
+        }
+    }
+
+    data object IngredientsDetail : Screen(route = "ingredients_detail/{id}", name = "Ingredients", arguments = listOf(
+        navArgument("id") {
+            type = NavType.StringType
+        }
+    )) {
+        fun buildRoute(id: String): String =
+            route.replace(
+                oldValue = "{id}",
+                newValue = id
+            )
+
+        fun parseArgs(args: Bundle): IngredientsDetailScreenArgs? = with(args) {
+            getString("id")?.let { id ->
+                IngredientsDetailScreenArgs(id = id)
             }
         }
     }
