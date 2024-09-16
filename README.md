@@ -122,9 +122,37 @@ Dive into **SaboryTV** and explore its vibrant and intuitive design with these s
 
 Kickstart your culinary adventure with our Onboarding screens. If you’re new to **SaboryTV** and haven’t logged in yet, you’ll be greeted by our welcoming landing page. Here, you can get a sneak peek of what’s in store 📜 and easily navigate to login 🔒 or create a new account 🆕 to start your flavorful journey.
 
+<p align="center">
+  <img src="doc/screenshots/picture_1.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_2.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_3.png" />
+</p>
+
 ### Sign In 🔑
 
 Ready to join the **SaboryTV** kitchen? Log in with your email and password to access all the delicious features awaiting you. If you’re not yet a member, don’t worry—our sign-up process is just a tap away! 🌟✉️
+
+<p align="center">
+  <img src="doc/screenshots/picture_4.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_5.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_6.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_7.png" />
+</p>
 
 ### Sign Up ✨
 
@@ -140,13 +168,53 @@ Step into the **Profiles** section where customization and ease meet to enhance 
 
 - **Profile Selection**: Choose which profile you’d like to use from the **Profile Selection** screen. It’s your personal space where you can keep track of favorite recipes and tailored recommendations.
 
+<p align="center">
+  <img src="doc/screenshots/picture_8.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_9.png" />
+</p>
+
 - **Creating Profiles**: Add up to four profiles to cater to family members or different users. Customize each profile with its own alias and avatar, and make cooking a fun, personalized experience for everyone!
+
+<p align="center">
+  <img src="doc/screenshots/picture_14.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_15.png" />
+</p>
 
 - **Editing Profiles**: Update your profile’s alias and avatar or change your security PIN with ease. Keep your account secure and reflect your personality in every way you choose.
 
+<p align="center">
+  <img src="doc/screenshots/picture_10.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_11.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_12.png" />
+</p>
+
 - **Deleting Profiles**: If a profile is no longer needed, delete it and remove all associated favorites and data. This keeps your app clean and organized, focusing on the recipes and features that matter most to you.
 
+<p align="center">
+  <img src="doc/screenshots/picture_13.png" />
+</p>
+
 The **Profiles** section is all about flexibility and personalization, ensuring your cooking journey is as unique as you are.
+
+<p align="center">
+  <img src="doc/screenshots/picture_16.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_17.png" />
+</p>
 
 ### Exploring the Home Screen 📱
 
