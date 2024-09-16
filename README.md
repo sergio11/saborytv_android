@@ -40,6 +40,11 @@ SaboryTV offers a range of customization options to enhance your experience:
 
 With these features, SaboryTV ensures a seamless, user-friendly experience tailored to your cooking needs and preferences. Whether you're looking for new recipes, saving your favorites, or adjusting the app to fit your lifestyle, SaboryTV has got you covered. 🍳📺
 
+<p align="center">
+  <img src="doc/screenshots/picture_48.png" />
+</p>
+
+
 ## Technologies Used 🛠️
 
 - **Kotlin**: The language of choice for developing Android applications, offering modern syntax and powerful features to streamline coding and enhance productivity. 🚀
