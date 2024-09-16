@@ -274,6 +274,10 @@ The Home Screen is designed to make your exploration of recipes delightful and e
 
 Step into the **Recipes** section, your ultimate culinary playground where your cooking adventures come to life! 🎉 This hub is designed to help you explore and enjoy a variety of recipes that cater to your dietary preferences and goals.
 
+<p align="center">
+  <img src="doc/screenshots/picture_28.png" />
+</p>
+
 In this section, you’ll find a diverse array of categories and types to explore:
 
 - **Recipe Types** 🌱🍲: Discover a wide range of recipes tailored to different dietary needs:
@@ -282,11 +286,35 @@ In this section, you’ll find a diverse array of categories and types to explor
   - **Gluten-Free** 🌾🚫: Mouthwatering dishes that are free from gluten, perfect for those with gluten sensitivities or celiac disease.
   - **High-Protein** 💪: Recipes packed with protein to support muscle building and recovery. Great for athletes or anyone looking to boost their protein intake.
 
+<p align="center">
+  <img src="doc/screenshots/picture_29.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_30.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_31.png" />
+</p>
+
 - **Categories** 📚: Browse through various recipe categories to find exactly what you’re in the mood for:
   - **Appetizers** 🍢: Tantalizing starters to kick off your meal with flair.
   - **Main Courses** 🍽️: Hearty and satisfying dishes that are the centerpiece of your meal.
   - **Side Dishes** 🥗: Delicious sides to complement your main course and add variety to your plate.
   - **Desserts** 🍰: Sweet treats and indulgent desserts to finish your meal on a high note.
+
+<p align="center">
+  <img src="doc/screenshots/picture_32.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_33.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_34.png" />
+</p>
 
 - **Special Features** ✨: Take advantage of our advanced filtering and sorting options 🔍. Customize your search based on preparation time, recipe type, or dietary restrictions to find the perfect recipe for any occasion.
 
