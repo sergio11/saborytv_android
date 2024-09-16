@@ -322,9 +322,17 @@ Once you find a recipe that excites your taste buds, check out the **detailed vi
 
 The **Recipes** section is crafted to be your personal culinary hub, where every meal is an adventure waiting to happen. Whether you’re exploring new dietary options or looking for your next favorite dish, this section has everything you need to make your cooking experience enjoyable and rewarding. 🌟🚀
 
+<p align="center">
+  <img src="doc/screenshots/picture_35.png" />
+</p>
+
 ### Favorites Section 🌟
 
 Welcome to the **Favorites** section, your personal culinary treasure trove! Here you can keep all your cherished recipes just a tap away. 🍽️✨ This space is designed to make your cooking adventures even more enjoyable by providing quick access to your most-loved dishes.
+
+<p align="center">
+  <img src="doc/screenshots/picture_36.png" />
+</p>
 
 #### What’s in the Favorites Section?
 
@@ -334,6 +342,13 @@ Welcome to the **Favorites** section, your personal culinary treasure trove! Her
 
 Make your cooking journey more efficient and personalized by keeping your favorite recipes close at hand. Enjoy effortless access to the dishes you love most, and savor every meal with ease! 🌟🍴
 
+<p align="center">
+  <img src="doc/screenshots/picture_37.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_38.png" />
+</p>
 
 ### Recipe Player 🎥🍽️
 
@@ -355,6 +370,10 @@ The **Recipe Player** on SaboryTV is your ultimate kitchen companion, ensuring e
 
 In the **Subscriptions** section, discover flexible plans designed to enhance your culinary adventures on SaboryTV! 🎉✨ Whether you’re a casual cook or a culinary enthusiast, our subscription options offer exclusive access to premium recipes and features that will elevate your cooking experience.
 
+<p align="center">
+  <img src="doc/screenshots/picture_46.png" />
+</p>
+
 Here’s what you need to know:
 
 - **Choose Your Plan** 🗓️: Pick the subscription that fits your cooking style and culinary goals. We offer three options: 1 month, 6 months, or 12 months. Each plan is crafted to provide continuous inspiration and access to a diverse array of recipes.
@@ -365,19 +384,51 @@ Here’s what you need to know:
 
 The **Subscriptions** section ensures that your cooking journey is not only flavorful but also rewarding. With the flexibility to choose your plan and the added value of premium recipes, you’ll stay inspired and engaged, creating amazing dishes with ease. 🍽️🚀
 
+<p align="center">
+  <img src="doc/screenshots/picture_47.png" />
+</p>
+
 ### Settings 🛠️🍽️
 
 The **Settings** section on SaboryTV is your personal culinary control center, where you can fine-tune your app experience to match your tastes and preferences. 🌟 Here’s what you can customize:
 
+<p align="center">
+  <img src="doc/screenshots/picture_39.png" />
+</p>
+
 - **Adjust Language** 🌐: Choose the language that makes you feel most at home. Whether you prefer English, Spanish, or another language we offer, SaboryTV will adapt to your choice, ensuring a seamless and enjoyable cooking experience.
+
+<p align="center">
+  <img src="doc/screenshots/picture_41.png" />
+</p>
 
 - **Select Measurement Units** 📏: Pick your preferred unit of measurement—metric or imperial. Whether you’re accustomed to grams and liters or ounces and cups, SaboryTV will display recipe measurements in the format that suits you best.
 
+<p align="center">
+  <img src="doc/screenshots/picture_40.png" />
+</p>
+
 - **Set Video Quality** 📹: Control your video streaming experience by selecting the video quality. Choose from Full HD for crisp, clear visuals or opt for Automatic to let the app adjust the quality up to 4K based on your internet connection.
+
+<p align="center">
+  <img src="doc/screenshots/picture_42.png" />
+</p>
 
 - **Learn About Us** 🧑‍🍳: Discover more about the team behind SaboryTV and the vision that drives our platform. We’re excited to share our passion for food and cooking with you!
 
+<p align="center">
+  <img src="doc/screenshots/picture_43.png" />
+</p>
+
 - **Log Out** 🚪: Need to take a break or switch accounts? Easily log out and take a pause or switch profiles with just a few taps.
+
+<p align="center">
+  <img src="doc/screenshots/picture_44.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_45.png" />
+</p>
 
 - **Manage Subscriptions** 💳: Review and adjust your subscription plan. Change your current plan or even cancel your subscription if needed. Stay in control of your culinary journey and ensure your plan meets your evolving tastes and needs.
 
