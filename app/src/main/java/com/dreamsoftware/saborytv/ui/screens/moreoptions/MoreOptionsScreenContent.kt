@@ -40,7 +40,9 @@ internal fun MoreOptionsScreenContent(
                         backRowSchema,
                         startButton,
                         favoritesButton,
-                        viewInstructorButton,
+                        viewChefProfileButton,
+                        viewIngredientsButton,
+                        viewInstructionsButton,
                         shareButton
                     ) = createRefs()
 
@@ -91,21 +93,41 @@ internal fun MoreOptionsScreenContent(
                         onClick = actionListener::onFavouriteClicked
                     )
                     FudgeTvMoreOptionsButton(
-                        modifier = Modifier.constrainAs(viewInstructorButton) {
+                        modifier = Modifier.constrainAs(viewIngredientsButton) {
                             top.linkTo(favoritesButton.bottom, margin = 12.dp)
                             start.linkTo(startButton.start)
                         },
-                        textRes = R.string.view_chef_profile,
+                        textRes = R.string.check_recipe_ingredients_button_text,
+                        icon = R.drawable.ic_ingredients,
+                        containerColor = surfaceVariant,
+                        onClick = actionListener::onOpenRecipeIngredients
+                    )
+                    FudgeTvMoreOptionsButton(
+                        modifier = Modifier.constrainAs(viewInstructionsButton) {
+                            top.linkTo(viewIngredientsButton.bottom, margin = 12.dp)
+                            start.linkTo(startButton.start)
+                        },
+                        textRes = R.string.check_recipe_instructions_button_text,
+                        icon = R.drawable.ic_instructions,
+                        containerColor = surfaceVariant,
+                        onClick = actionListener::onOpenRecipeInstructions
+                    )
+                    FudgeTvMoreOptionsButton(
+                        modifier = Modifier.constrainAs(viewChefProfileButton) {
+                            top.linkTo(viewInstructionsButton.bottom, margin = 12.dp)
+                            start.linkTo(startButton.start)
+                        },
+                        textRes = R.string.view_chef_profile_button_text,
                         icon = R.drawable.ic_chef_profile,
                         containerColor = surfaceVariant,
                         onClick = actionListener::onOpenChefProfileDetail
                     )
                     FudgeTvMoreOptionsButton(
                         modifier = Modifier.constrainAs(shareButton) {
-                            top.linkTo(viewInstructorButton.bottom, margin = 12.dp)
+                            top.linkTo(viewChefProfileButton.bottom, margin = 12.dp)
                             start.linkTo(startButton.start)
                         },
-                        textRes = R.string.share,
+                        textRes = R.string.share_button_text,
                         containerColor = surfaceVariant,
                         icon = R.drawable.ic_share
                     )

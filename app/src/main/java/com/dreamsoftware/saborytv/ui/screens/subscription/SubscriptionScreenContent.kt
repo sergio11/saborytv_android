@@ -1,7 +1,6 @@
 package com.dreamsoftware.saborytv.ui.screens.subscription
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,19 +17,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
-import com.dreamsoftware.saborytv.R
-import com.dreamsoftware.saborytv.ui.screens.subscription.components.SubscriptionHeadline
-import com.dreamsoftware.saborytv.ui.screens.subscription.components.SubscriptionOptions
 import com.dreamsoftware.fudge.component.FudgeTvButton
 import com.dreamsoftware.fudge.component.FudgeTvButtonStyleTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvButtonTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvDialog
+import com.dreamsoftware.fudge.component.FudgeTvImageRes
 import com.dreamsoftware.fudge.component.FudgeTvScreenContent
+import com.dreamsoftware.saborytv.R
+import com.dreamsoftware.saborytv.ui.screens.subscription.components.SubscriptionHeadline
+import com.dreamsoftware.saborytv.ui.screens.subscription.components.SubscriptionOptions
 
 @Composable
 fun SubscriptionScreenContent(
@@ -53,7 +52,7 @@ fun SubscriptionScreenContent(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center,
             ) {
-                Image(
+                FudgeTvImageRes(
                     modifier = Modifier
                         .size(width = 324.dp, height = 452.dp)
                         .border(
@@ -61,8 +60,7 @@ fun SubscriptionScreenContent(
                             shape = RoundedCornerShape(16.dp)
                         )
                         .clip(RoundedCornerShape(16.dp)),
-                    painter = painterResource(id = R.drawable.signup_background),
-                    contentDescription = "training photo",
+                    imageRes = R.drawable.signup_background,
                     contentScale = ContentScale.Crop
                 )
                 Spacer(modifier = Modifier.width(28.dp))

@@ -14,6 +14,8 @@ fun MoreOptionsScreen(
     args: MoreOptionsScreenArgs,
     onBackPressed: () -> Unit,
     onOpenChefProfileDetail: (id: String) -> Unit,
+    onOpenRecipeIngredients: (id: String) -> Unit,
+    onOpenRecipeInstructions: (id: String) -> Unit,
     onPlayRecipeProgram: (id: String) -> Unit
 ) {
     FudgeTvScreen(
@@ -25,6 +27,8 @@ fun MoreOptionsScreen(
                 MoreOptionsSideEffects.CloseMoreInfoDetail -> onBackPressed()
                 is MoreOptionsSideEffects.PlayRecipeProgram -> onPlayRecipeProgram(it.id)
                 is MoreOptionsSideEffects.OpenChefProfileDetail -> onOpenChefProfileDetail(it.id)
+                is MoreOptionsSideEffects.OpenRecipeIngredients -> onOpenRecipeIngredients(it.id)
+                is MoreOptionsSideEffects.OpenRecipeInstructions -> onOpenRecipeInstructions(it.id)
             }
         },
         onInit = {

@@ -8,4 +8,6 @@ interface MoreOptionsScreenActionListener: IFudgeTvScreenActionListener {
     fun onRecipeOpened()
     fun onFavouriteClicked()
     fun onOpenChefProfileDetail()
+    fun onOpenRecipeInstructions()
+    fun onOpenRecipeIngredients()
 }

@@ -8,6 +8,7 @@ import com.dreamsoftware.saborytv.ui.screens.category.CategoryDetailScreen
 import com.dreamsoftware.saborytv.ui.screens.favorites.FavoritesScreen
 import com.dreamsoftware.saborytv.ui.screens.home.HomeScreen
 import com.dreamsoftware.saborytv.ui.screens.chefprofiledetail.ChefProfileDetailScreen
+import com.dreamsoftware.saborytv.ui.screens.ingredients.IngredientsDetailScreen
 import com.dreamsoftware.saborytv.ui.screens.moreoptions.MoreOptionsScreen
 import com.dreamsoftware.saborytv.ui.screens.player.VideoPlayerScreen
 import com.dreamsoftware.saborytv.ui.screens.settings.SettingsScreen
@@ -124,6 +125,12 @@ fun DashboardNavHost(
                         onOpenChefProfileDetail = {
                             navigate(Screen.ChefProfileDetail.buildRoute(it))
                         },
+                        onOpenRecipeIngredients = {
+                            navigate(Screen.IngredientsDetail.buildRoute(it))
+                        },
+                        onOpenRecipeInstructions = {
+
+                        },
                         onBackPressed = {
                             popBackStack()
                         },
@@ -151,6 +158,19 @@ fun DashboardNavHost(
                         popBackStack()
                     }
                 )
+            }
+        }
+
+        composable(Screen.IngredientsDetail.route) { navBackStackEntry ->
+            navBackStackEntry.arguments?.let(Screen.IngredientsDetail::parseArgs)?.let { args ->
+                with(navController) {
+                    IngredientsDetailScreen(
+                        args = args,
+                        onBackPressed = {
+                            popBackStack()
+                        },
+                    )
+                }
             }
         }
     }

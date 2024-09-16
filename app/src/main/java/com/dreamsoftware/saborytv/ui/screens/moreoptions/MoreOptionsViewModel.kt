@@ -71,6 +71,18 @@ class MoreOptionsViewModel @Inject constructor(
         }
     }
 
+    override fun onOpenRecipeInstructions() {
+        uiState.value.recipe?.let {
+            launchSideEffect(MoreOptionsSideEffects.OpenRecipeInstructions(id = it.id))
+        }
+    }
+
+    override fun onOpenRecipeIngredients() {
+        uiState.value.recipe?.let {
+            launchSideEffect(MoreOptionsSideEffects.OpenRecipeIngredients(id = it.id))
+        }
+    }
+
     private fun removeRecipeFromFavorites(id: String) {
         executeUseCaseWithParams(
             useCase = removeFavoriteRecipeUseCase,
@@ -113,5 +125,7 @@ data class MoreOptionsUiState(
 sealed interface MoreOptionsSideEffects : SideEffect {
     data class PlayRecipeProgram(val id: String) : MoreOptionsSideEffects
     data class OpenChefProfileDetail(val id: String) : MoreOptionsSideEffects
+    data class OpenRecipeInstructions(val id: String) : MoreOptionsSideEffects
+    data class OpenRecipeIngredients(val id: String) : MoreOptionsSideEffects
     data object CloseMoreInfoDetail : MoreOptionsSideEffects
 }
