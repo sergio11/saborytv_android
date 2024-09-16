@@ -42,7 +42,6 @@ import com.dreamsoftware.fudge.component.FudgeTvText
 import com.dreamsoftware.fudge.component.FudgeTvTextField
 import com.dreamsoftware.fudge.component.FudgeTvTextFieldTypeEnum
 import com.dreamsoftware.fudge.component.FudgeTvTextTypeEnum
-import com.dreamsoftware.saborytv.ui.theme.surface
 
 @Composable
 internal fun SignUpScreenContent(
@@ -88,7 +87,7 @@ internal fun SignUpScreenContent(
                             titleRes = R.string.developer_credits_text_single_line,
                             type = FudgeTvTextTypeEnum.LABEL_SMALL,
                             textAlign = TextAlign.Start,
-                            textColor = surface
+                            textColor = MaterialTheme.colorScheme.surface
                         )
                     }
                 }
@@ -135,68 +134,72 @@ private fun SignUpFormContent(
     onSigUpPressed: () -> Unit,
     onCancelPressed: () -> Unit
 ) {
-    Column(
-        modifier = modifier.padding(top = 20.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row {
-            FudgeTvButton(
-                modifier = Modifier.padding(end = 20.dp),
-                type = FudgeTvButtonTypeEnum.SMALL,
-                onClick = onCancelPressed,
-                style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
-                text = "Cancel"
-            )
-            Column(
-                modifier = Modifier.weight(1f),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                FudgeTvText(
-                    titleRes = R.string.sign_up_main_title_text,
-                    type = FudgeTvTextTypeEnum.TITLE_LARGE,
-                    textColor = surface
+    with(MaterialTheme.colorScheme) {
+        Column(
+            modifier = modifier.padding(top = 20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Row {
+                FudgeTvButton(
+                    modifier = Modifier.padding(end = 20.dp),
+                    type = FudgeTvButtonTypeEnum.SMALL,
+                    onClick = onCancelPressed,
+                    style = FudgeTvButtonStyleTypeEnum.TRANSPARENT,
+                    borderColor = surface,
+                    contentColor = surface,
+                    text = "Cancel"
                 )
-                Spacer(modifier = Modifier.height(10.dp))
-                FudgeTvText(
-                    titleRes = R.string.sign_up_secondary_title_text,
-                    type = FudgeTvTextTypeEnum.TITLE_SMALL,
-                    textAlign = TextAlign.Center,
-                    textColor = surface
+                Column(
+                    modifier = Modifier.weight(1f),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    FudgeTvText(
+                        titleRes = R.string.sign_up_main_title_text,
+                        type = FudgeTvTextTypeEnum.TITLE_LARGE,
+                        textColor = surface
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    FudgeTvText(
+                        titleRes = R.string.sign_up_secondary_title_text,
+                        type = FudgeTvTextTypeEnum.TITLE_SMALL,
+                        textAlign = TextAlign.Center,
+                        textColor = surface
+                    )
+                }
+                Image(
+                    painter = painterResource(id = R.drawable.main_logo_inverse),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .height(80.dp)
+                        .padding(start = 20.dp),
                 )
             }
-            Image(
-                painter = painterResource(id = R.drawable.main_logo_inverse),
-                contentDescription = null,
-                modifier = Modifier
-                    .height(80.dp)
-                    .padding(start = 20.dp),
+            Row(
+                modifier = Modifier.weight(1f),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                UserInfoFormColumn(
+                    modifier = Modifier.fillMaxHeight(),
+                    uiState = uiState,
+                    onFirstNameChanged = onFirstNameChanged,
+                    onLastNameChanged = onLastNameChanged,
+                    onEmailChanged = onEmailChanged
+                )
+                Spacer(modifier = Modifier.width(40.dp))
+                UserCredentialsInfoFormColumn(
+                    modifier = Modifier.fillMaxHeight(),
+                    uiState = uiState,
+                    onUsernameChanged = onUsernameChanged,
+                    onPasswordChanged = onPasswordChanged,
+                    onRepeatPasswordChanged = onRepeatPasswordChanged
+                )
+            }
+            FudgeTvButton(
+                onClick = onSigUpPressed,
+                textRes = R.string.sign_up_main_button
             )
         }
-        Row(
-            modifier = Modifier.weight(1f),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            UserInfoFormColumn(
-                modifier = Modifier.fillMaxHeight(),
-                uiState = uiState,
-                onFirstNameChanged = onFirstNameChanged,
-                onLastNameChanged = onLastNameChanged,
-                onEmailChanged = onEmailChanged
-            )
-            Spacer(modifier = Modifier.width(40.dp))
-            UserCredentialsInfoFormColumn(
-                modifier = Modifier.fillMaxHeight(),
-                uiState = uiState,
-                onUsernameChanged = onUsernameChanged,
-                onPasswordChanged = onPasswordChanged,
-                onRepeatPasswordChanged = onRepeatPasswordChanged
-            )
-        }
-        FudgeTvButton(
-            onClick = onSigUpPressed,
-            textRes = R.string.sign_up_main_button
-        )
     }
 }
 
@@ -208,32 +211,40 @@ private fun UserInfoFormColumn(
     onLastNameChanged: (String) -> Unit,
     onEmailChanged: (String) -> Unit
 ) {
-    with(uiState) {
-        FudgeTvFocusRequester { focusRequester ->
-            FormColumn(modifier = modifier) {
-                FudgeTvTextField(
-                    modifier = Modifier.focusRequester(focusRequester),
-                    icon = Icons.Filled.Person,
-                    value = firstName,
-                    labelRes = R.string.sign_up_form_first_name_label_text,
-                    errorMessage = firstNameError,
-                    onValueChange = onFirstNameChanged
-                )
-                FudgeTvTextField(
-                    icon = Icons.Filled.PersonOutline,
-                    value = lastName,
-                    labelRes = R.string.sign_up_form_surname_label_text,
-                    errorMessage = lastNameError,
-                    onValueChange = onLastNameChanged
-                )
-                FudgeTvTextField(
-                    icon = Icons.Filled.Email,
-                    value = email,
-                    type = FudgeTvTextFieldTypeEnum.EMAIL,
-                    labelRes = R.string.sign_up_form_email_label_text,
-                    errorMessage = emailError,
-                    onValueChange = onEmailChanged
-                )
+    with(MaterialTheme.colorScheme) {
+        with(uiState) {
+            FudgeTvFocusRequester { focusRequester ->
+                FormColumn(modifier = modifier) {
+                    FudgeTvTextField(
+                        modifier = Modifier.focusRequester(focusRequester),
+                        icon = Icons.Filled.Person,
+                        value = firstName,
+                        labelRes = R.string.sign_up_form_first_name_label_text,
+                        focusedLabelColor = surface,
+                        unfocusedLabelColor = surface.takeIf { firstName.isNotBlank() },
+                        errorMessage = firstNameError,
+                        onValueChange = onFirstNameChanged
+                    )
+                    FudgeTvTextField(
+                        icon = Icons.Filled.PersonOutline,
+                        value = lastName,
+                        labelRes = R.string.sign_up_form_surname_label_text,
+                        focusedLabelColor = surface,
+                        unfocusedLabelColor = surface.takeIf { lastName.isNotBlank() },
+                        errorMessage = lastNameError,
+                        onValueChange = onLastNameChanged
+                    )
+                    FudgeTvTextField(
+                        icon = Icons.Filled.Email,
+                        value = email,
+                        type = FudgeTvTextFieldTypeEnum.EMAIL,
+                        labelRes = R.string.sign_up_form_email_label_text,
+                        focusedLabelColor = surface,
+                        unfocusedLabelColor = surface.takeIf { email.isNotBlank() },
+                        errorMessage = emailError,
+                        onValueChange = onEmailChanged
+                    )
+                }
             }
         }
     }
@@ -247,31 +258,39 @@ private fun UserCredentialsInfoFormColumn(
     onPasswordChanged: (String) -> Unit,
     onRepeatPasswordChanged: (String) -> Unit
 ) {
-    with(uiState) {
-        FormColumn(modifier = modifier) {
-            FudgeTvTextField(
-                icon = Icons.Filled.Person,
-                value = username,
-                labelRes = R.string.sign_up_form_username_label_text,
-                errorMessage = usernameError,
-                onValueChange = onUsernameChanged
-            )
-            FudgeTvTextField(
-                icon = Icons.Filled.Password,
-                value = password,
-                type = FudgeTvTextFieldTypeEnum.PASSWORD,
-                labelRes = R.string.sign_up_form_password_label_text,
-                errorMessage = passwordError,
-                onValueChange = onPasswordChanged
-            )
-            FudgeTvTextField(
-                icon = Icons.Filled.Password,
-                value = repeatPassword,
-                type = FudgeTvTextFieldTypeEnum.PASSWORD,
-                labelRes = R.string.sign_up_form_repeat_password_label_text,
-                errorMessage = repeatPasswordError,
-                onValueChange = onRepeatPasswordChanged
-            )
+    with(MaterialTheme.colorScheme) {
+        with(uiState) {
+            FormColumn(modifier = modifier) {
+                FudgeTvTextField(
+                    icon = Icons.Filled.Person,
+                    value = username,
+                    labelRes = R.string.sign_up_form_username_label_text,
+                    focusedLabelColor = surface,
+                    unfocusedLabelColor = surface.takeIf { username.isNotBlank() },
+                    errorMessage = usernameError,
+                    onValueChange = onUsernameChanged
+                )
+                FudgeTvTextField(
+                    icon = Icons.Filled.Password,
+                    value = password,
+                    type = FudgeTvTextFieldTypeEnum.PASSWORD,
+                    labelRes = R.string.sign_up_form_password_label_text,
+                    focusedLabelColor = surface,
+                    unfocusedLabelColor = surface.takeIf { password.isNotBlank() },
+                    errorMessage = passwordError,
+                    onValueChange = onPasswordChanged
+                )
+                FudgeTvTextField(
+                    icon = Icons.Filled.Password,
+                    value = repeatPassword,
+                    type = FudgeTvTextFieldTypeEnum.PASSWORD,
+                    labelRes = R.string.sign_up_form_repeat_password_label_text,
+                    focusedLabelColor = surface,
+                    unfocusedLabelColor = surface.takeIf { repeatPassword.isNotBlank() },
+                    errorMessage = repeatPasswordError,
+                    onValueChange = onRepeatPasswordChanged
+                )
+            }
         }
     }
 }
