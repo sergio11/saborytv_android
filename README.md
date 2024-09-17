@@ -22,8 +22,16 @@ Happy cooking with SaboryTV! 🎉👨‍🍳
 
 **SaboryTV** is not just a recipe guide—it's your ultimate culinary companion designed to enhance your cooking experience and accommodate the entire family. Here’s a look at what makes SaboryTV a standout platform:
 
+<p align="center">
+  <img src="doc/screenshots/picture_62.gif" />
+</p>
+
 ### Personalized Profiles 👥
 With SaboryTV, each family member can create their own profile, allowing everyone to save their favorite recipes and receive personalized recommendations. This feature ensures that everyone in your household can enjoy a tailored cooking experience based on their own tastes and dietary preferences.
+
+<p align="center">
+  <img src="doc/screenshots/picture_64.gif" />
+</p>
 
 ### Advanced Recipe Search 🔍
 Our advanced search functionality lets you find recipes based on various criteria, including:
@@ -31,6 +39,10 @@ Our advanced search functionality lets you find recipes based on various criteri
 - **Video Language** 🌍: Choose recipes with instructions in your preferred language.
 - **Recipe Category** 📂: Explore recipes categorized as appetizers, main courses, sides, and desserts.
 - **Recipe Type** 🥗: Filter by types such as Vegan, Vegetarian, Gluten-Free, and High Protein.
+
+<p align="center">
+  <img src="doc/screenshots/picture_63.gif" />
+</p>
 
 ### Customizable Preferences ⚙️
 SaboryTV offers a range of customization options to enhance your experience:
