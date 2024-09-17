@@ -340,6 +340,10 @@ When you dive into a recipe on **SaboryTV**, you’ll unlock a treasure trove of
   <img src="doc/screenshots/picture_52.png" />
 </p>
 
+<p align="center">
+  <img src="doc/screenshots/picture_60.png" />
+</p>
+
 ### What You’ll Find in the Recipe Details:
 
 - **Recipe Overview** 📝: Get a quick glance at the recipe, including a **description**, **preparation time**, **difficulty level**, and the **number of servings** so you can plan your meal with ease.
@@ -383,6 +387,11 @@ The recipe details go beyond just instructions—here are the **interactive opti
 <p align="center">
   <img src="doc/screenshots/picture_56.png" />
 </p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_61.png" />
+</p>
+
 
 With all these features at your fingertips, the **Recipe Detail Screen** is designed to make cooking easy, interactive, and a whole lot of fun. Whether you're following the video, checking the steps, or learning about the chef, everything you need is just a click away!
 
