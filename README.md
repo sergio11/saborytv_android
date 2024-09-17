@@ -581,3 +581,50 @@ The resources, examples, and insights provided in the JetFit repository served a
 <a href="https://www.freepik.es/foto-gratis/bebida-verano-frambuesas-limon-hielo-mesa-madera-antigua_20989797.htm#fromView=search&page=1&position=1&uuid=b917e65a-b2ae-4423-b7cd-5a35e81cddaa">Imagen de fabrikasimf en Freepik</a> - 
 <a href="https://www.freepik.es/foto-gratis/bebida-madera-detox-verano-sacudida_1130230.htm#fromView=search&page=1&position=1&uuid=4443741b-8e77-43c3-a6c9-6ab77192c58c">Imagen de topntp26 en Freepik</a> - 
 <a href="https://www.freepik.es/foto-gratis/latte-helado-matcha_1154010.htm#fromView=search&page=1&position=10&uuid=43a34124-12c7-4bee-a054-051fb606dedc">Imagen de topntp26 en Freepik</a>
+
+
+## Visitors Count
+
+<img width="auto" src="https://profile-counter.glitch.me/saborytv_android/count.svg" />
+ 
+ ## Please Share & Star the repository to keep me motivated.
+  <a href = "https://github.com/sergio11/saborytv_android/stargazers">
+     <img src = "https://img.shields.io/github/stars/sergio11/saborytv_android" />
+  </a>
+
+## License ⚖️
+
+This project is licensed under the MIT License, an open-source software license that allows developers to freely use, copy, modify, and distribute the software. 🛠️ This includes use in both personal and commercial projects, with the only requirement being that the original copyright notice is retained. 📄
+
+Please note the following limitations:
+
+- The software is provided "as is", without any warranties, express or implied. 🚫🛡️
+- If you distribute the software, whether in original or modified form, you must include the original copyright notice and license. 📑
+- The license allows for commercial use, but you cannot claim ownership over the software itself. 🏷️
+
+The goal of this license is to maximize freedom for developers while maintaining recognition for the original creators.
+
+```
+MIT License
+
+Copyright (c) 2024 Dream software - Sergio Sánchez 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
