@@ -331,6 +331,73 @@ The **Recipes** section is crafted to be your personal culinary hub, where every
   <img src="doc/screenshots/picture_35.png" />
 </p>
 
+
+## Recipe Details 🍽️✨
+
+When you dive into a recipe on **SaboryTV**, you’ll unlock a treasure trove of information to guide you through every delicious step. Our **Recipe Detail Screen** offers all the essential details and interactive features to ensure your cooking experience is smooth and enjoyable.
+
+<p align="center">
+  <img src="doc/screenshots/picture_52.png" />
+</p>
+
+### What You’ll Find in the Recipe Details:
+
+- **Recipe Overview** 📝: Get a quick glance at the recipe, including a **description**, **preparation time**, **difficulty level**, and the **number of servings** so you can plan your meal with ease.
+  
+- **Ingredients Count** 🧄: Know exactly how many ingredients are needed, making it easy to gather everything beforehand.
+
+- **Step-by-Step Instructions** 📋: Detailed cooking steps are laid out for you, ensuring that you never miss a beat as you bring your dish to life.
+
+- **Country of Origin** 🌍: Curious about where the recipe comes from? The origin of the dish is highlighted so you can explore flavors from around the world.
+
+- **Recipe Video** 🎥: Prefer visual guidance? You can play the **recipe video** right from the detail screen, walking you through each step with a chef’s expertise.
+
+<p align="center">
+  <img src="doc/screenshots/picture_53.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_54.png" />
+</p>
+
+### Interactive Features 🔥
+
+The recipe details go beyond just instructions—here are the **interactive options** you’ll enjoy:
+
+- **Add to Favorites** ❤️: Found a recipe you love? Save it to your personal collection and access it anytime.
+
+- **Detailed Ingredient Info** 🛒: Dive into the full ingredient list, complete with quantities and specific details, ensuring you have everything you need before you start cooking.
+
+- **Step-by-Step Instructions** 📖: Need a closer look at the instructions? Access the full step-by-step guide to cooking like a pro.
+
+- **Chef’s Profile** 👩‍🍳: Curious about the person behind the recipe? Check out the **chef's profile** to learn more about their expertise and other dishes they offer.
+
+- **Share the Recipe** 🌟: Spread the joy of cooking! Easily share your favorite recipes with friends and family, so they can enjoy the flavors too.
+
+- **More Options** 🎛️: From tweaking preferences to getting extra tips, you can access additional options to enhance your cooking experience.
+
+<p align="center">
+  <img src="doc/screenshots/picture_55.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_56.png" />
+</p>
+
+With all these features at your fingertips, the **Recipe Detail Screen** is designed to make cooking easy, interactive, and a whole lot of fun. Whether you're following the video, checking the steps, or learning about the chef, everything you need is just a click away!
+
+<p align="center">
+  <img src="doc/screenshots/picture_57.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_58.png" />
+</p>
+
+<p align="center">
+  <img src="doc/screenshots/picture_59.png" />
+</p>
+
 ### Favorites Section 🌟
 
 Welcome to the **Favorites** section, your personal culinary treasure trove! Here you can keep all your cherished recipes just a tap away. 🍽️✨ This space is designed to make your cooking adventures even more enjoyable by providing quick access to your most-loved dishes.
