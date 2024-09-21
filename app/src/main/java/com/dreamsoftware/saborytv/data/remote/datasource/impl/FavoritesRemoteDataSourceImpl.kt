@@ -58,7 +58,7 @@ internal class FavoritesRemoteDataSourceImpl(
             mapper = { favoriteMapper.mapInToOut(it) }
         )
     } catch (ex: Exception) {
-        throw GetFavoritesByUserRemoteException("An error occurred when trying to fetch favorite trainings", ex)
+        throw GetFavoritesByUserRemoteException("An error occurred when trying to fetch favorite recipes", ex)
     }
 
     @Throws(HasRecipeInFavoritesRemoteException::class)
@@ -91,7 +91,7 @@ internal class FavoritesRemoteDataSourceImpl(
         }
     } catch (ex: Exception) {
         throw DeleteProfileRemoteException(
-            "An error occurred when trying to remove training $recipeId from favorites",
+            "An error occurred when trying to remove recipe $recipeId from favorites",
             ex
         )
     }

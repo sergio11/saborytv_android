@@ -33,9 +33,9 @@ class FavoritesViewModel @Inject constructor(
     }
 
     override fun onRecipeStarted(id: String) {
-        uiState.value.recipeProgramSelected?.let { trainingProgramSelected ->
+        uiState.value.recipeProgramSelected?.let { recipeSelected ->
             updateState { it.copy(recipeProgramSelected = null) }
-            launchSideEffect(FavoritesSideEffects.OpenRecipeProgramDetail(id = trainingProgramSelected.id))
+            launchSideEffect(FavoritesSideEffects.OpenRecipeProgramDetail(id = recipeSelected.id))
         }
     }
 
@@ -58,7 +58,7 @@ class FavoritesViewModel @Inject constructor(
     private fun onRecipeProgramRemovedFromFavoritesCompletedSuccessfully(isRemoved: Boolean) {
         if(isRemoved) {
             updateState { it.copy(
-                recipes = it.recipes.filterNot { training -> training.id == it.recipeProgramSelected?.id },
+                recipes = it.recipes.filterNot { recipe -> recipe.id == it.recipeProgramSelected?.id },
                 recipeProgramSelected = null
             ) }
         }

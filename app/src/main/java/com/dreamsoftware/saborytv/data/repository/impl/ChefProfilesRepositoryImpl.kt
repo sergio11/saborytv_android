@@ -13,31 +13,31 @@ import com.dreamsoftware.saborytv.utils.IOneSideMapper
 import kotlinx.coroutines.CoroutineDispatcher
 
 internal class ChefProfilesRepositoryImpl(
-    private val instructorsRemoteDataSource: IChefProfilesRemoteDataSource,
-    private val instructorMapper: IOneSideMapper<ChefProfileDTO, ChefProfileBO>,
+    private val chefProfilesRemoteDataSource: IChefProfilesRemoteDataSource,
+    private val chefProfileMapper: IOneSideMapper<ChefProfileDTO, ChefProfileBO>,
     dispatcher: CoroutineDispatcher
 ) : SupportRepositoryImpl(dispatcher), IChefProfilesRepository {
 
     @Throws(FetchChefProfilesException::class)
     override suspend fun getChefProfiles(): List<ChefProfileBO> = safeExecute {
         try {
-            instructorsRemoteDataSource
+            chefProfilesRemoteDataSource
                 .getChefProfiles()
-                .let(instructorMapper::mapInListToOutList)
+                .let(chefProfileMapper::mapInListToOutList)
                 .toList()
         } catch (ex: FetchChefProfilesRemoteException) {
-            throw FetchChefProfilesException("An error occurred when fetching instructors", ex)
+            throw FetchChefProfilesException("An error occurred when fetching chef profiles", ex)
         }
     }
 
     @Throws(FetchChefProfileByIdException::class)
     override suspend fun getChefProfileById(id: String): ChefProfileBO = safeExecute {
         try {
-            instructorsRemoteDataSource
+            chefProfilesRemoteDataSource
                 .getChefProfileById(id)
-                .let(instructorMapper::mapInToOut)
+                .let(chefProfileMapper::mapInToOut)
         } catch (ex: FetchChefProfileByIdRemoteException) {
-            throw FetchChefProfileByIdException("An error occurred when fetching the instructor by id: $id", ex)
+            throw FetchChefProfileByIdException("An error occurred when fetching the chef profile by id: $id", ex)
         }
     }
 }
