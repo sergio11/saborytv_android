@@ -1,5 +1,6 @@
 package com.dreamsoftware.saborytv.ui.screens.home
 
+import androidx.lifecycle.SavedStateHandle
 import com.dreamsoftware.fudge.core.FudgeTvViewModel
 import com.dreamsoftware.fudge.core.SideEffect
 import com.dreamsoftware.fudge.core.UiState
@@ -17,8 +18,18 @@ class HomeViewModel @Inject constructor(
     private val getFeaturedRecipesUseCase: GetFeaturedRecipesUseCase,
     private val getCategoriesUseCase: GetCategoriesUseCase,
     private val getRecipesRecommendedUseCase: GetRecipesRecommendedUseCase,
-    private val hasActiveSubscriptionUseCase: HasActiveSubscriptionUseCase
+    private val hasActiveSubscriptionUseCase: HasActiveSubscriptionUseCase,
+    private val savedStateHandle: SavedStateHandle
 ) : FudgeTvViewModel<HomeUiState, HomeSideEffects>(), HomeScreenActionListener {
+
+    companion object {
+        private const val KEY_SUBSCRIPTION_VERIFIED = "subscription_verified"
+    }
+    private var subscriptionAlreadyVerified: Boolean
+        get() = savedStateHandle[KEY_SUBSCRIPTION_VERIFIED] ?: false
+        set(value) {
+            savedStateHandle[KEY_SUBSCRIPTION_VERIFIED] = value
+        }
 
     override fun onGetDefaultState(): HomeUiState = HomeUiState()
 
@@ -26,7 +37,9 @@ class HomeViewModel @Inject constructor(
         fetchFeaturedRecipes()
         fetchCategories()
         fetchRecipesRecommended()
-        verifyHasActiveSubscription()
+        if(!subscriptionAlreadyVerified) {
+            verifyHasActiveSubscription()
+        }
     }
 
     private fun fetchFeaturedRecipes() {
@@ -53,6 +66,7 @@ class HomeViewModel @Inject constructor(
         if(!hasActiveSubscription) {
             launchSideEffect(HomeSideEffects.NoActivePremiumSubscription)
         }
+        subscriptionAlreadyVerified = true
     }
 
     private fun onGetCategoriesSuccessfully(categories: List<CategoryBO>) {
