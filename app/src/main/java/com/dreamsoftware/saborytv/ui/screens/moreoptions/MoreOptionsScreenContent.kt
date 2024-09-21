@@ -36,7 +36,7 @@ internal fun MoreOptionsScreenContent(
             ) {
                 ConstraintLayout {
                     val (
-                        trainingDetails,
+                        recipeDetails,
                         backRowSchema,
                         startButton,
                         favoritesButton,
@@ -47,7 +47,7 @@ internal fun MoreOptionsScreenContent(
                     ) = createRefs()
 
                     FudgeTvCardDetails(
-                        modifier = Modifier.width(350.dp).constrainAs(trainingDetails) {},
+                        modifier = Modifier.width(350.dp).constrainAs(recipeDetails) {},
                         title = recipe?.title.orEmpty(),
                         subtitle = recipe.formatInfo(LocalContext.current, fullDetails = true),
                         description = recipe?.description.orEmpty(),
@@ -55,7 +55,7 @@ internal fun MoreOptionsScreenContent(
                     )
                     FudgeTvBackRowSchema(
                         modifier = Modifier.constrainAs(backRowSchema) {
-                            top.linkTo(trainingDetails.bottom, margin = 50.dp)
+                            top.linkTo(recipeDetails.bottom, margin = 50.dp)
                         },
                         onClickBack = actionListener::onBackPressed
                     )
@@ -64,8 +64,8 @@ internal fun MoreOptionsScreenContent(
                             modifier = Modifier
                                 .focusRequester(focusRequester)
                                 .constrainAs(startButton) {
-                                    top.linkTo(trainingDetails.top)
-                                    start.linkTo(trainingDetails.end, margin = 140.dp)
+                                    top.linkTo(recipeDetails.top)
+                                    start.linkTo(recipeDetails.end, margin = 140.dp)
                                 },
                             textRes = R.string.play_recipe_program,
                             icon = R.drawable.ic_rounded_play,
