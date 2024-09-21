@@ -121,7 +121,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideTrainingFilterDataMapper(): IOneSideMapper<RecipeFilterDataBO, RecipeFilterDTO> = RecipeFilterDataMapper()
+    fun provideRecipeFilterDataMapper(): IOneSideMapper<RecipeFilterDataBO, RecipeFilterDTO> = RecipeFilterDataMapper()
 
     @Provides
     @Singleton
@@ -137,7 +137,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideInstructorMapper(): IOneSideMapper<ChefProfileDTO, ChefProfileBO> = ChefProfileMapper()
+    fun provideChefProfileMapper(): IOneSideMapper<ChefProfileDTO, ChefProfileBO> = ChefProfileMapper()
 
     @Provides
     @Singleton

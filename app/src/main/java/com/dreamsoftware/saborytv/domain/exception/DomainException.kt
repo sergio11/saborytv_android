@@ -5,7 +5,7 @@ class RepositoryOperationException(message: String? = null, cause: Throwable? = 
 
 class InvalidDataException(errors: Map<String, String>, message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
 
-// Training
+// Recipes
 class FetchRecipesException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
 class FetchRecipeByIdException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)
 class FetchRecipeByCategoryException(message: String? = null, cause: Throwable? = null): DomainRepositoryException(message, cause)

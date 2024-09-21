@@ -303,13 +303,13 @@ class RemoteDataSourceModule {
 
     @Provides
     @Singleton
-    fun provideInstructorsRemoteDataSource(
+    fun provideChefProfileRemoteDataSource(
         firebaseStore: FirebaseFirestore,
-        instructorMapper: IOneSideMapper<Map<String, Any?>, ChefProfileDTO>,
+        chefProfileMapper: IOneSideMapper<Map<String, Any?>, ChefProfileDTO>,
         @IoDispatcher dispatcher: CoroutineDispatcher
     ): IChefProfilesRemoteDataSource = ChefProfilesRemoteDataSourceImpl(
         firebaseStore,
-        instructorMapper,
+        chefProfileMapper,
         dispatcher
     )
 

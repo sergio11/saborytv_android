@@ -52,8 +52,8 @@ class UiModule {
 
     @Provides
     @ViewModelScoped
-    @TrainingScreenErrorMapper
-    fun provideTrainingScreenSimpleErrorMapper(
+    @RecipesScreenErrorMapper
+    fun provideRecipesScreenSimpleErrorMapper(
         @ApplicationContext context: Context
     ): IFudgeTvErrorMapper =
         RecipesScreenSimpleErrorMapper(context = context)

@@ -15,11 +15,11 @@ class AddFavoriteRecipeUseCase(
     override suspend fun onExecuted(params: Params) = with(params) {
         val currentUserUid = userRepository.getAuthenticatedUid()
         val profileSelected = profileRepository.getProfileSelectedByUser(currentUserUid)
-        toAddFavoriteTrainingBO(profileSelected.uuid)
+        toAddFavoriteRecipeBO(profileSelected.uuid)
             .let { recipesRepository.addFavoriteRecipe(it) }
     }
 
-    private fun Params.toAddFavoriteTrainingBO(profileId: String) = AddFavoriteRecipeBO(
+    private fun Params.toAddFavoriteRecipeBO(profileId: String) = AddFavoriteRecipeBO(
         profileId = profileId,
         id = id,
     )
