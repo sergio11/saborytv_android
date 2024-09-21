@@ -8,6 +8,8 @@ With SaboryTV, you can watch expert chefs in action and follow their step-by-ste
 
 **Built using Jetpack Compose for TV**, SaboryTV integrates seamlessly into your Smart TV environment. Utilizing [**🍮 Fudge**](https://github.com/sergio11/fudge_tv_compose_library), a powerful UI Kit for TV apps, SaboryTV ensures smooth navigation and a delightful user experience. Our platform is designed to make following along with cooking videos intuitive, engaging, and fun, turning your kitchen into a culinary playground. 🍽️✨
 
+A heartfelt thank you to the creators of the [JetFit repository](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit) for providing such an invaluable starting point for Jetpack Compose for TV. Your work has been incredibly inspiring and instrumental in shaping the development of this project.
+
 Happy cooking with SaboryTV! 🎉👨‍🍳
 
 <p align="center">
@@ -17,6 +19,16 @@ Happy cooking with SaboryTV! 🎉👨‍🍳
   <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
   <img src="https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" />
 </p>
+
+<p align="center">
+  <img width="400px"  src="doc/previewed/image1.jpeg" />
+  <img width="400px" src="doc/previewed/image2.jpeg" />
+  <img width="400px" src="doc/previewed/image3.jpeg" />
+  <img width="400px" src="doc/previewed/image4.jpeg" />
+  <img width="400px" src="doc/previewed/image5.jpeg" />
+</p>
+
+Slides are built using the  template from [Previewed](https://previewed.app/template/AFC0B4CB). I extend my gratitude to them for their remarkable work and contribution.
 
 ## Overview 🌐
 
@@ -552,7 +564,6 @@ SaboryTV is developed and maintained by Sergio Sánchez Sánchez (Dream Software
 We express our deep appreciation to [Freepik](https://www.freepik.es/) for generously providing the resources used in this project.
 <div> Icons and images takes from <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es'</a></div>
 
-
 A heartfelt thank you to the creators of the [JetFit repository](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit) for providing such an invaluable starting point for Jetpack Compose for TV. Your work has been incredibly inspiring and instrumental in shaping the development of this project.
 
 The resources, examples, and insights provided in the JetFit repository served as a foundational reference, enabling us to build and expand upon your excellent groundwork. Your contributions have significantly accelerated our journey and enriched our understanding of creating seamless TV applications using Jetpack Compose. 📺✨
@@ -571,3 +582,50 @@ The resources, examples, and insights provided in the JetFit repository served a
 <a href="https://www.freepik.es/foto-gratis/bebida-verano-frambuesas-limon-hielo-mesa-madera-antigua_20989797.htm#fromView=search&page=1&position=1&uuid=b917e65a-b2ae-4423-b7cd-5a35e81cddaa">Imagen de fabrikasimf en Freepik</a> - 
 <a href="https://www.freepik.es/foto-gratis/bebida-madera-detox-verano-sacudida_1130230.htm#fromView=search&page=1&position=1&uuid=4443741b-8e77-43c3-a6c9-6ab77192c58c">Imagen de topntp26 en Freepik</a> - 
 <a href="https://www.freepik.es/foto-gratis/latte-helado-matcha_1154010.htm#fromView=search&page=1&position=10&uuid=43a34124-12c7-4bee-a054-051fb606dedc">Imagen de topntp26 en Freepik</a>
+
+
+## Visitors Count
+
+<img width="auto" src="https://profile-counter.glitch.me/saborytv_android/count.svg" />
+ 
+ ## Please Share & Star the repository to keep me motivated.
+  <a href = "https://github.com/sergio11/saborytv_android/stargazers">
+     <img src = "https://img.shields.io/github/stars/sergio11/saborytv_android" />
+  </a>
+
+## License ⚖️
+
+This project is licensed under the MIT License, an open-source software license that allows developers to freely use, copy, modify, and distribute the software. 🛠️ This includes use in both personal and commercial projects, with the only requirement being that the original copyright notice is retained. 📄
+
+Please note the following limitations:
+
+- The software is provided "as is", without any warranties, express or implied. 🚫🛡️
+- If you distribute the software, whether in original or modified form, you must include the original copyright notice and license. 📑
+- The license allows for commercial use, but you cannot claim ownership over the software itself. 🏷️
+
+The goal of this license is to maximize freedom for developers while maintaining recognition for the original creators.
+
+```
+MIT License
+
+Copyright (c) 2024 Dream software - Sergio Sánchez 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
