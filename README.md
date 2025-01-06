@@ -32,6 +32,41 @@ This app, **SaboryTV**, includes images and resources designed by [Freepik](http
 
 Slides are built using the  template from [Previewed](https://previewed.app/template/AFC0B4CB). I extend my gratitude to them for their remarkable work and contribution.
 
+## 🌟 Explore These Incredible Android TV Projects! 📺🚀  
+
+Delve into the world of **Android TV development** with these cutting-edge projects. Each one demonstrates the power of **Jetpack Compose**, **Clean Architecture**, and innovative design principles, offering unique, practical solutions.  
+
+## Featured Projects 🌟  
+
+### **TvNexa - Your Global IPTV Destination** 🌐📺  
+Experience global entertainment with **TvNexa**, a platform offering:  
+- **Access to diverse international channels**  
+- **Seamless multi-device compatibility**  
+- A modern, intuitive interface  
+
+### **FitFlexTV - Your Fitness Companion** 🏋️‍♂️💪  
+Stay active and fit with **FitFlexTV**, featuring:  
+- **A variety of workouts** including yoga and HIIT  
+- **Personalized fitness plans**  
+- **Smooth navigation** optimized for Smart TVs   
+
+### **MelodiqTV - Your Music Haven** 🎶✨  
+Turn your TV into a music hub with **MelodiqTV**, offering:  
+- **A vast library of music videos** sorted by genre  
+- **Customizable user profiles**  
+- **Real-time sync** with Firebase  
+
+### **NimbusTV - Effortless M3U Streaming** 🌐📺  
+Simplify streaming with **NimbusTV**, your go-to M3U playlist solution:  
+- **Support for multiple playlists**: Organize by theme (sports, news, etc.)  
+- **EPG integration**: Real-time programming schedules with reminders  
+- **Advanced streaming formats**: HLS, DASH, and more  
+
+## Why Check Out These Projects? 💡  
+- **Learn Modern TV Development**: Explore practical implementations of Jetpack Compose and advanced architecture.  
+- **Hone Your Skills**: Tackle real-world challenges like streaming, multi-user setups, and immersive UIs.  
+- **Get Inspired**: Use these projects as templates for your own creations.  
+
 ## Overview 🌐
 
 **SaboryTV** is not just a recipe guide—it's your ultimate culinary companion designed to enhance your cooking experience and accommodate the entire family. Here’s a look at what makes SaboryTV a standout platform:
