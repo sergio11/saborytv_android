@@ -8,9 +8,9 @@ With SaboryTV, you can watch expert chefs in action and follow their step-by-ste
 
 **Built using Jetpack Compose for TV**, SaboryTV integrates seamlessly into your Smart TV environment. Utilizing [**🍮 Fudge**](https://github.com/sergio11/fudge_tv_compose_library), a powerful UI Kit for TV apps, SaboryTV ensures smooth navigation and a delightful user experience. Our platform is designed to make following along with cooking videos intuitive, engaging, and fun, turning your kitchen into a culinary playground. 🍽️✨
 
-A heartfelt thank you to the creators of the [JetFit repository](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit) for providing such an invaluable starting point for Jetpack Compose for TV. Your work has been incredibly inspiring and instrumental in shaping the development of this project.
-
 Happy cooking with SaboryTV! 🎉👨‍🍳
+
+A huge thank you to the creators of **[JetFit](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit)** for providing an invaluable foundation for **MelodiqTV**. Licensed under **Apache 2.0** (implementation) and **CC BY 4.0** (design), JetFit served as a key reference for building a seamless **Jetpack Compose for TV** experience. For more details and attributions, please check the **"Credits"** section below. 🚀  
 
 This app, **SaboryTV**, includes images and resources designed by [Freepik](https://www.freepik.com). We would like to acknowledge and thank Freepik for their incredible design assets. The images used in the app are provided with attribution, as required by Freepik's licensing terms. For more information on Freepik's resources, please visit [www.freepik.com](https://www.freepik.com).
 
@@ -31,6 +31,16 @@ This app, **SaboryTV**, includes images and resources designed by [Freepik](http
 </p>
 
 Slides are built using the  template from [Previewed](https://previewed.app/template/AFC0B4CB). I extend my gratitude to them for their remarkable work and contribution.
+
+## ⚠️ Disclaimer
+
+This project, **SaboryTV**, has been developed **for educational purposes only**. The primary goal is to explore and learn how to build **modern Android TV applications** using **Jetpack Compose** and related technologies.
+
+**SaboryTV does not provide any real cooking content, recipe subscriptions, or services**. It serves as a **demonstration project** designed to showcase how to design and develop TV-based cooking and recipe apps. The UI, navigation, and functionalities are implemented to simulate a real-world cooking platform experience.
+
+Additionally, the name **"SaboryTV"** was generated during a **brainstorming session with AI**, and any resemblance to existing brands or services is purely **coincidental**.
+
+This repository is intended solely for **learning, experimentation, and non-commercial purposes**. If you wish to develop a real cooking or recipe platform, please ensure compliance with content licensing, intellectual property, and relevant regulations.
 
 ## 🌟 Explore These Incredible Android TV Projects! 📺🚀  
 
@@ -589,21 +599,41 @@ The **Settings** section on SaboryTV is your personal culinary control center, w
 
 The **Settings** section ensures that you have the flexibility to tailor SaboryTV to your liking, enhancing your overall cooking experience. From language preferences to video quality settings, everything is designed to offer you a personalized and delightful culinary adventure. 🍽️🛠️
 
+## ⚠️ Disclaimer
+
+This project, **SaboryTV**, has been developed **for educational purposes only**. The primary goal is to explore and learn how to build **modern Android TV applications** using **Jetpack Compose** and related technologies.
+
+**SaboryTV does not provide any real cooking content, recipe subscriptions, or services**. It serves as a **demonstration project** designed to showcase how to design and develop TV-based cooking and recipe apps. The UI, navigation, and functionalities are implemented to simulate a real-world cooking platform experience.
+
+Additionally, the name **"SaboryTV"** was generated during a **brainstorming session with AI**, and any resemblance to existing brands or services is purely **coincidental**.
+
+This repository is intended solely for **learning, experimentation, and non-commercial purposes**. If you wish to develop a real cooking or recipe platform, please ensure compliance with content licensing, intellectual property, and relevant regulations.
 
 ## Contribution
 Contributions to SaboryTV Android are highly encouraged! If you're interested in adding new features, resolving bugs, or enhancing the project's functionality, please feel free to submit pull requests.
 
-## Credits
+## 🎖️ Recognition & Credits 
+
 SaboryTV is developed and maintained by Sergio Sánchez Sánchez (Dream Software). Special thanks to the open-source community and the contributors who have made this project possible. If you have any questions, feedback, or suggestions, feel free to reach out at dreamsoftware92@gmail.com.
 
-## Acknowledgements 🙏
+A heartfelt thank you to the creators of the **[JetFit repository](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit)** for providing such an invaluable starting point for **Jetpack Compose for TV**. Your work has been incredibly inspiring and instrumental in shaping the development of **SaboryTV**.  
+
+The **JetFit** project, licensed under **Apache 2.0**, has served as a foundational reference for implementing the **Jetpack Compose for TV UI framework**, while its design, licensed under **CC BY 4.0**, provided an excellent structure to build upon.  
+
+### 📌 Resources:  
+- **JetFit GitHub Repository**: [JetFit on GitHub](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit)  
+- **JetFit Figma Design**: [JetFit Fitness App on Figma](https://www.figma.com/community/file/1237433831695839696/jetfit-fitness-app)  
+- **JetFit Case Study & Guidelines**: [Google TV JetFit Case Study](https://developer.android.com/design/ui/tv/samples/jet-fit?hl=es-419)  
+- **Google TV Design Kit**: [TV Design Kit (Figma)](https://developer.android.com/design/ui/tv/guidelines)  
+
+The resources, examples, and insights provided in the **JetFit repository** significantly accelerated our development process and enriched our understanding of **building seamless TV applications using Jetpack Compose**. We deeply appreciate the contributions of the JetFit team and their dedication to open-source development.  
+
+This project acknowledges and respects the **original JetFit implementation**, ensuring proper attribution under **Apache 2.0** and **CC BY 4.0** licenses. 🚀  
+
+This project acknowledges and respects the work of the original **JetFit** creators and follows the **CC BY 4.0** license terms. If you are interested in designing a TV-based fitness app, we highly recommend exploring the **JetFit project and Google's TV design resources**.  
 
 We express our deep appreciation to [Freepik](https://www.freepik.es/) for generously providing the resources used in this project.
 <div> Icons and images takes from <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es'</a></div>
-
-A heartfelt thank you to the creators of the [JetFit repository](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit) for providing such an invaluable starting point for Jetpack Compose for TV. Your work has been incredibly inspiring and instrumental in shaping the development of this project.
-
-The resources, examples, and insights provided in the JetFit repository served as a foundational reference, enabling us to build and expand upon your excellent groundwork. Your contributions have significantly accelerated our journey and enriched our understanding of creating seamless TV applications using Jetpack Compose. 📺✨
 
 <a href="https://www.freepik.es/foto-gratis/espaguetis-salsa-bolonesa-tablexa-madera_38744102.htm#fromView=search&page=1&position=2&uuid=d536ab4f-d11c-49d5-82d3-eb4f117e0df0">Imagen de chandlervid85 en Freepik</a> - 
 <a href="https://www.freepik.es/foto-gratis/fettucine-salsa-crema-blanca-camarones-champinones_3519157.htm#fromView=search&page=1&position=2&uuid=ece10ef8-c656-4e0d-ad2d-46d519bb5465">Imagen de lifeforstock en Freepik</a> - 
@@ -632,37 +662,26 @@ The resources, examples, and insights provided in the JetFit repository served a
 
 ## License ⚖️
 
-This project is licensed under the MIT License, an open-source software license that allows developers to freely use, copy, modify, and distribute the software. 🛠️ This includes use in both personal and commercial projects, with the only requirement being that the original copyright notice is retained. 📄
+This project is licensed under the **Apache License 2.0**, a permissive open-source software license that allows developers to freely use, modify, and distribute the software. 🚀 This includes both personal and commercial use, with some conditions for distribution and modification. 📜
 
-Please note the following limitations:
+Key terms of the Apache License 2.0:
 
-- The software is provided "as is", without any warranties, express or implied. 🚫🛡️
-- If you distribute the software, whether in original or modified form, you must include the original copyright notice and license. 📑
-- The license allows for commercial use, but you cannot claim ownership over the software itself. 🏷️
+- You are allowed to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software. 💻
+- If you modify and distribute the software, you must include the original copyright notice, provide a copy of the Apache 2.0 license, and indicate any modifications made. 📝
+- You are not allowed to use the name of the project or its contributors to promote derived works without permission. ✋
+- The software is provided "as is," without any warranties, express or implied. 🚫🛡️
 
-The goal of this license is to maximize freedom for developers while maintaining recognition for the original creators.
+Please see the full license text below for more detailed terms.
 
 ```
-MIT License
+Apache License Version 2.0, January 2004 http://www.apache.org/licenses/
 
-Copyright (c) 2024 Dream software - Sergio Sánchez 
+Copyright (c) 2024 Dream software - Sergio Sánchez
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+http://www.apache.org/licenses/LICENSE-2.0
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 ```
 
