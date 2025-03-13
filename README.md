@@ -1,6 +1,6 @@
 # SaboryTV 🍳📺: Your Personal Chef, Right on Your TV
 
-<img width="auto" height="200px" align="left" src="doc/main_logo.png" />
+<img width="auto" height="300px" align="left" src="doc/saborytv_logo.webp" />
 
 Welcome to **SaboryTV**, the ultimate platform to elevate your cooking experience directly from your Smart TV. Whether you're aiming to refine your culinary skills, explore new flavors, or simply follow along with top chefs, SaboryTV is designed to cater to your tastes and dietary goals. With an extensive collection of recipes, tailored to your preferences, you'll be able to create the perfect dish every time. 🍝🍰
 
