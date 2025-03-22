@@ -20,6 +20,9 @@ A huge thank you to the creators of **[JetFit](https://github.com/TheChance101/t
 
 This app, **SaboryTV**, includes images and resources designed by [Freepik](https://www.freepik.com). We would like to acknowledge and thank Freepik for their incredible design assets. The images used in the app are provided with attribution, as required by Freepik's licensing terms. For more information on Freepik's resources, please visit [www.freepik.com](https://www.freepik.com).
 
+For demonstration purposes, the **video player** in SaboryTV uses a free stock video from Mixkit, showcasing a **chef cooking stir-fry vegetables on high heat**. This video is only used to demonstrate the functionality of the player.
+[Free Stock Video: Chef Cooking Stir-fry Vegetables](https://mixkit.co/free-stock-video/chef-cooking-stir-fry-vegetables-on-high-heat-47555/)
+
 <p align="center">
   <img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white" />
   <img src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white" />
@@ -639,6 +642,9 @@ The resources, examples, and insights provided in the **JetFit repository** sign
 This project acknowledges and respects the **original JetFit implementation**, ensuring proper attribution under **Apache 2.0** and **CC BY 4.0** licenses. 🚀  
 
 This project acknowledges and respects the work of the original **JetFit** creators and follows the **CC BY 4.0** license terms. If you are interested in designing a TV-based fitness app, we highly recommend exploring the **JetFit project and Google's TV design resources**.  
+
+For demonstration purposes, the **video player** in SaboryTV uses a free stock video from Mixkit, showcasing a **chef cooking stir-fry vegetables on high heat**. This video is only used to demonstrate the functionality of the player.
+[Free Stock Video: Chef Cooking Stir-fry Vegetables](https://mixkit.co/free-stock-video/chef-cooking-stir-fry-vegetables-on-high-heat-47555/)
 
 We express our deep appreciation to [Freepik](https://www.freepik.es/) for generously providing the resources used in this project.
 <div> Icons and images takes from <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es'</a></div>
