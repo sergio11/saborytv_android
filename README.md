@@ -4,14 +4,13 @@
 
 **SaboryTV** is a personal project I developed to deepen my understanding of **Android TV development** 📺 and improve my skills in creating apps for large screens. The goal of this project was to explore **Jetpack Compose for TV** 🖥️, **Clean Architecture** 🧩, and best practices in UI design tailored for TV platforms.
 
-Through this project, I aimed to:
+In the process, I focused on mastering **Jetpack Compose for TV** 🖥️, aiming to create a UI that seamlessly adapts to TV screens while ensuring smooth navigation and responsiveness across different devices. This challenge was a great way to learn how to optimize UIs for larger screens and remote control navigation.
 
-- **Master Jetpack Compose for TV** 🖥️: I focused on building a UI that adapts well to TV screens, ensuring smooth navigation and responsiveness across various devices.
-- **Implement Clean Architecture** 🧱: This project gave me hands-on experience applying Clean Architecture to Android TV apps, enabling me to create a scalable, maintainable, and testable codebase.
-- **Enhance UI/UX for TV apps** 🎮: I worked on delivering an engaging user experience for a TV environment, focusing on optimizing the app's navigation and ensuring it felt intuitive and responsive.
-- **Improve Firebase Integration** 🔥: For real-time data handling and secure authentication, I integrated Firebase, allowing me to learn more about Firebase's usage in Android TV apps.
+Additionally, I wanted to apply **Clean Architecture** 🧱 in a real-world Android TV app. This project allowed me to gain hands-on experience with organizing code in a modular way, which led to creating a scalable, maintainable, and testable codebase.
 
-By building **SaboryTV**, I gained practical experience with essential tools and frameworks, while focusing on creating a scalable architecture for future projects 🚀. This project was designed to enhance my understanding of **Android TV development** 📱 and develop best practices for building high-quality apps tailored for TV users.
+Alongside this, I put significant effort into enhancing the **UI/UX for TV apps** 🎮, ensuring the app felt intuitive and engaging for users. I focused on delivering an interface that is easy to navigate, with a smooth user experience designed specifically for TV environments.
+
+Finally, I integrated **Firebase** 🔥 to handle real-time data and secure authentication, giving me the opportunity to improve my understanding of Firebase’s role in Android TV apps. This integration also helped me explore how to manage data and ensure security within the app efficiently.
 
 **Built using Jetpack Compose for TV**, SaboryTV integrates seamlessly into your Smart TV environment. Utilizing [**🍮 Fudge**](https://github.com/sergio11/fudge_tv_compose_library), a powerful UI Kit for TV apps, SaboryTV ensures smooth navigation and a delightful user experience. Our platform is designed to make following along with cooking videos intuitive, engaging, and fun, turning your kitchen into a culinary playground. 🍽️✨
 
