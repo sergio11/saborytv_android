@@ -585,12 +585,9 @@ Additionally, the name **"SaboryTV"** was generated during a **brainstorming ses
 
 This repository is intended solely for **learning, experimentation, and non-commercial purposes**. If you wish to develop a real cooking or recipe platform, please ensure compliance with content licensing, intellectual property, and relevant regulations.
 
-## Contribution
-Contributions to SaboryTV Android are highly encouraged! If you're interested in adding new features, resolving bugs, or enhancing the project's functionality, please feel free to submit pull requests.
-
 ## 🎖️ Recognition & Credits 
 
-SaboryTV is developed and maintained by Sergio Sánchez Sánchez (Dream Software). Special thanks to the open-source community and the contributors who have made this project possible. If you have any questions, feedback, or suggestions, feel free to reach out at dreamsoftware92@gmail.com.
+Special thanks to the open-source community and the contributors who have made this project possible.
 
 A huge thank you to the creators of **[JetFit](https://github.com/TheChance101/tv-samples/tree/JetFit/JetFit)** and the contributors to **[PR #183](https://github.com/android/tv-samples/pull/183)** for providing an invaluable foundation for **SaboryTV**. This is an attempt to provide an open-source implementation of JetFit. Licensed under **Apache 2.0** (implementation) and **CC BY 4.0** (design), JetFit served as a key reference for building a seamless **Jetpack Compose for TV** experience. I encourage you to visit the PR, review the effort, and give the deserved recognition. 
 
@@ -633,11 +630,6 @@ We express our deep appreciation to [Freepik](https://www.freepik.es/) for gener
 ## Visitors Count
 
 <img width="auto" src="https://profile-counter.glitch.me/saborytv_android/count.svg" />
- 
- ## Please Share & Star the repository to keep me motivated.
-  <a href = "https://github.com/sergio11/saborytv_android/stargazers">
-     <img src = "https://img.shields.io/github/stars/sergio11/saborytv_android" />
-  </a>
 
 ## License ⚖️
 
